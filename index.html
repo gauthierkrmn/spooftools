@@ -6,335 +6,86 @@
 <title>NARIX AGENCY — Video Randomizer</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
-
   :root {
-    --bg: #f5f5f3;
-    --white: #ffffff;
-    --black: #0a0a0a;
-    --gray-100: #f0f0ee;
-    --gray-200: #e2e2e0;
-    --gray-300: #c8c8c6;
-    --gray-400: #9a9a98;
-    --gray-600: #555553;
-    --green: #1a7a4a;
-    --red: #c0392b;
+    --bg: #f5f5f3; --white: #ffffff; --black: #0a0a0a;
+    --gray-100: #f0f0ee; --gray-200: #e2e2e0; --gray-300: #c8c8c6;
+    --gray-400: #9a9a98; --gray-600: #555553; --green: #1a7a4a; --red: #c0392b;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: var(--bg);
-    color: var(--black);
-    font-family: 'Inter', sans-serif;
-    min-height: 100vh;
-    font-size: 14px;
-  }
-
-  .header {
-    background: var(--black);
-    padding: 0 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 64px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 26px;
-    letter-spacing: 4px;
-    color: #fff;
-    line-height: 1;
-  }
-  .logo span {
-    color: var(--gray-400);
-    font-size: 11px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    display: block;
-    margin-top: 2px;
-  }
-  .header-badge {
-    background: #1a1a1a;
-    border: 1px solid #2a2a2a;
-    border-radius: 4px;
-    padding: 6px 12px;
-    font-size: 11px;
-    color: var(--gray-400);
-    letter-spacing: 1px;
-    display: flex;
-    align-items: center;
-    gap: 7px;
-  }
-  .header-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #888;
-  }
+  body { background: var(--bg); color: var(--black); font-family: 'Inter', sans-serif; min-height: 100vh; font-size: 14px; }
+  .header { background: var(--black); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
+  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 4px; color: #fff; line-height: 1; }
+  .logo span { color: var(--gray-400); font-size: 11px; font-family: 'Inter', sans-serif; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; display: block; margin-top: 2px; }
+  .header-badge { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 4px; padding: 6px 12px; font-size: 11px; color: var(--gray-400); letter-spacing: 1px; display: flex; align-items: center; gap: 7px; }
+  .header-dot { width: 6px; height: 6px; border-radius: 50%; background: #888; }
   .header-dot.ready { background: #4caf7d; animation: pulse 2s infinite; }
-  .header-dot.loading { background: #f5a623; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
-
-  .layout {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 40px 24px 80px;
-  }
-
-  .page-title {
-    margin-bottom: 32px;
-    border-bottom: 1px solid var(--gray-200);
-    padding-bottom: 24px;
-  }
-  .page-title h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 42px;
-    letter-spacing: 3px;
-    line-height: 1;
-  }
-  .page-title p {
-    margin-top: 8px;
-    font-size: 13px;
-    color: var(--gray-600);
-  }
-
-  .tabs {
-    display: inline-flex;
-    background: var(--white);
-    border: 1px solid var(--gray-200);
-    border-radius: 6px;
-    padding: 3px;
-    margin-bottom: 24px;
-    gap: 2px;
-  }
-  .tab {
-    padding: 8px 20px;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    border: none;
-    background: transparent;
-    color: var(--gray-600);
-    border-radius: 4px;
-    transition: all 0.15s;
-    font-family: 'Inter', sans-serif;
-  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .layout { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+  .page-title { margin-bottom: 32px; border-bottom: 1px solid var(--gray-200); padding-bottom: 24px; }
+  .page-title h1 { font-family: 'Bebas Neue', sans-serif; font-size: 42px; letter-spacing: 3px; line-height: 1; }
+  .page-title p { margin-top: 8px; font-size: 13px; color: var(--gray-600); }
+  .tabs { display: inline-flex; background: var(--white); border: 1px solid var(--gray-200); border-radius: 6px; padding: 3px; margin-bottom: 24px; gap: 2px; }
+  .tab { padding: 8px 20px; font-size: 13px; font-weight: 500; cursor: pointer; border: none; background: transparent; color: var(--gray-600); border-radius: 4px; transition: all 0.15s; font-family: 'Inter', sans-serif; }
   .tab.active { background: var(--black); color: #fff; }
   .tab:not(.active):hover { background: var(--gray-100); color: var(--black); }
-
-  .card {
-    background: var(--white);
-    border: 1px solid var(--gray-200);
-    border-radius: 8px;
-    margin-bottom: 12px;
-    overflow: hidden;
-  }
-  .card-header {
-    padding: 14px 20px;
-    border-bottom: 1px solid var(--gray-100);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .card-title {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gray-600);
-  }
+  .card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; margin-bottom: 12px; overflow: hidden; }
+  .card-header { padding: 14px 20px; border-bottom: 1px solid var(--gray-100); display: flex; align-items: center; justify-content: space-between; }
+  .card-title { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gray-600); }
   .card-body { padding: 20px; }
-
-  .warning {
-    background: #fffbf0;
-    border: 1px solid #e8d88a;
-    border-radius: 6px;
-    padding: 12px 16px;
-    font-size: 12px;
-    color: #7a6010;
-    margin-bottom: 12px;
-    line-height: 1.7;
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-  }
-
-  .dropzone {
-    border: 1.5px dashed var(--gray-300);
-    border-radius: 8px;
-    padding: 52px 24px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.2s;
-    background: var(--gray-100);
-    margin-bottom: 12px;
-  }
+  .warning { background: #fffbf0; border: 1px solid #e8d88a; border-radius: 6px; padding: 12px 16px; font-size: 12px; color: #7a6010; margin-bottom: 12px; line-height: 1.7; display: flex; gap: 10px; align-items: flex-start; }
+  .dropzone { border: 1.5px dashed var(--gray-300); border-radius: 8px; padding: 52px 24px; text-align: center; cursor: pointer; transition: all 0.2s; background: var(--gray-100); margin-bottom: 12px; }
   .dropzone:hover, .dropzone.dragover { border-color: var(--black); background: var(--white); }
-  .dropzone-icon {
-    width: 44px; height: 44px;
-    background: var(--white);
-    border: 1px solid var(--gray-200);
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-    margin: 0 auto 14px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-  }
+  .dropzone-icon { width: 44px; height: 44px; background: var(--white); border: 1px solid var(--gray-200); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin: 0 auto 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
   .dropzone-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
   .dropzone-sub { font-size: 12px; color: var(--gray-400); }
   #fileInput { display: none; }
-
-  .versions-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: var(--white);
-    border: 1px solid var(--gray-200);
-    border-radius: 8px;
-    padding: 14px 20px;
-    margin-bottom: 12px;
-  }
+  .versions-row { display: flex; align-items: center; justify-content: space-between; background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 14px 20px; margin-bottom: 12px; }
   .versions-label { font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 10px; }
-  .versions-label .tag {
-    font-size: 10px;
-    background: var(--gray-100);
-    border: 1px solid var(--gray-200);
-    border-radius: 3px;
-    padding: 2px 7px;
-    color: var(--gray-600);
-    font-weight: 500;
-  }
+  .versions-label .tag { font-size: 10px; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 3px; padding: 2px 7px; color: var(--gray-600); font-weight: 500; }
   .versions-counter { display: flex; align-items: center; gap: 12px; }
-  .counter-btn {
-    width: 32px; height: 32px;
-    background: var(--gray-100);
-    border: 1px solid var(--gray-200);
-    border-radius: 6px;
-    font-size: 18px;
-    cursor: pointer;
-    color: var(--black);
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.15s;
-    font-family: 'Inter', sans-serif;
-  }
+  .counter-btn { width: 32px; height: 32px; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 6px; font-size: 18px; cursor: pointer; color: var(--black); display: flex; align-items: center; justify-content: center; transition: all 0.15s; font-family: 'Inter', sans-serif; }
   .counter-btn:hover { background: var(--black); color: #fff; border-color: var(--black); }
-  .counter-value {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    letter-spacing: 2px;
-    min-width: 36px;
-    text-align: center;
-  }
-
+  .counter-value { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 2px; min-width: 36px; text-align: center; }
   .speed-options { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
-  .speed-option {
-    border: 1.5px solid var(--gray-200);
-    border-radius: 8px;
-    padding: 14px;
-    cursor: pointer;
-    transition: all 0.15s;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    background: var(--white);
-  }
+  .speed-option { border: 1.5px solid var(--gray-200); border-radius: 8px; padding: 14px; cursor: pointer; transition: all 0.15s; display: flex; align-items: flex-start; gap: 10px; background: var(--white); }
   .speed-option.active { border-color: var(--black); background: var(--black); }
   .speed-option.active .speed-name { color: #fff; }
   .speed-option.active .speed-desc { color: rgba(255,255,255,0.5); }
   .speed-option:hover:not(.active) { border-color: var(--gray-400); }
-  .speed-radio {
-    width: 15px; height: 15px;
-    border: 2px solid var(--gray-300);
-    border-radius: 50%;
-    margin-top: 1px;
-    flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-  }
+  .speed-radio { width: 15px; height: 15px; border: 2px solid var(--gray-300); border-radius: 50%; margin-top: 1px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
   .speed-option.active .speed-radio { border-color: #fff; }
   .speed-option.active .speed-radio::after { content:''; width:6px; height:6px; background:#fff; border-radius:50%; }
   .speed-name { font-size: 13px; font-weight: 700; color: var(--black); }
   .speed-desc { font-size: 10px; color: var(--gray-400); margin-top: 3px; line-height: 1.4; }
-
   .transforms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 32px; }
-  .checkbox-item {
-    display: flex; align-items: center; gap: 10px;
-    cursor: pointer; padding: 7px 0;
-    border-bottom: 1px solid var(--gray-100);
-  }
+  .checkbox-item { display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 7px 0; border-bottom: 1px solid var(--gray-100); }
   .checkbox-item:nth-last-child(-n+2) { border-bottom: none; }
   .checkbox-item input[type="checkbox"] { display: none; }
-  .custom-checkbox {
-    width: 16px; height: 16px;
-    border: 1.5px solid var(--gray-300);
-    border-radius: 3px;
-    background: var(--white);
-    flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.15s;
-  }
+  .custom-checkbox { width: 16px; height: 16px; border: 1.5px solid var(--gray-300); border-radius: 3px; background: var(--white); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
   .checkbox-item input:checked + .custom-checkbox { background: var(--black); border-color: var(--black); }
   .checkbox-item input:checked + .custom-checkbox::after { content:'✓'; font-size:10px; color:#fff; font-weight:800; }
   .checkbox-label { font-size: 13px; color: var(--black); user-select: none; }
   .visible-badge { font-size: 9px; color: var(--gray-400); margin-left: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
-
   .file-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
-  .file-item {
-    background: var(--white);
-    border: 1px solid var(--gray-200);
-    border-radius: 8px;
-    padding: 14px 16px;
-    display: flex; align-items: center; gap: 14px;
-  }
+  .file-item { background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 14px 16px; display: flex; align-items: center; gap: 14px; }
   .file-item.done { border-left: 3px solid var(--green); }
   .file-item.processing { border-left: 3px solid var(--black); }
-  .file-thumb {
-    width: 40px; height: 40px;
-    background: var(--gray-100);
-    border: 1px solid var(--gray-200);
-    border-radius: 6px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px; flex-shrink: 0;
-  }
+  .file-thumb { width: 40px; height: 40px; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
   .file-info { flex: 1; min-width: 0; }
   .file-name { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .file-meta { font-size: 11px; color: var(--gray-400); margin-top: 2px; }
   .file-meta.done { color: var(--green); font-weight: 500; }
   .file-meta.processing { color: var(--black); font-weight: 500; }
   .file-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-  .version-tag {
-    font-size: 11px; font-weight: 600;
-    background: var(--gray-100); border: 1px solid var(--gray-200);
-    border-radius: 4px; padding: 3px 9px; color: var(--gray-600);
-  }
-  .dl-btn {
-    width: 32px; height: 32px;
-    background: var(--black); border: none; border-radius: 6px;
-    cursor: pointer; display: flex; align-items: center; justify-content: center;
-    font-size: 13px; color: #fff; transition: opacity 0.15s;
-  }
+  .version-tag { font-size: 11px; font-weight: 600; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 4px; padding: 3px 9px; color: var(--gray-600); }
+  .dl-btn { width: 32px; height: 32px; background: var(--black); border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #fff; transition: opacity 0.15s; }
   .dl-btn:hover { opacity: 0.75; }
   .dl-btn:disabled { background: var(--gray-200); color: var(--gray-400); cursor: not-allowed; }
-  .rm-btn {
-    width: 28px; height: 28px;
-    background: none; border: 1px solid var(--gray-200); border-radius: 5px;
-    color: var(--gray-400); cursor: pointer; font-size: 15px;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.15s;
-  }
+  .rm-btn { width: 28px; height: 28px; background: none; border: 1px solid var(--gray-200); border-radius: 5px; color: var(--gray-400); cursor: pointer; font-size: 15px; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
   .rm-btn:hover { border-color: var(--red); color: var(--red); }
-
-  .add-more {
-    border: 1.5px dashed var(--gray-200); border-radius: 8px; padding: 14px;
-    text-align: center; cursor: pointer; color: var(--gray-400);
-    font-size: 13px; font-weight: 500; transition: all 0.2s; margin-bottom: 12px;
-    background: var(--white); display: flex; align-items: center; justify-content: center; gap: 8px;
-  }
+  .add-more { border: 1.5px dashed var(--gray-200); border-radius: 8px; padding: 14px; text-align: center; cursor: pointer; color: var(--gray-400); font-size: 13px; font-weight: 500; transition: all 0.2s; margin-bottom: 12px; background: var(--white); display: flex; align-items: center; justify-content: center; gap: 8px; }
   .add-more:hover { border-color: var(--black); color: var(--black); }
-
   .progress-container { display: none; background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; }
   .progress-container.visible { display: block; }
   .progress-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
@@ -342,70 +93,34 @@
   .progress-pct { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 1px; }
   .progress-bar-wrap { background: var(--gray-100); border-radius: 99px; height: 4px; overflow: hidden; }
   .progress-bar { height: 100%; background: var(--black); border-radius: 99px; transition: width 0.3s; width: 0%; }
-
   .action-buttons { display: flex; flex-direction: column; gap: 8px; }
-  .btn-process {
-    width: 100%; padding: 16px;
-    background: var(--black); color: #fff; border: none; border-radius: 8px;
-    font-size: 14px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
-    cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
-    transition: opacity 0.2s; font-family: 'Inter', sans-serif;
-  }
+  .btn-process { width: 100%; padding: 16px; background: var(--black); color: #fff; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: opacity 0.2s; font-family: 'Inter', sans-serif; }
   .btn-process:hover:not(:disabled) { opacity: 0.82; }
   .btn-process:disabled { background: var(--gray-200); color: var(--gray-400); cursor: not-allowed; }
-  .btn-download-all {
-    width: 100%; padding: 13px;
-    background: transparent; color: var(--black);
-    border: 1.5px solid var(--gray-300); border-radius: 8px;
-    font-size: 13px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase;
-    cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
-    transition: all 0.2s; font-family: 'Inter', sans-serif;
-  }
+  .btn-download-all { width: 100%; padding: 13px; background: transparent; color: var(--black); border: 1.5px solid var(--gray-300); border-radius: 8px; font-size: 13px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s; font-family: 'Inter', sans-serif; }
   .btn-download-all:hover:not(:disabled) { border-color: var(--black); background: var(--gray-100); }
   .btn-download-all:disabled { opacity: 0.35; cursor: not-allowed; }
-
-  @keyframes spin { to { transform: rotate(360deg); } }
   .spinner { width: 15px; height: 15px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; display: none; }
   .btn-process.loading .spinner { display: block; }
   .btn-process.loading .btn-text { display: none; }
-
   .footer-note { text-align: center; font-size: 11px; color: var(--gray-400); margin-top: 20px; line-height: 1.7; }
-
-  .toast {
-    position: fixed; bottom: 28px; left: 50%;
-    transform: translateX(-50%) translateY(80px);
-    background: var(--black); color: #fff; border-radius: 6px;
-    padding: 12px 22px; font-size: 13px; font-weight: 500;
-    z-index: 9999; transition: transform 0.3s; white-space: nowrap;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-  }
+  .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--black); color: #fff; border-radius: 6px; padding: 12px 22px; font-size: 13px; font-weight: 500; z-index: 9999; transition: transform 0.3s; white-space: nowrap; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
   .toast.show { transform: translateX(-50%) translateY(0); }
   .toast.success { background: var(--green); }
   .toast.error { background: var(--red); }
-
-  #loadingOverlay {
-    display: none;
-    position: fixed; inset: 0;
-    background: rgba(255,255,255,0.92);
-    z-index: 200;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-  }
+  #loadingOverlay { display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.95); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
   #loadingOverlay.visible { display: flex; }
-  #loadingOverlay p { font-size: 14px; font-weight: 600; color: var(--black); }
+  #loadingOverlay p { font-size: 15px; font-weight: 600; color: var(--black); }
   #loadingOverlay small { font-size: 12px; color: var(--gray-400); }
   .big-spinner { width: 40px; height: 40px; border: 3px solid var(--gray-200); border-top-color: var(--black); border-radius: 50%; animation: spin 0.8s linear infinite; }
 </style>
 </head>
 <body>
 
-<!-- LOADING OVERLAY (FFmpeg init) -->
 <div id="loadingOverlay" class="visible">
   <div class="big-spinner"></div>
-  <p>Chargement de FFmpeg...</p>
-  <small>Première visite : ~5-10 secondes</small>
+  <p id="loadingMsg">Chargement de FFmpeg...</p>
+  <small>Première visite : ~10-20 secondes</small>
 </div>
 
 <header class="header">
@@ -440,10 +155,7 @@
   <input type="file" id="fileInput" multiple accept="video/*">
 
   <div class="versions-row">
-    <div class="versions-label">
-      Versions à générer par fichier
-      <span class="tag">PAR VIDÉO</span>
-    </div>
+    <div class="versions-label">Versions à générer par fichier <span class="tag">PAR VIDÉO</span></div>
     <div class="versions-counter">
       <button class="counter-btn" onclick="changeVersions(-1)">−</button>
       <span class="counter-value" id="versionsValue">12</span>
@@ -455,36 +167,15 @@
     <div class="card-header"><span class="card-title">Vitesse / Qualité</span></div>
     <div class="card-body">
       <div class="speed-options">
-        <div class="speed-option active" id="speed-rapide" onclick="selectSpeed('rapide')">
-          <div class="speed-radio"></div>
-          <div>
-            <div class="speed-name">Rapide</div>
-            <div class="speed-desc">~10-15s par version · Qualité haute</div>
-          </div>
-        </div>
-        <div class="speed-option" id="speed-equilibre" onclick="selectSpeed('equilibre')">
-          <div class="speed-radio"></div>
-          <div>
-            <div class="speed-name">Équilibré</div>
-            <div class="speed-desc">~20-30s par version · Qualité très bonne</div>
-          </div>
-        </div>
-        <div class="speed-option" id="speed-max" onclick="selectSpeed('max')">
-          <div class="speed-radio"></div>
-          <div>
-            <div class="speed-name">Max</div>
-            <div class="speed-desc">~30-60s par version · Qualité parfaite</div>
-          </div>
-        </div>
+        <div class="speed-option active" id="speed-rapide" onclick="selectSpeed('rapide')"><div class="speed-radio"></div><div><div class="speed-name">Rapide</div><div class="speed-desc">~10-15s par version · Qualité haute</div></div></div>
+        <div class="speed-option" id="speed-equilibre" onclick="selectSpeed('equilibre')"><div class="speed-radio"></div><div><div class="speed-name">Équilibré</div><div class="speed-desc">~20-30s par version · Qualité très bonne</div></div></div>
+        <div class="speed-option" id="speed-max" onclick="selectSpeed('max')"><div class="speed-radio"></div><div><div class="speed-name">Max</div><div class="speed-desc">~30-60s par version · Qualité parfaite</div></div></div>
       </div>
     </div>
   </div>
 
   <div class="card">
-    <div class="card-header">
-      <span class="card-title">Transformations</span>
-      <span style="font-size:11px;color:var(--gray-400);">Sélectionne les modifications à appliquer</span>
-    </div>
+    <div class="card-header"><span class="card-title">Transformations</span><span style="font-size:11px;color:var(--gray-400);">Sélectionne les modifications à appliquer</span></div>
     <div class="card-body">
       <div class="transforms-grid">
         <label class="checkbox-item"><input type="checkbox" checked id="t_crop"><div class="custom-checkbox"></div><span class="checkbox-label">Crop 1-3px + rescale</span></label>
@@ -517,334 +208,267 @@
       <span class="btn-text">Traiter les fichiers</span>
       <div class="spinner"></div>
     </button>
-    <button class="btn-download-all" id="btnDownloadAll" onclick="downloadAll()" disabled>
-      ↓ Télécharger tous les fichiers traités
-    </button>
+    <button class="btn-download-all" id="btnDownloadAll" onclick="downloadAll()" disabled>↓ Télécharger tous les fichiers traités</button>
   </div>
-
   <div class="footer-note">Traitement 100% local · Aucun fichier envoyé sur un serveur · NARIX AGENCY</div>
 </div>
 
 <div class="toast" id="toast"></div>
 
-<script type="module">
-  import { FFmpeg } from 'https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/esm/index.js';
-  import { fetchFile, toBlobURL } from 'https://unpkg.com/@ffmpeg/util@0.12.1/dist/esm/index.js';
-
-  // ── STATE ──
-  let versions = 12;
-  let currentSpeed = 'rapide';
-  let currentTab = 'video';
-  let files = [];
-  let processedBlobs = [];
-  let ffmpeg = null;
-  let ffmpegReady = false;
-
-  // ── INIT FFMPEG ──
-  async function initFFmpeg() {
-    try {
-      ffmpeg = new FFmpeg();
-      const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm';
-      await ffmpeg.load({
-        coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript'),
-        wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm'),
-      });
-      ffmpegReady = true;
-      document.getElementById('loadingOverlay').classList.remove('visible');
-      document.getElementById('headerDot').className = 'header-dot ready';
-      document.getElementById('headerStatus').textContent = 'FFmpeg — Prêt';
-    } catch(e) {
-      document.getElementById('loadingOverlay').innerHTML = `
-        <p style="color:#c0392b">❌ Erreur de chargement</p>
-        <small>Vérifie ta connexion et recharge la page</small>`;
-      console.error(e);
-    }
+<script>
+// Chargement FFmpeg via script classique (pas module) pour éviter les problèmes CORS worker
+window.addEventListener('load', async () => {
+  try {
+    // Charger FFmpeg via CDN en tant que script global
+    await loadScript('https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js');
+    
+    const { createFFmpeg, fetchFile } = FFmpeg;
+    window._ffmpeg = createFFmpeg({
+      log: false,
+      corePath: 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js',
+    });
+    
+    window._fetchFile = fetchFile;
+    await window._ffmpeg.load();
+    
+    document.getElementById('loadingOverlay').classList.remove('visible');
+    document.getElementById('headerDot').className = 'header-dot ready';
+    document.getElementById('headerStatus').textContent = 'FFmpeg — Prêt';
+    window._ffmpegReady = true;
+  } catch(e) {
+    console.error(e);
+    document.getElementById('loadingMsg').textContent = '❌ Erreur : ' + e.message;
+    document.getElementById('loadingOverlay').innerHTML = `
+      <p style="color:#c0392b;font-size:15px;font-weight:700;text-align:center;padding:24px">❌ Erreur de chargement<br><small style="font-size:12px;color:#888;font-weight:400">${e.message}</small></p>
+      <button onclick="location.reload()" style="padding:10px 24px;background:#0a0a0a;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600">↺ Recharger</button>`;
   }
+});
 
-  initFFmpeg();
+function loadScript(src) {
+  return new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = src;
+    s.onload = resolve;
+    s.onerror = reject;
+    document.head.appendChild(s);
+  });
+}
 
-  // ── HELPERS ──
-  function rand(min, max) { return Math.random() * (max - min) + min; }
-  function randInt(min, max) { return Math.floor(rand(min, max + 1)); }
+// STATE
+let versions = 12, currentSpeed = 'rapide', currentTab = 'video';
+let files = [], processedBlobs = [];
 
-  function buildFilters() {
-    const filters = [];
+function rand(min, max) { return Math.random() * (max - min) + min; }
+function randInt(min, max) { return Math.floor(rand(min, max + 1)); }
 
-    // Crop 1-3px de chaque côté + rescale à la taille originale
-    if (document.getElementById('t_crop').checked) {
-      const c = randInt(1, 3);
-      filters.push(`crop=iw-${c*2}:ih-${c*2}:${c}:${c},scale=iw+${c*2}:ih+${c*2}`);
-    }
+function changeVersions(delta) {
+  versions = Math.max(1, Math.min(50, versions + delta));
+  document.getElementById('versionsValue').textContent = versions;
+  updateFileList();
+}
 
-    // Zoom 1-2%
-    if (document.getElementById('t_zoom').checked) {
-      const z = rand(1.01, 1.02).toFixed(4);
-      filters.push(`scale=iw*${z}:ih*${z},crop=iw/${z}:ih/${z}`);
-    }
+function switchTab(tab) {
+  currentTab = tab;
+  document.getElementById('tabVideo').classList.toggle('active', tab === 'video');
+  document.getElementById('tabPhoto').classList.toggle('active', tab === 'photo');
+  const isVideo = tab === 'video';
+  document.getElementById('dropTitle').textContent = isVideo ? 'Glisse tes vidéos ici' : 'Glisse tes photos ici';
+  document.getElementById('dropSub').textContent = isVideo ? 'MP4, MOV, WEBM' : 'JPG, PNG, WEBP';
+  document.getElementById('fileInput').accept = isVideo ? 'video/*' : 'image/*';
+  document.getElementById('warningBox').style.display = isVideo ? 'flex' : 'none';
+}
 
-    // Rotation 0.1-0.5°
-    if (document.getElementById('t_rotation').checked) {
-      const angle = rand(0.001, 0.009).toFixed(4); // en radians
-      filters.push(`rotate=${angle}:fillcolor=black`);
-    }
+function selectSpeed(s) {
+  currentSpeed = s;
+  ['rapide','equilibre','max'].forEach(id => document.getElementById('speed-'+id).classList.remove('active'));
+  document.getElementById('speed-'+s).classList.add('active');
+}
 
-    // Variation couleurs (brightness, contrast, saturation)
-    if (document.getElementById('t_couleurs').checked) {
-      const b = rand(-0.03, 0.03).toFixed(3);
-      const c = rand(0.97, 1.03).toFixed(3);
-      const s = rand(0.97, 1.03).toFixed(3);
-      filters.push(`eq=brightness=${b}:contrast=${c}:saturation=${s}`);
-    }
+const dropzone = document.getElementById('dropzone');
+dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
+dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFiles([...e.dataTransfer.files]); });
+document.getElementById('fileInput').addEventListener('change', e => { handleFiles([...e.target.files]); e.target.value = ''; });
 
-    // Flip horizontal
-    if (document.getElementById('t_flip').checked) {
-      filters.push('hflip');
-    }
-
-    return filters.join(',');
+function handleFiles(newFiles) {
+  newFiles.forEach(f => files.push({ file: f, name: f.name, size: (f.size/1024/1024).toFixed(1), status: 'pending', results: [] }));
+  if (files.length > 0) {
+    dropzone.style.display = 'none';
+    document.getElementById('addMoreBtn').style.display = 'flex';
+    document.getElementById('btnProcess').disabled = false;
   }
+  updateFileList();
+}
 
-  function buildAudioFilters() {
-    const filters = [];
-
-    // Pitch audio ±1%
-    if (document.getElementById('t_pitch').checked) {
-      const pitch = rand(0.99, 1.01).toFixed(4);
-      filters.push(`asetrate=44100*${pitch},aresample=44100`);
+function updateFileList() {
+  const list = document.getElementById('fileList');
+  list.innerHTML = '';
+  files.forEach((f, i) => {
+    const item = document.createElement('div');
+    item.className = 'file-item' + (f.status==='done'?' done':f.status==='processing'?' processing':'');
+    let meta = '', dlBtn = `<button class="dl-btn" disabled>↓</button>`;
+    if (f.status === 'done') {
+      meta = `<div class="file-meta done">✓ ${f.results.length} version(s) générée(s)</div>`;
+      dlBtn = `<button class="dl-btn" onclick="downloadFile(${i})">↓</button>`;
+    } else if (f.status === 'processing') {
+      meta = `<div class="file-meta processing">Traitement ${f.progress||0}/${versions}...</div>`;
+    } else {
+      meta = `<div class="file-meta">${f.size} MB · ${versions} version(s)</div>`;
     }
+    item.innerHTML = `<div class="file-thumb">🎬</div><div class="file-info"><div class="file-name">${f.name}</div>${meta}</div><div class="file-actions"><span class="version-tag">×${versions}</span>${dlBtn}<button class="rm-btn" onclick="removeFile(${i})">×</button></div>`;
+    list.appendChild(item);
+  });
+}
 
-    return filters.join(',');
+function removeFile(i) {
+  files.splice(i, 1);
+  if (!files.length) {
+    dropzone.style.display = 'block';
+    document.getElementById('addMoreBtn').style.display = 'none';
+    document.getElementById('btnProcess').disabled = true;
+    document.getElementById('btnDownloadAll').disabled = true;
   }
+  updateFileList();
+}
 
-  function getCRF() {
-    if (!document.getElementById('t_crf').checked) return 23;
-    return randInt(20, 26);
-  }
+async function processFiles() {
+  if (!files.length) return;
+  if (!window._ffmpegReady) { showToast('FFmpeg pas encore prêt !', 'error'); return; }
 
-  function getSpeedFactor() {
-    if (!document.getElementById('t_vitesse').checked) return 1;
-    return rand(0.97, 1.03).toFixed(4);
-  }
+  const btn = document.getElementById('btnProcess');
+  btn.classList.add('loading'); btn.disabled = true;
+  const prog = document.getElementById('progressContainer');
+  prog.classList.add('visible');
+  processedBlobs = [];
+  let total = files.length * versions, done = 0;
 
-  function generateRandomName(originalName, v) {
-    const ext = originalName.split('.').pop();
-    if (document.getElementById('t_filename').checked) {
-      const rand = Math.random().toString(36).substring(2, 10);
-      return `nrx_${Date.now()}_${rand}.${ext}`;
-    }
-    return originalName.replace(/\.[^.]+$/, '') + `_v${v}.${ext}`;
-  }
+  for (let i = 0; i < files.length; i++) {
+    files[i].status = 'processing'; files[i].progress = 0; files[i].results = [];
+    updateFileList();
 
-  // ── PROCESS ONE FILE ──
-  async function processOneFile(fileObj, version) {
-    const inputName = `input_${Date.now()}.mp4`;
-    const outputName = `output_${Date.now()}.mp4`;
+    for (let v = 1; v <= versions; v++) {
+      files[i].progress = v; updateFileList();
+      document.getElementById('progressLabel').textContent = `Fichier ${i+1}/${files.length} — Version ${v}/${versions}`;
 
-    await ffmpeg.writeFile(inputName, await fetchFile(fileObj.file));
-
-    const vf = buildFilters();
-    const af = buildAudioFilters();
-    const crf = getCRF();
-    const speed = getSpeedFactor();
-
-    const args = ['-i', inputName];
-
-    // Video filters
-    if (vf) { args.push('-vf', vf); }
-
-    // Speed
-    if (document.getElementById('t_vitesse').checked && speed != 1) {
-      args.push('-filter:v', `setpts=${(1/speed).toFixed(4)}*PTS`);
-    }
-
-    // Audio filters
-    if (af) { args.push('-af', af); }
-
-    // CRF / qualité
-    args.push('-crf', String(crf));
-
-    // Preset selon vitesse choisie
-    const preset = currentSpeed === 'rapide' ? 'ultrafast' : currentSpeed === 'equilibre' ? 'medium' : 'slow';
-    args.push('-preset', preset);
-
-    // Métadonnées random
-    if (document.getElementById('t_meta').checked) {
-      const randMeta = Math.random().toString(36).substring(2, 10);
-      args.push('-metadata', `comment=nrx_${randMeta}`);
-      args.push('-metadata', `encoder=NARIX_${randMeta}`);
-    }
-
-    args.push('-y', outputName);
-
-    await ffmpeg.exec(args);
-    const data = await ffmpeg.readFile(outputName);
-
-    // Nettoyage
-    await ffmpeg.deleteFile(inputName);
-    await ffmpeg.deleteFile(outputName);
-
-    return new Blob([data.buffer], { type: 'video/mp4' });
-  }
-
-  // ── PROCESS ALL ──
-  window.processFiles = async function() {
-    if (!files.length) return;
-    if (!ffmpegReady) { showToast('FFmpeg pas encore prêt, patiente...', 'error'); return; }
-
-    const btn = document.getElementById('btnProcess');
-    btn.classList.add('loading'); btn.disabled = true;
-
-    const prog = document.getElementById('progressContainer');
-    const bar = document.getElementById('progressBar');
-    const lbl = document.getElementById('progressLabel');
-    const pct = document.getElementById('progressPct');
-    prog.classList.add('visible');
-
-    processedBlobs = [];
-    let total = files.length * versions, done = 0;
-
-    for (let i = 0; i < files.length; i++) {
-      files[i].status = 'processing'; files[i].progress = 0; files[i].results = [];
-      updateFileList();
-
-      for (let v = 1; v <= versions; v++) {
-        files[i].progress = v; updateFileList();
-        lbl.textContent = `Fichier ${i+1}/${files.length} — Version ${v}/${versions}`;
-
-        try {
-          const blob = await processOneFile(files[i], v);
-          const name = generateRandomName(files[i].name, v);
-          files[i].results.push(blob);
-          processedBlobs.push({ blob, name });
-        } catch(e) {
-          console.error('Erreur traitement:', e);
-          showToast('Erreur sur ' + files[i].name, 'error');
-        }
-
-        done++;
-        const p = Math.round(done / total * 100);
-        bar.style.width = p + '%';
-        pct.textContent = p + '%';
+      try {
+        const blob = await applyTransforms(files[i].file, v);
+        const name = generateName(files[i].name, v);
+        files[i].results.push(blob);
+        processedBlobs.push({ blob, name });
+      } catch(e) {
+        console.error(e);
+        showToast('Erreur sur ' + files[i].name, 'error');
       }
 
-      files[i].status = 'done'; updateFileList();
+      done++;
+      const p = Math.round(done/total*100);
+      document.getElementById('progressBar').style.width = p + '%';
+      document.getElementById('progressPct').textContent = p + '%';
     }
-
-    btn.classList.remove('loading'); btn.disabled = false;
-    document.getElementById('btnDownloadAll').disabled = false;
-    prog.classList.remove('visible');
-    showToast('✓ ' + processedBlobs.length + ' fichiers générés !', 'success');
-  };
-
-  // ── DOWNLOAD ──
-  window.downloadFile = function(i) {
-    if (!files[i].results?.length) return;
-    files[i].results.forEach((blob, v) => {
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = generateRandomName(files[i].name, v+1); a.click();
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
-    });
-  };
-
-  window.downloadAll = function() {
-    if (!processedBlobs.length) return;
-    showToast(`↓ Téléchargement de ${processedBlobs.length} fichiers...`);
-    processedBlobs.forEach(({ blob, name }) => {
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = name; a.click();
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
-    });
-  };
-
-  // ── UI ──
-  window.changeVersions = function(delta) {
-    versions = Math.max(1, Math.min(50, versions + delta));
-    document.getElementById('versionsValue').textContent = versions;
-    updateFileList();
-  };
-
-  window.switchTab = function(tab) {
-    currentTab = tab;
-    document.getElementById('tabVideo').classList.toggle('active', tab === 'video');
-    document.getElementById('tabPhoto').classList.toggle('active', tab === 'photo');
-    const isVideo = tab === 'video';
-    document.getElementById('dropTitle').textContent = isVideo ? 'Glisse tes vidéos ici' : 'Glisse tes photos ici';
-    document.getElementById('dropSub').textContent = isVideo ? 'MP4, MOV, WEBM' : 'JPG, PNG, WEBP';
-    document.getElementById('fileInput').accept = isVideo ? 'video/*' : 'image/*';
-    document.getElementById('warningBox').style.display = isVideo ? 'flex' : 'none';
-  };
-
-  window.selectSpeed = function(s) {
-    currentSpeed = s;
-    ['rapide','equilibre','max'].forEach(id => document.getElementById('speed-'+id).classList.remove('active'));
-    document.getElementById('speed-'+s).classList.add('active');
-  };
-
-  const dropzone = document.getElementById('dropzone');
-  dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-  dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-  dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFiles([...e.dataTransfer.files]); });
-  document.getElementById('fileInput').addEventListener('change', e => { handleFiles([...e.target.files]); e.target.value = ''; });
-
-  function handleFiles(newFiles) {
-    newFiles.forEach(f => files.push({ file: f, name: f.name, size: (f.size/1024/1024).toFixed(1), status: 'pending', results: [] }));
-    if (files.length > 0) {
-      dropzone.style.display = 'none';
-      document.getElementById('addMoreBtn').style.display = 'flex';
-      document.getElementById('btnProcess').disabled = false;
-    }
-    updateFileList();
+    files[i].status = 'done'; updateFileList();
   }
 
-  function updateFileList() {
-    const list = document.getElementById('fileList');
-    list.innerHTML = '';
-    files.forEach((f, i) => {
-      const item = document.createElement('div');
-      item.className = 'file-item' + (f.status==='done'?' done':f.status==='processing'?' processing':'');
-      let meta = '', dlBtn = `<button class="dl-btn" disabled>↓</button>`;
-      if (f.status === 'done') {
-        meta = `<div class="file-meta done">✓ ${f.results.length} version(s) générée(s)</div>`;
-        dlBtn = `<button class="dl-btn" onclick="downloadFile(${i})">↓</button>`;
-      } else if (f.status === 'processing') {
-        meta = `<div class="file-meta processing">Traitement ${f.progress}/${versions}...</div>`;
-      } else {
-        meta = `<div class="file-meta">${f.size} MB · ${versions} version(s)</div>`;
-      }
-      item.innerHTML = `
-        <div class="file-thumb">🎬</div>
-        <div class="file-info">
-          <div class="file-name">${f.name}</div>${meta}
-        </div>
-        <div class="file-actions">
-          <span class="version-tag">×${versions}</span>
-          ${dlBtn}
-          <button class="rm-btn" onclick="removeFile(${i})">×</button>
-        </div>`;
-      list.appendChild(item);
-    });
+  btn.classList.remove('loading'); btn.disabled = false;
+  document.getElementById('btnDownloadAll').disabled = false;
+  prog.classList.remove('visible');
+  showToast('✓ ' + processedBlobs.length + ' fichiers générés !', 'success');
+}
+
+async function applyTransforms(file, version) {
+  const ff = window._ffmpeg;
+  const fetchFile = window._fetchFile;
+  const ext = file.name.split('.').pop() || 'mp4';
+  const inName = `in_${Date.now()}.${ext}`;
+  const outName = `out_${Date.now()}.mp4`;
+
+  ff.FS('writeFile', inName, await fetchFile(file));
+
+  const filters = [];
+  if (document.getElementById('t_crop').checked) {
+    const c = randInt(1,3);
+    filters.push(`crop=iw-${c*2}:ih-${c*2}:${c}:${c},scale=iw+${c*2}:ih+${c*2}`);
+  }
+  if (document.getElementById('t_zoom').checked) {
+    const z = rand(1.01,1.02).toFixed(4);
+    filters.push(`scale=iw*${z}:-2`);
+  }
+  if (document.getElementById('t_rotation').checked) {
+    const a = rand(0.002,0.009).toFixed(4);
+    filters.push(`rotate=${a}`);
+  }
+  if (document.getElementById('t_couleurs').checked) {
+    const b = rand(-0.03,0.03).toFixed(3);
+    const c = rand(0.97,1.03).toFixed(3);
+    const s = rand(0.97,1.03).toFixed(3);
+    filters.push(`eq=brightness=${b}:contrast=${c}:saturation=${s}`);
+  }
+  if (document.getElementById('t_flip').checked) filters.push('hflip');
+
+  const aFilters = [];
+  if (document.getElementById('t_pitch').checked) {
+    const pitch = rand(0.99,1.01).toFixed(4);
+    aFilters.push(`asetrate=44100*${pitch},aresample=44100`);
   }
 
-  window.removeFile = function(i) {
-    files.splice(i, 1);
-    if (!files.length) {
-      dropzone.style.display = 'block';
-      document.getElementById('addMoreBtn').style.display = 'none';
-      document.getElementById('btnProcess').disabled = true;
-      document.getElementById('btnDownloadAll').disabled = true;
-    }
-    updateFileList();
-  };
+  const crf = document.getElementById('t_crf').checked ? String(randInt(20,26)) : '23';
+  const preset = currentSpeed === 'rapide' ? 'ultrafast' : currentSpeed === 'equilibre' ? 'medium' : 'slow';
 
-  function showToast(msg, type) {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.className = 'toast show' + (type ? ' '+type : '');
-    setTimeout(() => t.className = 'toast', 3500);
+  const args = ['-i', inName];
+  if (filters.length) args.push('-vf', filters.join(','));
+  if (aFilters.length) args.push('-af', aFilters.join(','));
+  if (document.getElementById('t_vitesse').checked) {
+    const spd = rand(0.97,1.03).toFixed(4);
+    args.push('-filter:v', `setpts=${(1/spd).toFixed(4)}*PTS`);
   }
-  window.showToast = showToast;
+  args.push('-crf', crf, '-preset', preset);
+  if (document.getElementById('t_meta').checked) {
+    const r = Math.random().toString(36).slice(2,8);
+    args.push('-metadata', `comment=nrx_${r}`);
+  }
+  args.push('-y', outName);
+
+  await ff.run(...args);
+  const data = ff.FS('readFile', outName);
+  ff.FS('unlink', inName);
+  ff.FS('unlink', outName);
+
+  return new Blob([data.buffer], { type: 'video/mp4' });
+}
+
+function generateName(originalName, v) {
+  const ext = originalName.split('.').pop();
+  if (document.getElementById('t_filename').checked) {
+    return `nrx_${Date.now()}_${Math.random().toString(36).slice(2,8)}.${ext}`;
+  }
+  return originalName.replace(/\.[^.]+$/, '') + `_v${v}.${ext}`;
+}
+
+function downloadFile(i) {
+  files[i].results?.forEach((blob, v) => {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = generateName(files[i].name, v+1); a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
+}
+
+function downloadAll() {
+  if (!processedBlobs.length) return;
+  showToast(`↓ Téléchargement de ${processedBlobs.length} fichiers...`);
+  processedBlobs.forEach(({ blob, name }) => {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = name; a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
+}
+
+function showToast(msg, type) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (type ? ' '+type : '');
+  setTimeout(() => t.className = 'toast', 3500);
+}
 </script>
 </body>
 </html>
