@@ -520,7 +520,7 @@ window.addEventListener('load', async () => {
     window._fetchFile = fetchFile;
     await window._ffmpeg.load();
     
-    document.getElementById('loadingOverlay').classList.remove('visible');
+    document.getElementById('loadingOverlay').classList.add('hidden'); setTimeout(() => { const el = document.getElementById('loadingOverlay'); if(el) el.style.display='none'; }, 500);
     document.getElementById('headerDot').className = 'header-dot ready';
     document.getElementById('headerStatus').textContent = 'FFmpeg — Prêt';
     window._ffmpegReady = true;
