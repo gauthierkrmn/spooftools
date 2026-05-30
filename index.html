@@ -519,10 +519,9 @@ function showOverlayError(msg) {
 }
 
 (async function initFFmpeg() {
-  const FFMPEG_URL  = 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js';
-  const CORE_URL    = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js';
-  const FFMPEG_URL2 = 'https://unpkg.com/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js';
-  const CORE_URL2   = 'https://unpkg.com/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js';
+  // Fichiers FFmpeg hébergés dans le repo GitHub (même domaine = pas de problème CORS)
+  const FFMPEG_URL = '/ffmpeg.min.js';
+  const CORE_URL   = '/ffmpeg-core.js';
 
   function loadScript(src) {
     return new Promise((resolve, reject) => {
@@ -532,31 +531,17 @@ function showOverlayError(msg) {
     });
   }
 
-  async function tryLoad(ffmpegUrl, coreUrl) {
-    await loadScript(ffmpegUrl);
+  document.getElementById('loadingMsg').textContent = 'Chargement FFmpeg...';
+  try {
+    await loadScript(FFMPEG_URL);
     const { createFFmpeg, fetchFile } = FFmpeg;
-    const ff = createFFmpeg({ log: false, corePath: coreUrl });
+    const ff = createFFmpeg({ log: false, corePath: CORE_URL });
     window._fetchFile = fetchFile;
     await ff.load();
-    return ff;
-  }
-
-  // Timeout de 30s par tentative
-  function withTimeout(promise, ms) {
-    return Promise.race([promise, new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), ms))]);
-  }
-
-  document.getElementById('loadingMsg').textContent = 'Chargement FFmpeg (1/2)...';
-  try {
-    window._ffmpeg = await withTimeout(tryLoad(FFMPEG_URL, CORE_URL), 30000);
-  } catch(e1) {
-    document.getElementById('loadingMsg').textContent = 'Chargement FFmpeg (2/2)...';
-    try {
-      window._ffmpeg = await withTimeout(tryLoad(FFMPEG_URL2, CORE_URL2), 30000);
-    } catch(e2) {
-      showOverlayError('Impossible de charger FFmpeg. Vérifie ta connexion et recharge la page.');
-      return;
-    }
+    window._ffmpeg = ff;
+  } catch(e) {
+    showOverlayError('Impossible de charger FFmpeg. Vérifie ta connexion et recharge la page. (' + e.message + ')');
+    return;
   }
 
   window._ffmpegReady = true;
