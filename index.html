@@ -506,42 +506,64 @@ function showPage(page) {
 }
 
 // ═══════════════════ FFMPEG INIT ═══════════════════
-window.addEventListener('load', async () => {
-  try {
-    // Charger FFmpeg via CDN en tant que script global
-    await loadScript('https://unpkg.com/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js');
-    
-    const { createFFmpeg, fetchFile } = FFmpeg;
-    window._ffmpeg = createFFmpeg({
-      log: false,
-      corePath: 'https://unpkg.com/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js',
-    });
-    
-    window._fetchFile = fetchFile;
-    await window._ffmpeg.load();
-    
-    document.getElementById('loadingOverlay').classList.add('hidden'); setTimeout(() => { const el = document.getElementById('loadingOverlay'); if(el) el.style.display='none'; }, 500);
-    document.getElementById('headerDot').className = 'header-dot ready';
-    document.getElementById('headerStatus').textContent = 'FFmpeg — Prêt';
-    window._ffmpegReady = true;
-  } catch(e) {
-    console.error(e);
-    document.getElementById('loadingMsg').textContent = '❌ Erreur : ' + e.message;
-    document.getElementById('loadingOverlay').innerHTML = `
-      <p style="color:#c0392b;font-size:15px;font-weight:700;text-align:center;padding:24px">❌ Erreur de chargement<br><small style="font-size:12px;color:#888;font-weight:400">${e.message}</small></p>
-      <button onclick="location.reload()" style="padding:10px 24px;background:#0a0a0a;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600">↺ Recharger</button>`;
-  }
-});
-
-function loadScript(src) {
-  return new Promise((resolve, reject) => {
-    const s = document.createElement('script');
-    s.src = src;
-    s.onload = resolve;
-    s.onerror = reject;
-    document.head.appendChild(s);
-  });
+function hideOverlay() {
+  const el = document.getElementById('loadingOverlay');
+  if(el) { el.classList.add('hidden'); setTimeout(()=>el.style.display='none', 500); }
 }
+
+function showOverlayError(msg) {
+  const el = document.getElementById('loadingOverlay');
+  if(el) el.innerHTML = `
+    <p style="color:#c0392b;font-size:15px;font-weight:700;text-align:center;padding:24px">❌ Erreur FFmpeg<br><small style="font-size:12px;color:#888;font-weight:400">${msg}</small></p>
+    <button onclick="location.reload()" style="padding:10px 24px;background:#0a0a0a;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600">↺ Recharger</button>`;
+}
+
+(async function initFFmpeg() {
+  const FFMPEG_URL  = 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js';
+  const CORE_URL    = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js';
+  const FFMPEG_URL2 = 'https://unpkg.com/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js';
+  const CORE_URL2   = 'https://unpkg.com/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js';
+
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = src; s.onload = resolve; s.onerror = reject;
+      document.head.appendChild(s);
+    });
+  }
+
+  async function tryLoad(ffmpegUrl, coreUrl) {
+    await loadScript(ffmpegUrl);
+    const { createFFmpeg, fetchFile } = FFmpeg;
+    const ff = createFFmpeg({ log: false, corePath: coreUrl });
+    window._fetchFile = fetchFile;
+    await ff.load();
+    return ff;
+  }
+
+  // Timeout de 30s par tentative
+  function withTimeout(promise, ms) {
+    return Promise.race([promise, new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), ms))]);
+  }
+
+  document.getElementById('loadingMsg').textContent = 'Chargement FFmpeg (1/2)...';
+  try {
+    window._ffmpeg = await withTimeout(tryLoad(FFMPEG_URL, CORE_URL), 30000);
+  } catch(e1) {
+    document.getElementById('loadingMsg').textContent = 'Chargement FFmpeg (2/2)...';
+    try {
+      window._ffmpeg = await withTimeout(tryLoad(FFMPEG_URL2, CORE_URL2), 30000);
+    } catch(e2) {
+      showOverlayError('Impossible de charger FFmpeg. Vérifie ta connexion et recharge la page.');
+      return;
+    }
+  }
+
+  window._ffmpegReady = true;
+  hideOverlay();
+  document.getElementById('headerDot').className = 'header-dot ready';
+  document.getElementById('headerStatus').textContent = 'FFmpeg — Prêt';
+})();
 
 // STATE
 let versions = 12, currentSpeed = 'rapide', currentTab = 'video';
