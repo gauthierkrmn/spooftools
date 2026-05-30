@@ -509,12 +509,12 @@ function showPage(page) {
 window.addEventListener('load', async () => {
   try {
     // Charger FFmpeg via CDN en tant que script global
-    await loadScript('https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js');
+    await loadScript('https://unpkg.com/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js');
     
     const { createFFmpeg, fetchFile } = FFmpeg;
     window._ffmpeg = createFFmpeg({
       log: false,
-      corePath: 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js',
+      corePath: 'https://unpkg.com/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js',
     });
     
     window._fetchFile = fetchFile;
