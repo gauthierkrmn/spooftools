@@ -396,7 +396,57 @@
     .tools-grid { grid-template-columns: 1fr; }
     .tool-card { padding: 20px; }
   }
+
+  /* ─── THEME TOGGLE BUTTON ─── */
+  .theme-toggle {
+    width: 34px; height: 34px;
+    background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 6px;
+    cursor: pointer; font-size: 16px; color: var(--gray-400);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s; flex-shrink: 0; line-height: 1;
+  }
+  .theme-toggle:hover { background: #242424; color: #fff; border-color: #3a3a3a; }
+
+  /* ─── DARK MODE ─── */
+  [data-theme="dark"] {
+    --bg:       #111110;
+    --white:    #1c1c1a;
+    --black:    #eeeeec;
+    --gray-100: #252523;
+    --gray-200: #333331;
+    --gray-300: #4a4a48;
+    --gray-400: #888886;
+    --gray-600: #b0b0ae;
+  }
+  [data-theme="dark"] .header       { background: #0a0a0a; }
+  [data-theme="dark"] .back-btn     { background: #1a1a1a; border-color: #2a2a2a; }
+  [data-theme="dark"] .back-btn:hover { background: #242424; color: #fff; border-color: #3a3a3a; }
+  [data-theme="dark"] .header-badge { background: #1a1a1a; border-color: #2a2a2a; }
+  [data-theme="dark"] .tab.active   { background: #eeeeec; color: #0a0a0a; }
+  [data-theme="dark"] .btn-process:not(:disabled) { background: #eeeeec; color: #0a0a0a; }
+  [data-theme="dark"] .speed-option.active { background: #eeeeec; }
+  [data-theme="dark"] .speed-option.active .speed-name { color: #0a0a0a; }
+  [data-theme="dark"] .speed-option.active .speed-desc { color: rgba(0,0,0,0.55); }
+  [data-theme="dark"] .speed-option.active .speed-radio { border-color: #0a0a0a; }
+  [data-theme="dark"] .speed-option.active .speed-radio::after { background: #0a0a0a; }
+  [data-theme="dark"] .crop-preset.active { background: #eeeeec; }
+  [data-theme="dark"] .crop-preset.active .cp-name { color: #0a0a0a; }
+  [data-theme="dark"] .crop-preset.active .cp-desc { color: rgba(0,0,0,0.55); }
+  [data-theme="dark"] .crop-preset.active .cp-box  { background: rgba(0,0,0,0.35); }
+  [data-theme="dark"] .dl-btn, [data-theme="dark"] .dl-picker-btn, [data-theme="dark"] .dl-single-btn { background: #eeeeec; color: #0a0a0a; }
+  [data-theme="dark"] .checkbox-item input:checked + .custom-checkbox { background: #eeeeec; border-color: #eeeeec; }
+  [data-theme="dark"] .checkbox-item input:checked + .custom-checkbox::after { color: #0a0a0a; }
+  [data-theme="dark"] .warning { background: #2a2510; border-color: #4a4520; color: #d4b855; }
+  [data-theme="dark"] .size-badge.saved { background: #0e2418; border-color: #1a4428; }
+  [data-theme="dark"] .dl-url-input { background: var(--white); color: var(--black); }
+  [data-theme="dark"] .dl-instance-input { background: var(--white); color: var(--black); }
 </style>
+<script>
+  (function() {
+    var t = localStorage.getItem('narix-theme') || 'light';
+    document.documentElement.dataset.theme = t;
+  })();
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 </head>
 <body>
@@ -411,9 +461,12 @@
       <span class="back-arrow">←</span> Accueil
     </button>
   </div>
-  <div class="header-badge">
-    <div class="header-dot" id="headerDot"></div>
-    <span id="headerStatus">Prêt</span>
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Basculer le thème"></button>
+    <div class="header-badge">
+      <div class="header-dot" id="headerDot"></div>
+      <span id="headerStatus">Prêt</span>
+    </div>
   </div>
 </header>
 
@@ -593,7 +646,7 @@
         </div>
         <div class="versions-counter">
           <button class="counter-btn" onclick="spoofChangeVersions(-1)">−</button>
-          <span class="counter-value" id="spoofVersionsValue">12</span>
+          <span class="counter-value" id="spoofVersionsValue">1</span>
           <button class="counter-btn" onclick="spoofChangeVersions(1)">+</button>
         </div>
       </div>
@@ -1220,6 +1273,18 @@
 <div class="toast" id="toast"></div>
 
 <script>
+// ─── DARK MODE ────────────────────────────────────────────
+function initTheme() {
+  const t = localStorage.getItem('narix-theme') || 'light';
+  document.getElementById('themeToggle').textContent = t === 'dark' ? '☀' : '☾';
+}
+function toggleTheme() {
+  const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  localStorage.setItem('narix-theme', next);
+  document.getElementById('themeToggle').textContent = next === 'dark' ? '☀' : '☾';
+}
+
 // ─── ROUTER ───────────────────────────────────────────────
 const TOOL_LABELS = {
   home:      'Tools',
@@ -1295,7 +1360,7 @@ function goHome() {
 }
 
 window.addEventListener('hashchange', handleHash);
-window.addEventListener('DOMContentLoaded', handleHash);
+window.addEventListener('DOMContentLoaded', () => { handleHash(); initTheme(); });
 
 // ─── TOAST ────────────────────────────────────────────────
 function showToast(msg, type) {
@@ -1316,7 +1381,7 @@ const pageEnterHooks = {
 // ══════════════════════════════════════════════════════════
 
 // ─── STATE ────────────────────────────────────────────────
-let spoofVersions    = 12;
+let spoofVersions    = 1;
 let spoofSpeed       = 'rapide';
 let spoofTab         = 'video';
 let spoofFiles       = [];
@@ -1648,7 +1713,9 @@ async function ensureFFmpeg(bannerEl) {
     const { createFFmpeg, fetchFile } = FFmpeg;
     window._ffmpeg = createFFmpeg({
       log: false,
-      corePath: 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js',
+      corePath: self.crossOriginIsolated
+        ? 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js'
+        : 'https://cdn.jsdelivr.net/npm/@ffmpeg/core-st@0.11.0/dist/ffmpeg-core.js',
     });
     window._fetchFile = fetchFile;
     await window._ffmpeg.load();
