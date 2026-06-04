@@ -26,6 +26,17 @@
     X-Frame-Options              = "DENY"
     Referrer-Policy              = "strict-origin-when-cross-origin"
 
+# ── HTML must never be stale (ensures fresh COEP/COOP headers on every visit) ────────────
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
 # ── Aggressive caching for large static assets ───────────────────────────────────────────
 # ffmpeg-core.wasm is ~25 MB — cache it for a year so repeat visitors don't re-download.
 [[headers]]
