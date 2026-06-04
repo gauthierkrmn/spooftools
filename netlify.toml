@@ -1,5 +1,39 @@
+# ── SPA fallback (hash routing handled client-side, but covers direct /index.html hits) ──
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
+
+# ── SharedArrayBuffer headers (required for FFmpeg WASM) ─────────────────────────────────
+#
+#  COOP  "same-origin"   — isolates this page from cross-origin windows/tabs,
+#                          which is required for SharedArrayBuffer to be available.
+#
+#  COEP  "credentialless" — allows cross-origin resources (jsDelivr CDN) to load
+#                           WITHOUT needing a Cross-Origin-Resource-Policy header on them.
+#                           "require-corp" (the old value) blocked the CDN WASM/worker
+#                           fetches because jsDelivr does not send CORP headers.
+#                           "credentialless" keeps SharedArrayBuffer enabled while
+#                           fetching cross-origin assets cookie-free.
+#                           Supported: Chrome 96+, Firefox 119+, Edge 96+.
+#
 [[headers]]
   for = "/*"
   [headers.values]
-    Cross-Origin-Opener-Policy = "same-origin"
-    Cross-Origin-Embedder-Policy = "require-corp"
+    Cross-Origin-Opener-Policy   = "same-origin"
+    Cross-Origin-Embedder-Policy = "credentialless"
+    X-Content-Type-Options       = "nosniff"
+    X-Frame-Options              = "DENY"
+    Referrer-Policy              = "strict-origin-when-cross-origin"
+
+# ── Aggressive caching for large static assets ───────────────────────────────────────────
+# ffmpeg-core.wasm is ~25 MB — cache it for a year so repeat visitors don't re-download.
+[[headers]]
+  for = "/*.wasm"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

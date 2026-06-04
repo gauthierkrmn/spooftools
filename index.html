@@ -3,45 +3,267 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="data:image/png;base64,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rntmOyIpiZiQnHEs042Lax6JmabVFNFPPzRHJ+gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/9k=">
-<title>NARIX AGENCY — Video & Photo Randomizer</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/wAARCAH0AfQDASIAAhEBAxEB/8QAHQABAAMAAwEBAQAAAAAAAAAAAAcICQQFBgEDAv/EAFEQAQABAwICBAUODAIKAQUAAAABAgMEBQYHEQgSITETIkFRYQkUFRYXGDdCZ3F0dZSzMjY4UldigZGlstHkI4IkMzVWcnODoaLTQyVTVWPB/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/ALlgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/9k=">
+<title>NARIX AGENCY — Tools</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
+
   :root {
-    --bg: #f5f5f3; --white: #ffffff; --black: #0a0a0a;
-    --gray-100: #f0f0ee; --gray-200: #e2e2e0; --gray-300: #c8c8c6;
-    --gray-400: #9a9a98; --gray-600: #555553; --green: #1a7a4a; --red: #c0392b;
+    --bg: #f5f5f3;
+    --white: #ffffff;
+    --black: #0a0a0a;
+    --gray-100: #f0f0ee;
+    --gray-200: #e2e2e0;
+    --gray-300: #c8c8c6;
+    --gray-400: #9a9a98;
+    --gray-600: #555553;
+    --green: #1a7a4a;
+    --red: #c0392b;
   }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--black); font-family: 'Inter', sans-serif; min-height: 100vh; font-size: 14px; }
-  .header { background: var(--black); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
-  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 4px; color: #fff; line-height: 1; }
+  body { background: var(--bg); color: var(--black); font-family: 'Inter', sans-serif; min-height: 100vh; font-size: 14px; overflow-x: hidden; }
+
+  /* ─── HEADER ─── */
+  .header {
+    background: var(--black);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-left { display: flex; align-items: center; gap: 20px; }
+  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 4px; color: #fff; line-height: 1; cursor: pointer; user-select: none; }
   .logo span { color: var(--gray-400); font-size: 11px; font-family: 'Inter', sans-serif; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; display: block; margin-top: 2px; }
 
-  .header-badge { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 4px; padding: 6px 12px; font-size: 11px; color: var(--gray-400); letter-spacing: 1px; display: flex; align-items: center; gap: 7px; }
+  .back-btn {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 4px;
+    padding: 7px 14px;
+    font-size: 12px;
+    color: var(--gray-300);
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+  }
+  .back-btn:hover { background: #242424; color: #fff; border-color: #3a3a3a; }
+  .back-btn.visible { display: flex; }
+  .back-arrow { font-size: 14px; }
+
+  .header-badge {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 11px;
+    color: var(--gray-400);
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
   .header-dot { width: 6px; height: 6px; border-radius: 50%; background: #888; }
   .header-dot.ready { background: #4caf7d; animation: pulse 2s infinite; }
+
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
   @keyframes spin { to { transform: rotate(360deg); } }
-  .layout { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── PAGE TRANSITIONS ─── */
+  .page {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .page.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+    position: relative;
+  }
+
+  /* ─── MAIN CONTAINER ─── */
+  #appRoot { position: relative; }
+
+  /* ─── HOME PAGE ─── */
+  .home-layout { max-width: 1040px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  .home-header { margin-bottom: 40px; }
+  .home-header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    letter-spacing: 4px;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .home-header p { font-size: 13px; color: var(--gray-600); max-width: 480px; line-height: 1.7; }
+
+  /* ─── TOOLS GRID ─── */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .tool-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    animation: fadeUp 0.4s ease both;
+    position: relative;
+    overflow: hidden;
+  }
+  .tool-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    background: var(--black);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .tool-card:hover {
+    border-color: var(--gray-400);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+  .tool-card:active { transform: translateY(0); }
+
+  /* staggered animation */
+  .tool-card:nth-child(1) { animation-delay: 0.04s; }
+  .tool-card:nth-child(2) { animation-delay: 0.08s; }
+  .tool-card:nth-child(3) { animation-delay: 0.12s; }
+  .tool-card:nth-child(4) { animation-delay: 0.16s; }
+  .tool-card:nth-child(5) { animation-delay: 0.20s; }
+  .tool-card:nth-child(6) { animation-delay: 0.24s; }
+  .tool-card:nth-child(7) { animation-delay: 0.28s; }
+  .tool-card:nth-child(8) { animation-delay: 0.32s; }
+  .tool-card:nth-child(9) { animation-delay: 0.36s; }
+
+  .tool-card-top { display: flex; align-items: flex-start; justify-content: space-between; }
+
+  .tool-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .tool-arrow {
+    color: var(--gray-300);
+    font-size: 16px;
+    transition: all 0.2s;
+    margin-top: 2px;
+  }
+  .tool-card:hover .tool-arrow { color: var(--black); transform: translateX(3px); }
+
+  .tool-card-body { flex: 1; }
+  .tool-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .tool-desc { font-size: 12px; color: var(--gray-600); line-height: 1.6; }
+
+  .tool-tag {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    border-radius: 3px;
+    padding: 3px 8px;
+    color: var(--gray-400);
+  }
+
+  /* ─── TOOL LAYOUT (inner pages) ─── */
+  .tool-layout { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
   .page-title { margin-bottom: 32px; border-bottom: 1px solid var(--gray-200); padding-bottom: 24px; }
   .page-title h1 { font-family: 'Bebas Neue', sans-serif; font-size: 42px; letter-spacing: 3px; line-height: 1; }
   .page-title p { margin-top: 8px; font-size: 13px; color: var(--gray-600); }
-  .tabs { display: inline-flex; background: var(--white); border: 1px solid var(--gray-200); border-radius: 6px; padding: 3px; margin-bottom: 24px; gap: 2px; }
-  .tab { padding: 8px 20px; font-size: 13px; font-weight: 500; cursor: pointer; border: none; background: transparent; color: var(--gray-600); border-radius: 4px; transition: all 0.15s; font-family: 'Inter', sans-serif; }
-  .tab.active { background: var(--black); color: #fff; }
-  .tab:not(.active):hover { background: var(--gray-100); color: var(--black); }
+
+  .coming-soon {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 60px 24px;
+    text-align: center;
+    color: var(--gray-400);
+  }
+  .coming-soon-icon { font-size: 40px; margin-bottom: 16px; }
+  .coming-soon h2 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 3px; color: var(--gray-300); margin-bottom: 8px; }
+  .coming-soon p { font-size: 12px; }
+
+  /* ─── SHARED COMPONENTS (used across tools) ─── */
   .card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; margin-bottom: 12px; overflow: hidden; }
   .card-header { padding: 14px 20px; border-bottom: 1px solid var(--gray-100); display: flex; align-items: center; justify-content: space-between; }
   .card-title { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gray-600); }
   .card-body { padding: 20px; }
-  .warning { background: #fffbf0; border: 1px solid #e8d88a; border-radius: 6px; padding: 12px 16px; font-size: 12px; color: #7a6010; margin-bottom: 12px; line-height: 1.7; display: flex; gap: 10px; align-items: flex-start; }
+
   .dropzone { border: 1.5px dashed var(--gray-300); border-radius: 8px; padding: 52px 24px; text-align: center; cursor: pointer; transition: all 0.2s; background: var(--gray-100); margin-bottom: 12px; }
   .dropzone:hover, .dropzone.dragover { border-color: var(--black); background: var(--white); }
   .dropzone-icon { width: 44px; height: 44px; background: var(--white); border: 1px solid var(--gray-200); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin: 0 auto 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
   .dropzone-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
   .dropzone-sub { font-size: 12px; color: var(--gray-400); }
-  #fileInput { display: none; }
+
+  .btn-process { width: 100%; padding: 16px; background: var(--black); color: #fff; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: opacity 0.2s; font-family: 'Inter', sans-serif; }
+  .btn-process:hover:not(:disabled) { opacity: 0.82; }
+  .btn-process:disabled { background: var(--gray-200); color: var(--gray-400); cursor: not-allowed; }
+
+  .btn-secondary { width: 100%; padding: 13px; background: transparent; color: var(--black); border: 1.5px solid var(--gray-300); border-radius: 8px; font-size: 13px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s; font-family: 'Inter', sans-serif; }
+  .btn-secondary:hover:not(:disabled) { border-color: var(--black); background: var(--gray-100); }
+  .btn-secondary:disabled { opacity: 0.35; cursor: not-allowed; }
+
+  .action-buttons { display: flex; flex-direction: column; gap: 8px; }
+  .footer-note { text-align: center; font-size: 11px; color: var(--gray-400); margin-top: 20px; line-height: 1.7; }
+
+  .warning { background: #fffbf0; border: 1px solid #e8d88a; border-radius: 6px; padding: 12px 16px; font-size: 12px; color: #7a6010; margin-bottom: 12px; line-height: 1.7; display: flex; gap: 10px; align-items: flex-start; }
+
+  .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--black); color: #fff; border-radius: 6px; padding: 12px 22px; font-size: 13px; font-weight: 500; z-index: 9999; transition: transform 0.3s; white-space: nowrap; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  .toast.success { background: var(--green); }
+  .toast.error { background: var(--red); }
+
+  /* ─── SPOOF: TABS ─── */
+  .tabs { display: inline-flex; background: var(--white); border: 1px solid var(--gray-200); border-radius: 6px; padding: 3px; margin-bottom: 24px; gap: 2px; }
+  .tab { padding: 8px 20px; font-size: 13px; font-weight: 500; cursor: pointer; border: none; background: transparent; color: var(--gray-600); border-radius: 4px; transition: all 0.15s; font-family: 'Inter', sans-serif; }
+  .tab.active { background: var(--black); color: #fff; }
+  .tab:not(.active):hover { background: var(--gray-100); color: var(--black); }
+
+  /* ─── SPOOF: VERSIONS ROW ─── */
   .versions-row { display: flex; align-items: center; justify-content: space-between; background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 14px 20px; margin-bottom: 12px; }
   .versions-label { font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 10px; }
   .versions-label .tag { font-size: 10px; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 3px; padding: 2px 7px; color: var(--gray-600); font-weight: 500; }
@@ -49,6 +271,8 @@
   .counter-btn { width: 32px; height: 32px; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 6px; font-size: 18px; cursor: pointer; color: var(--black); display: flex; align-items: center; justify-content: center; transition: all 0.15s; font-family: 'Inter', sans-serif; }
   .counter-btn:hover { background: var(--black); color: #fff; border-color: var(--black); }
   .counter-value { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 2px; min-width: 36px; text-align: center; }
+
+  /* ─── SPOOF: SPEED OPTIONS ─── */
   .speed-options { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
   .speed-option { border: 1.5px solid var(--gray-200); border-radius: 8px; padding: 14px; cursor: pointer; transition: all 0.15s; display: flex; align-items: flex-start; gap: 10px; background: var(--white); }
   .speed-option.active { border-color: var(--black); background: var(--black); }
@@ -60,6 +284,8 @@
   .speed-option.active .speed-radio::after { content:''; width:6px; height:6px; background:#fff; border-radius:50%; }
   .speed-name { font-size: 13px; font-weight: 700; color: var(--black); }
   .speed-desc { font-size: 10px; color: var(--gray-400); margin-top: 3px; line-height: 1.4; }
+
+  /* ─── SPOOF: TRANSFORMS ─── */
   .transforms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 32px; }
   .checkbox-item { display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 7px 0; border-bottom: 1px solid var(--gray-100); }
   .checkbox-item:nth-last-child(-n+2) { border-bottom: none; }
@@ -69,6 +295,8 @@
   .checkbox-item input:checked + .custom-checkbox::after { content:'✓'; font-size:10px; color:#fff; font-weight:800; }
   .checkbox-label { font-size: 13px; color: var(--black); user-select: none; }
   .visible-badge { font-size: 9px; color: var(--gray-400); margin-left: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* ─── SPOOF: FILE LIST ─── */
   .file-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
   .file-item { background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 14px 16px; display: flex; align-items: center; gap: 14px; }
   .file-item.done { border-left: 3px solid var(--green); }
@@ -88,6 +316,8 @@
   .rm-btn:hover { border-color: var(--red); color: var(--red); }
   .add-more { border: 1.5px dashed var(--gray-200); border-radius: 8px; padding: 14px; text-align: center; cursor: pointer; color: var(--gray-400); font-size: 13px; font-weight: 500; transition: all 0.2s; margin-bottom: 12px; background: var(--white); display: flex; align-items: center; justify-content: center; gap: 8px; }
   .add-more:hover { border-color: var(--black); color: var(--black); }
+
+  /* ─── SPOOF: PROGRESS ─── */
   .progress-container { display: none; background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; }
   .progress-container.visible { display: block; }
   .progress-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
@@ -95,302 +325,1187 @@
   .progress-pct { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 1px; }
   .progress-bar-wrap { background: var(--gray-100); border-radius: 99px; height: 4px; overflow: hidden; }
   .progress-bar { height: 100%; background: var(--black); border-radius: 99px; transition: width 0.3s; width: 0%; }
-  .action-buttons { display: flex; flex-direction: column; gap: 8px; }
-  .btn-process { width: 100%; padding: 16px; background: var(--black); color: #fff; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: opacity 0.2s; font-family: 'Inter', sans-serif; }
-  .btn-process:hover:not(:disabled) { opacity: 0.82; }
-  .btn-process:disabled { background: var(--gray-200); color: var(--gray-400); cursor: not-allowed; }
-  .btn-download-all { width: 100%; padding: 13px; background: transparent; color: var(--black); border: 1.5px solid var(--gray-300); border-radius: 8px; font-size: 13px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s; font-family: 'Inter', sans-serif; }
-  .btn-download-all:hover:not(:disabled) { border-color: var(--black); background: var(--gray-100); }
-  .btn-download-all:disabled { opacity: 0.35; cursor: not-allowed; }
+
+  /* ─── SPOOF: SPINNER / FFMPEG BANNER ─── */
   .spinner { width: 15px; height: 15px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; display: none; }
   .btn-process.loading .spinner { display: block; }
   .btn-process.loading .btn-text { display: none; }
-  .footer-note { text-align: center; font-size: 11px; color: var(--gray-400); margin-top: 20px; line-height: 1.7; }
-  .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--black); color: #fff; border-radius: 6px; padding: 12px 22px; font-size: 13px; font-weight: 500; z-index: 9999; transition: transform 0.3s; white-space: nowrap; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
-  .toast.show { transform: translateX(-50%) translateY(0); }
-  .toast.success { background: var(--green); }
-  .toast.error { background: var(--red); }
-  #loadingOverlay { display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.95); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
-  #loadingOverlay.visible { display: flex; }
-  #loadingOverlay p { font-size: 15px; font-weight: 600; color: var(--black); }
-  #loadingOverlay small { font-size: 12px; color: var(--gray-400); }
-  .big-spinner { width: 40px; height: 40px; border: 3px solid var(--gray-200); border-top-color: var(--black); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  .ffmpeg-banner { background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 20px; margin-bottom: 12px; display: flex; align-items: center; gap: 14px; }
+  .ffmpeg-banner.hidden { display: none; }
+  .ffmpeg-spinner { width: 20px; height: 20px; border: 2px solid var(--gray-200); border-top-color: var(--black); border-radius: 50%; animation: spin 0.8s linear infinite; flex-shrink: 0; }
+  .ffmpeg-banner-text { font-size: 13px; font-weight: 600; }
+  .ffmpeg-banner-sub { font-size: 11px; color: var(--gray-400); margin-top: 2px; }
+
+  /* ─── FILE SIZE BADGE ─── */
+  .size-badge { font-size: 11px; font-weight: 600; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 4px; padding: 3px 9px; color: var(--gray-600); white-space: nowrap; }
+  .size-badge.saved { background: #e8f5ee; border-color: #a8d4b8; color: var(--green); }
+
+  /* ─── WATERMARK CANVAS ─── */
+  .wm-canvas-wrap { position: relative; background: #1a1a1a; border-radius: 0 0 8px 8px; overflow: hidden; cursor: crosshair; line-height: 0; }
+  .wm-canvas-wrap canvas { display: block; max-width: 100%; height: auto; }
+  .wm-hint { text-align: center; font-size: 12px; color: var(--gray-400); padding: 40px 24px; background: var(--gray-100); border-radius: 8px; margin-bottom: 12px; }
+
+  /* ─── THUMBNAIL: VIDEO PLAYER ─── */
+  .thumb-video-wrap { background: #000; border-radius: 8px; overflow: hidden; line-height: 0; margin-bottom: 0; }
+  .thumb-video-wrap video { display: block; width: 100%; max-height: 360px; object-fit: contain; }
+  .thumb-controls { padding: 14px 16px; background: var(--white); border-top: 1px solid var(--gray-100); display: flex; flex-direction: column; gap: 10px; }
+  .thumb-seek { width: 100%; accent-color: var(--black); height: 4px; cursor: pointer; }
+  .thumb-time { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 2px; color: var(--black); }
+  .thumb-capture-preview { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 12px; line-height: 0; }
+  .thumb-capture-preview img { display: block; width: 100%; }
+
+  /* ─── CROP PRESETS ─── */
+  .crop-presets { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .crop-preset { border: 1.5px solid var(--gray-200); border-radius: 8px; padding: 14px 8px; cursor: pointer; transition: all 0.15s; display: flex; flex-direction: column; align-items: center; gap: 8px; background: var(--white); font-family: 'Inter', sans-serif; }
+  .crop-preset.active { border-color: var(--black); background: var(--black); }
+  .crop-preset.active .cp-name { color: #fff; }
+  .crop-preset.active .cp-desc { color: rgba(255,255,255,0.5); }
+  .crop-preset:hover:not(.active) { border-color: var(--gray-400); }
+  .cp-box { background: var(--gray-300); border-radius: 2px; flex-shrink: 0; transition: background 0.15s; }
+  .crop-preset.active .cp-box { background: rgba(255,255,255,0.7); }
+  .cp-name { font-size: 13px; font-weight: 700; color: var(--black); }
+  .cp-desc { font-size: 10px; color: var(--gray-400); text-align: center; line-height: 1.4; }
+
+  /* ─── DOWNLOAD: INPUT ─── */
+  .dl-input-row { display: flex; gap: 8px; margin-bottom: 12px; }
+  .dl-url-input { flex: 1; padding: 14px 16px; font-size: 14px; border: 1.5px solid var(--gray-200); border-radius: 8px; font-family: 'Inter', sans-serif; background: var(--white); transition: border-color 0.15s; outline: none; color: var(--black); }
+  .dl-url-input:focus { border-color: var(--black); }
+  .dl-url-input::placeholder { color: var(--gray-300); }
+  .dl-result { background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 20px; margin-bottom: 12px; }
+  .dl-result-title { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gray-600); margin-bottom: 14px; }
+  .dl-picker-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; }
+  .dl-picker-item { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; }
+  .dl-picker-thumb { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+  .dl-picker-btn { width: 100%; padding: 8px; background: var(--black); color: #fff; border: none; font-size: 11px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; letter-spacing: 0.5px; }
+  .dl-picker-btn:hover { opacity: 0.8; }
+  .dl-single-btn { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px; background: var(--black); color: #fff; border: none; border-radius: 8px; width: 100%; font-size: 14px; font-weight: 700; letter-spacing: 1px; cursor: pointer; font-family: 'Inter', sans-serif; text-transform: uppercase; transition: opacity 0.2s; }
+  .dl-single-btn:hover { opacity: 0.82; }
+  .dl-note { font-size: 11px; color: var(--gray-400); text-align: center; margin-top: 10px; line-height: 1.6; }
+  .dl-instance-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .dl-instance-label { font-size: 12px; color: var(--gray-600); white-space: nowrap; }
+  .dl-instance-input { flex: 1; padding: 8px 12px; font-size: 12px; border: 1px solid var(--gray-200); border-radius: 6px; font-family: 'Inter', sans-serif; outline: none; color: var(--black); }
+  .dl-instance-input:focus { border-color: var(--black); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 800px) {
+    .tools-grid { grid-template-columns: repeat(2, 1fr); }
+    .home-header h1 { font-size: 40px; }
+    .header { padding: 0 20px; }
+  }
+  @media (max-width: 520px) {
+    .tools-grid { grid-template-columns: 1fr; }
+    .tool-card { padding: 20px; }
+  }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 </head>
 <body>
 
-<div id="loadingOverlay" class="visible">
-  <div class="big-spinner"></div>
-  <p id="loadingMsg">Chargement de FFmpeg...</p>
-  <small>Première visite : ~10-20 secondes</small>
-</div>
-
 <header class="header">
-  <div class="logo">NARIX AGENCY<span id="logoSub">Video & Photo Randomizer</span></div>
+  <div class="header-left">
+    <div class="logo" onclick="goHome()">
+      NARIX AGENCY
+      <span id="logoSub">Tools</span>
+    </div>
+    <button class="back-btn" id="backBtn" onclick="goHome()">
+      <span class="back-arrow">←</span> Accueil
+    </button>
+  </div>
   <div class="header-badge">
     <div class="header-dot" id="headerDot"></div>
-    <span id="headerStatus">Chargement...</span>
+    <span id="headerStatus">Prêt</span>
   </div>
 </header>
 
-<div class="layout">
-  <div class="page-title">
-    <h1>RANDOMISATION VIDÉO & PHOTO</h1>
-    <p>Modifie tes fichiers pour qu'Instagram ne les détecte pas comme des doublons — traitement 100% local, aucun fichier envoyé sur un serveur.</p>
-  </div>
+<div id="appRoot">
 
-  <div class="tabs">
-    <button class="tab active" id="tabVideo" onclick="switchTab('video')">Vidéos</button>
-    <button class="tab" id="tabPhoto" onclick="switchTab('photo')">Photos</button>
-  </div>
-
-  <div class="warning" id="warningBox">
-    <span>⚡</span>
-    <div><strong>Mode pro activé :</strong> réencodage complet avec crop, zoom, rotation, variations couleurs et audio. Choisis le mode <strong>Rapide</strong> par défaut. Reste sur l'onglet pendant le traitement.</div>
-  </div>
-
-  <div class="dropzone" id="dropzone" onclick="document.getElementById('fileInput').click()">
-    <div class="dropzone-icon">⬇</div>
-    <div class="dropzone-title" id="dropTitle">Glisse tes vidéos ici</div>
-    <div class="dropzone-sub" id="dropSub">MP4, MOV, WEBM</div>
-  </div>
-  <input type="file" id="fileInput" multiple accept="video/*">
-
-  <div class="versions-row">
-    <div class="versions-label">Versions à générer par fichier <span class="tag" id="perFileTag">PAR VIDÉO</span></div>
-    <div class="versions-counter">
-      <button class="counter-btn" onclick="changeVersions(-1)">−</button>
-      <span class="counter-value" id="versionsValue">12</span>
-      <button class="counter-btn" onclick="changeVersions(1)">+</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-header"><span class="card-title">Vitesse / Qualité</span></div>
-    <div class="card-body">
-      <div class="speed-options">
-        <div class="speed-option active" id="speed-rapide" onclick="selectSpeed('rapide')"><div class="speed-radio"></div><div><div class="speed-name">Rapide</div><div class="speed-desc">~10-15s par version · Qualité haute</div></div></div>
-        <div class="speed-option" id="speed-equilibre" onclick="selectSpeed('equilibre')"><div class="speed-radio"></div><div><div class="speed-name">Équilibré</div><div class="speed-desc">~20-30s par version · Qualité très bonne</div></div></div>
-        <div class="speed-option" id="speed-max" onclick="selectSpeed('max')"><div class="speed-radio"></div><div><div class="speed-name">Max</div><div class="speed-desc">~30-60s par version · Qualité parfaite</div></div></div>
+  <!-- ══════════════════════════════════════════
+       HOME PAGE
+  ══════════════════════════════════════════ -->
+  <div class="page active" id="page-home">
+    <div class="home-layout">
+      <div class="home-header">
+        <h1>NARIX TOOLS</h1>
+        <p>Suite d'outils de traitement média — 100% local, aucun fichier envoyé sur un serveur.</p>
       </div>
-    </div>
-  </div>
 
-  <div class="card">
-    <div class="card-header"><span class="card-title">Transformations</span><span style="font-size:11px;color:var(--gray-400);">Sélectionne les modifications à appliquer</span></div>
-    <div class="card-body">
-      <div class="transforms-grid">
-        <label class="checkbox-item"><input type="checkbox" checked id="t_crop"><div class="custom-checkbox"></div><span class="checkbox-label">Crop 1-3px + rescale</span></label>
-        <label class="checkbox-item"><input type="checkbox" checked id="t_zoom"><div class="custom-checkbox"></div><span class="checkbox-label">Zoom 1-2%</span></label>
-        <label class="checkbox-item"><input type="checkbox" checked id="t_rotation"><div class="custom-checkbox"></div><span class="checkbox-label">Rotation 0.1-0.5°</span></label>
-        <label class="checkbox-item"><input type="checkbox" checked id="t_couleurs"><div class="custom-checkbox"></div><span class="checkbox-label">Variation couleurs</span></label>
-        <label class="checkbox-item"><input type="checkbox" checked id="t_crf"><div class="custom-checkbox"></div><span class="checkbox-label">CRF/bitrate aléatoires</span></label>
-        <label class="checkbox-item"><input type="checkbox" checked id="t_vitesse"><div class="custom-checkbox"></div><span class="checkbox-label">Vitesse ±3%</span></label>
-        <label class="checkbox-item"><input type="checkbox" checked id="t_pitch"><div class="custom-checkbox"></div><span class="checkbox-label">Pitch audio ±1%</span></label>
-        <label class="checkbox-item"><input type="checkbox" id="t_flip"><div class="custom-checkbox"></div><span class="checkbox-label">Flip horizontal <span class="visible-badge">visible</span></span></label>
-        <label class="checkbox-item"><input type="checkbox" checked id="t_meta"><div class="custom-checkbox"></div><span class="checkbox-label">Métadonnées random</span></label>
-        <label class="checkbox-item"><input type="checkbox" checked id="t_filename"><div class="custom-checkbox"></div><span class="checkbox-label">Nom de fichier random</span></label>
+      <div class="tools-grid">
+
+        <div class="tool-card" onclick="goTo('spoof')">
+          <div class="tool-card-top">
+            <div class="tool-icon">🎲</div>
+            <span class="tool-arrow">→</span>
+          </div>
+          <div class="tool-card-body">
+            <div class="tool-name">Spoof</div>
+            <div class="tool-desc">Randomise tes vidéos et photos pour éviter la détection de doublons par Instagram.</div>
+          </div>
+          <span class="tool-tag">Vidéo · Photo</span>
+        </div>
+
+        <div class="tool-card" onclick="goTo('upscale')">
+          <div class="tool-card-top">
+            <div class="tool-icon">🔍</div>
+            <span class="tool-arrow">→</span>
+          </div>
+          <div class="tool-card-body">
+            <div class="tool-name">Upscale</div>
+            <div class="tool-desc">Agrandis tes photos en ×2, ×3 ou ×4 sans perte de netteté.</div>
+          </div>
+          <span class="tool-tag">Photo</span>
+        </div>
+
+        <div class="tool-card" onclick="goTo('compress')">
+          <div class="tool-card-top">
+            <div class="tool-icon">📦</div>
+            <span class="tool-arrow">→</span>
+          </div>
+          <div class="tool-card-body">
+            <div class="tool-name">Compress</div>
+            <div class="tool-desc">Réduis le poids de tes images et vidéos sans dégradation visible.</div>
+          </div>
+          <span class="tool-tag">Vidéo · Photo</span>
+        </div>
+
+        <div class="tool-card" onclick="goTo('convert')">
+          <div class="tool-card-top">
+            <div class="tool-icon">🔄</div>
+            <span class="tool-arrow">→</span>
+          </div>
+          <div class="tool-card-body">
+            <div class="tool-name">Convert</div>
+            <div class="tool-desc">Convertis entre JPG, PNG, WEBP et MP4 en un clic.</div>
+          </div>
+          <span class="tool-tag">Vidéo · Photo</span>
+        </div>
+
+        <div class="tool-card" onclick="goTo('watermark')">
+          <div class="tool-card-top">
+            <div class="tool-icon">🚫</div>
+            <span class="tool-arrow">→</span>
+          </div>
+          <div class="tool-card-body">
+            <div class="tool-name">Watermark</div>
+            <div class="tool-desc">Efface un filigrane en floutant ou masquant une zone sélectionnée.</div>
+          </div>
+          <span class="tool-tag">Photo</span>
+        </div>
+
+        <div class="tool-card" onclick="goTo('thumbnail')">
+          <div class="tool-card-top">
+            <div class="tool-icon">🎞</div>
+            <span class="tool-arrow">→</span>
+          </div>
+          <div class="tool-card-body">
+            <div class="tool-name">Thumbnail</div>
+            <div class="tool-desc">Extrait une frame précise de ta vidéo en image HD.</div>
+          </div>
+          <span class="tool-tag">Vidéo</span>
+        </div>
+
+        <div class="tool-card" onclick="goTo('metadata')">
+          <div class="tool-card-top">
+            <div class="tool-icon">🧹</div>
+            <span class="tool-arrow">→</span>
+          </div>
+          <div class="tool-card-body">
+            <div class="tool-name">Metadata</div>
+            <div class="tool-desc">Supprime toutes les données EXIF et métadonnées de tes fichiers.</div>
+          </div>
+          <span class="tool-tag">Photo</span>
+        </div>
+
+        <div class="tool-card" onclick="goTo('crop')">
+          <div class="tool-card-top">
+            <div class="tool-icon">✂️</div>
+            <span class="tool-arrow">→</span>
+          </div>
+          <div class="tool-card-body">
+            <div class="tool-name">Crop</div>
+            <div class="tool-desc">Recadre en formats OF, MYM & Instagram : carré, portrait, story, paysage.</div>
+          </div>
+          <span class="tool-tag">Photo</span>
+        </div>
+
+        <div class="tool-card" onclick="goTo('download')">
+          <div class="tool-card-top">
+            <div class="tool-icon">⬇️</div>
+            <span class="tool-arrow">→</span>
+          </div>
+          <div class="tool-card-body">
+            <div class="tool-name">Download</div>
+            <div class="tool-desc">Télécharge des posts, reels et stories directement depuis Instagram.</div>
+          </div>
+          <span class="tool-tag">Instagram</span>
+        </div>
+
       </div>
+      <div class="footer-note" style="margin-top:40px;">Traitement 100% local · Aucun fichier envoyé sur un serveur · NARIX AGENCY</div>
     </div>
   </div>
 
-  <div class="file-list" id="fileList"></div>
-  <div class="add-more" id="addMoreBtn" style="display:none;" onclick="document.getElementById('fileInput').click()"><span>+</span> Ajouter des fichiers</div>
+  <!-- ══════════════════════════════════════════
+       TOOL PAGES (placeholders — logic added in next steps)
+  ══════════════════════════════════════════ -->
 
-  <div class="progress-container" id="progressContainer">
-    <div class="progress-top">
-      <span class="progress-label" id="progressLabel">Traitement en cours...</span>
-      <span class="progress-pct" id="progressPct">0%</span>
+  <div class="page" id="page-spoof">
+    <div class="tool-layout">
+
+      <div class="page-title">
+        <h1>SPOOF — RANDOMISATION</h1>
+        <p>Modifie tes fichiers pour qu'Instagram ne les détecte pas comme des doublons — traitement 100% local.</p>
+      </div>
+
+      <!-- FFmpeg loading banner (videos only) -->
+      <div class="ffmpeg-banner hidden" id="spoofFfmpegBanner">
+        <div class="ffmpeg-spinner"></div>
+        <div>
+          <div class="ffmpeg-banner-text">Chargement de FFmpeg...</div>
+          <div class="ffmpeg-banner-sub">Première visite : ~10-20 secondes</div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab active" id="spoofTabVideo" onclick="spoofSwitchTab('video')">Vidéos</button>
+        <button class="tab" id="spoofTabPhoto" onclick="spoofSwitchTab('photo')">Photos</button>
+      </div>
+
+      <!-- Video warning -->
+      <div class="warning" id="spoofWarning">
+        <span>⚡</span>
+        <div><strong>Mode pro activé :</strong> réencodage complet avec crop, zoom, rotation, variations couleurs et audio. Choisis le mode <strong>Rapide</strong> par défaut. Reste sur l'onglet pendant le traitement.</div>
+      </div>
+
+      <!-- Dropzone -->
+      <div class="dropzone" id="spoofDropzone" onclick="document.getElementById('spoofFileInput').click()">
+        <div class="dropzone-icon">⬇</div>
+        <div class="dropzone-title" id="spoofDropTitle">Glisse tes vidéos ici</div>
+        <div class="dropzone-sub" id="spoofDropSub">MP4, MOV, WEBM</div>
+      </div>
+      <input type="file" id="spoofFileInput" multiple accept="video/*" style="display:none">
+
+      <!-- Versions counter -->
+      <div class="versions-row">
+        <div class="versions-label">
+          Versions à générer par fichier
+          <span class="tag" id="spoofPerFileTag">PAR VIDÉO</span>
+        </div>
+        <div class="versions-counter">
+          <button class="counter-btn" onclick="spoofChangeVersions(-1)">−</button>
+          <span class="counter-value" id="spoofVersionsValue">12</span>
+          <button class="counter-btn" onclick="spoofChangeVersions(1)">+</button>
+        </div>
+      </div>
+
+      <!-- Speed -->
+      <div class="card">
+        <div class="card-header"><span class="card-title">Vitesse / Qualité</span></div>
+        <div class="card-body">
+          <div class="speed-options">
+            <div class="speed-option active" id="spoof-speed-rapide" onclick="spoofSelectSpeed('rapide')">
+              <div class="speed-radio"></div>
+              <div><div class="speed-name">Rapide</div><div class="speed-desc">~10-15s par version · Qualité haute</div></div>
+            </div>
+            <div class="speed-option" id="spoof-speed-equilibre" onclick="spoofSelectSpeed('equilibre')">
+              <div class="speed-radio"></div>
+              <div><div class="speed-name">Équilibré</div><div class="speed-desc">~20-30s par version · Qualité très bonne</div></div>
+            </div>
+            <div class="speed-option" id="spoof-speed-max" onclick="spoofSelectSpeed('max')">
+              <div class="speed-radio"></div>
+              <div><div class="speed-name">Max</div><div class="speed-desc">~30-60s par version · Qualité parfaite</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transforms -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Transformations</span>
+          <span style="font-size:11px;color:var(--gray-400);">Sélectionne les modifications à appliquer</span>
+        </div>
+        <div class="card-body">
+          <div class="transforms-grid">
+            <label class="checkbox-item"><input type="checkbox" checked id="t_crop"><div class="custom-checkbox"></div><span class="checkbox-label">Crop 1-3px + rescale</span></label>
+            <label class="checkbox-item"><input type="checkbox" checked id="t_zoom"><div class="custom-checkbox"></div><span class="checkbox-label">Zoom 1-2%</span></label>
+            <label class="checkbox-item"><input type="checkbox" checked id="t_rotation"><div class="custom-checkbox"></div><span class="checkbox-label">Rotation 0.1-0.5°</span></label>
+            <label class="checkbox-item"><input type="checkbox" checked id="t_couleurs"><div class="custom-checkbox"></div><span class="checkbox-label">Variation couleurs</span></label>
+            <label class="checkbox-item"><input type="checkbox" checked id="t_crf"><div class="custom-checkbox"></div><span class="checkbox-label">CRF/bitrate aléatoires</span></label>
+            <label class="checkbox-item"><input type="checkbox" checked id="t_vitesse"><div class="custom-checkbox"></div><span class="checkbox-label">Vitesse ±3%</span></label>
+            <label class="checkbox-item"><input type="checkbox" checked id="t_pitch"><div class="custom-checkbox"></div><span class="checkbox-label">Pitch audio ±1%</span></label>
+            <label class="checkbox-item"><input type="checkbox" id="t_flip"><div class="custom-checkbox"></div><span class="checkbox-label">Flip horizontal <span class="visible-badge">visible</span></span></label>
+            <label class="checkbox-item"><input type="checkbox" checked id="t_meta"><div class="custom-checkbox"></div><span class="checkbox-label">Métadonnées random</span></label>
+            <label class="checkbox-item"><input type="checkbox" checked id="t_filename"><div class="custom-checkbox"></div><span class="checkbox-label">Nom de fichier random</span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- File list -->
+      <div class="file-list" id="spoofFileList"></div>
+      <div class="add-more" id="spoofAddMoreBtn" style="display:none;" onclick="document.getElementById('spoofFileInput').click()">
+        <span>+</span> Ajouter des fichiers
+      </div>
+
+      <!-- Progress -->
+      <div class="progress-container" id="spoofProgressContainer">
+        <div class="progress-top">
+          <span class="progress-label" id="spoofProgressLabel">Traitement en cours...</span>
+          <span class="progress-pct" id="spoofProgressPct">0%</span>
+        </div>
+        <div class="progress-bar-wrap"><div class="progress-bar" id="spoofProgressBar"></div></div>
+      </div>
+
+      <!-- Actions -->
+      <div class="action-buttons">
+        <button class="btn-process" id="spoofBtnProcess" onclick="spoofProcessFiles()" disabled>
+          <span class="btn-text">Traiter les fichiers</span>
+          <div class="spinner"></div>
+        </button>
+        <button class="btn-secondary" id="spoofBtnDownloadAll" onclick="spoofDownloadAll()" disabled>
+          ↓ Télécharger tous les fichiers traités
+        </button>
+      </div>
+
+      <div class="footer-note">Traitement 100% local · Aucun fichier envoyé sur un serveur · NARIX AGENCY</div>
     </div>
-    <div class="progress-bar-wrap"><div class="progress-bar" id="progressBar"></div></div>
   </div>
 
-  <div class="action-buttons">
-    <button class="btn-process" id="btnProcess" onclick="processFiles()" disabled>
-      <span class="btn-text">Traiter les fichiers</span>
-      <div class="spinner"></div>
-    </button>
-    <button class="btn-download-all" id="btnDownloadAll" onclick="downloadAll()" disabled>↓ Télécharger tous les fichiers traités</button>
+  <div class="page" id="page-upscale">
+    <div class="tool-layout">
+      <div class="page-title">
+        <h1>UPSCALE — AGRANDISSEMENT</h1>
+        <p>Agrandis tes photos ×2, ×3 ou ×4 — traitement 100% local via canvas haute qualité.</p>
+      </div>
+
+      <div class="dropzone" id="upscaleDropzone" onclick="document.getElementById('upscaleFileInput').click()">
+        <div class="dropzone-icon">🔍</div>
+        <div class="dropzone-title">Glisse tes photos ici</div>
+        <div class="dropzone-sub">JPG, PNG, WEBP</div>
+      </div>
+      <input type="file" id="upscaleFileInput" multiple accept="image/*" style="display:none">
+
+      <div class="card">
+        <div class="card-header"><span class="card-title">Facteur d'agrandissement</span></div>
+        <div class="card-body">
+          <div class="speed-options">
+            <div class="speed-option active" id="upscale-x2" onclick="upscaleSetFactor(2)">
+              <div class="speed-radio"></div>
+              <div><div class="speed-name">×2</div><div class="speed-desc">Double la résolution</div></div>
+            </div>
+            <div class="speed-option" id="upscale-x3" onclick="upscaleSetFactor(3)">
+              <div class="speed-radio"></div>
+              <div><div class="speed-name">×3</div><div class="speed-desc">Triple la résolution</div></div>
+            </div>
+            <div class="speed-option" id="upscale-x4" onclick="upscaleSetFactor(4)">
+              <div class="speed-radio"></div>
+              <div><div class="speed-name">×4</div><div class="speed-desc">Résolution ×4</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><span class="card-title">Format de sortie</span></div>
+        <div class="card-body">
+          <div class="speed-options">
+            <div class="speed-option active" id="upscale-fmt-jpeg" onclick="upscaleSetFmt('image/jpeg','jpg')">
+              <div class="speed-radio"></div>
+              <div><div class="speed-name">JPEG</div><div class="speed-desc">Petit poids, photos</div></div>
+            </div>
+            <div class="speed-option" id="upscale-fmt-png" onclick="upscaleSetFmt('image/png','png')">
+              <div class="speed-radio"></div>
+              <div><div class="speed-name">PNG</div><div class="speed-desc">Sans perte</div></div>
+            </div>
+            <div class="speed-option" id="upscale-fmt-webp" onclick="upscaleSetFmt('image/webp','webp')">
+              <div class="speed-radio"></div>
+              <div><div class="speed-name">WEBP</div><div class="speed-desc">Moderne, web</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="file-list" id="upscaleFileList"></div>
+      <div class="add-more" id="upscaleAddMore" style="display:none" onclick="document.getElementById('upscaleFileInput').click()">
+        <span>+</span> Ajouter des photos
+      </div>
+
+      <div class="progress-container" id="upscaleProgress">
+        <div class="progress-top">
+          <span class="progress-label" id="upscaleProgressLabel">Traitement...</span>
+          <span class="progress-pct" id="upscaleProgressPct">0%</span>
+        </div>
+        <div class="progress-bar-wrap"><div class="progress-bar" id="upscaleProgressBar"></div></div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn-process" id="upscaleBtnProcess" onclick="upscaleProcess()" disabled>
+          <span class="btn-text">Agrandir les photos</span>
+          <div class="spinner"></div>
+        </button>
+        <button class="btn-secondary" id="upscaleBtnDownload" onclick="upscaleDownloadAll()" disabled>
+          ↓ Télécharger tous
+        </button>
+      </div>
+      <div class="footer-note">Traitement 100% local · Aucun fichier envoyé sur un serveur · NARIX AGENCY</div>
+    </div>
   </div>
-  <div class="footer-note">Traitement 100% local · Aucun fichier envoyé sur un serveur · NARIX AGENCY</div>
-</div>
+
+  <div class="page" id="page-compress">
+    <div class="tool-layout">
+      <div class="page-title">
+        <h1>COMPRESS — COMPRESSION</h1>
+        <p>Réduis le poids de tes images et vidéos sans dégradation visible.</p>
+      </div>
+
+      <div class="ffmpeg-banner hidden" id="compressFfmpegBanner">
+        <div class="ffmpeg-spinner"></div>
+        <div>
+          <div class="ffmpeg-banner-text">Chargement de FFmpeg...</div>
+          <div class="ffmpeg-banner-sub">Requis pour la compression vidéo</div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" id="compressTabImg" onclick="compressSwitchTab('images')">Images</button>
+        <button class="tab" id="compressTabVid" onclick="compressSwitchTab('videos')">Vidéos</button>
+      </div>
+
+      <div class="dropzone" id="compressDropzone" onclick="document.getElementById('compressFileInput').click()">
+        <div class="dropzone-icon">📦</div>
+        <div class="dropzone-title" id="compressDropTitle">Glisse tes images ici</div>
+        <div class="dropzone-sub" id="compressDropSub">JPG, PNG, WEBP</div>
+      </div>
+      <input type="file" id="compressFileInput" multiple accept="image/*" style="display:none">
+
+      <div class="card">
+        <div class="card-header"><span class="card-title">Niveau de compression</span></div>
+        <div class="card-body">
+          <div class="speed-options">
+            <div class="speed-option" id="compress-light" onclick="compressSetLevel('light')">
+              <div class="speed-radio"></div>
+              <div><div class="speed-name">Léger</div><div class="speed-desc">~20% plus léger · Qualité maximale</div></div>
+            </div>
+            <div class="speed-option active" id="compress-medium" onclick="compressSetLevel('medium')">
+              <div class="speed-radio"></div>
+              <div><div class="speed-name">Moyen</div><div class="speed-desc">~50% plus léger · Qualité bonne</div></div>
+            </div>
+            <div class="speed-option" id="compress-heavy" onclick="compressSetLevel('heavy')">
+              <div class="speed-radio"></div>
+              <div><div class="speed-name">Fort</div><div class="speed-desc">~75% plus léger · Qualité correcte</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="file-list" id="compressFileList"></div>
+      <div class="add-more" id="compressAddMore" style="display:none" onclick="document.getElementById('compressFileInput').click()">
+        <span>+</span> Ajouter des fichiers
+      </div>
+
+      <div class="progress-container" id="compressProgress">
+        <div class="progress-top">
+          <span class="progress-label" id="compressProgressLabel">Traitement...</span>
+          <span class="progress-pct" id="compressProgressPct">0%</span>
+        </div>
+        <div class="progress-bar-wrap"><div class="progress-bar" id="compressProgressBar"></div></div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn-process" id="compressBtnProcess" onclick="compressProcess()" disabled>
+          <span class="btn-text">Compresser les fichiers</span>
+          <div class="spinner"></div>
+        </button>
+        <button class="btn-secondary" id="compressBtnDownload" onclick="compressDownloadAll()" disabled>
+          ↓ Télécharger tous
+        </button>
+      </div>
+      <div class="footer-note">Traitement 100% local · Aucun fichier envoyé sur un serveur · NARIX AGENCY</div>
+    </div>
+  </div>
+
+  <div class="page" id="page-convert">
+    <div class="tool-layout">
+      <div class="page-title">
+        <h1>CONVERT — CONVERSION</h1>
+        <p>Convertis entre JPG, PNG, WEBP et MP4 en un clic.</p>
+      </div>
+
+      <div class="ffmpeg-banner hidden" id="convertFfmpegBanner">
+        <div class="ffmpeg-spinner"></div>
+        <div>
+          <div class="ffmpeg-banner-text">Chargement de FFmpeg...</div>
+          <div class="ffmpeg-banner-sub">Requis pour la conversion vidéo</div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" id="convertTabImg" onclick="convertSwitchTab('images')">Images</button>
+        <button class="tab" id="convertTabVid" onclick="convertSwitchTab('videos')">Vidéos → MP4</button>
+      </div>
+
+      <div class="dropzone" id="convertDropzone" onclick="document.getElementById('convertFileInput').click()">
+        <div class="dropzone-icon">🔄</div>
+        <div class="dropzone-title" id="convertDropTitle">Glisse tes images ici</div>
+        <div class="dropzone-sub" id="convertDropSub">JPG, PNG, WEBP</div>
+      </div>
+      <input type="file" id="convertFileInput" multiple accept="image/*" style="display:none">
+
+      <div class="card" id="convertFmtCard">
+        <div class="card-header"><span class="card-title" id="convertFmtLabel">Format de sortie</span></div>
+        <div class="card-body">
+          <div class="speed-options" id="convertFmtOptions">
+            <div class="speed-option active" id="convert-fmt-jpg" onclick="convertSetFmt('image/jpeg','jpg')">
+              <div class="speed-radio"></div>
+              <div><div class="speed-name">JPG</div><div class="speed-desc">Photo, petit poids</div></div>
+            </div>
+            <div class="speed-option" id="convert-fmt-png" onclick="convertSetFmt('image/png','png')">
+              <div class="speed-radio"></div>
+              <div><div class="speed-name">PNG</div><div class="speed-desc">Transparence, sans perte</div></div>
+            </div>
+            <div class="speed-option" id="convert-fmt-webp" onclick="convertSetFmt('image/webp','webp')">
+              <div class="speed-radio"></div>
+              <div><div class="speed-name">WEBP</div><div class="speed-desc">Moderne, optimisé web</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="file-list" id="convertFileList"></div>
+      <div class="add-more" id="convertAddMore" style="display:none" onclick="document.getElementById('convertFileInput').click()">
+        <span>+</span> Ajouter des fichiers
+      </div>
+
+      <div class="progress-container" id="convertProgress">
+        <div class="progress-top">
+          <span class="progress-label" id="convertProgressLabel">Traitement...</span>
+          <span class="progress-pct" id="convertProgressPct">0%</span>
+        </div>
+        <div class="progress-bar-wrap"><div class="progress-bar" id="convertProgressBar"></div></div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn-process" id="convertBtnProcess" onclick="convertProcess()" disabled>
+          <span class="btn-text">Convertir les fichiers</span>
+          <div class="spinner"></div>
+        </button>
+        <button class="btn-secondary" id="convertBtnDownload" onclick="convertDownloadAll()" disabled>
+          ↓ Télécharger tous
+        </button>
+      </div>
+      <div class="footer-note">Traitement 100% local · Aucun fichier envoyé sur un serveur · NARIX AGENCY</div>
+    </div>
+  </div>
+
+  <div class="page" id="page-watermark">
+    <div class="tool-layout">
+      <div class="page-title">
+        <h1>WATERMARK — SUPPRESSION</h1>
+        <p>Dessine un rectangle sur le filigrane, choisis la méthode et applique.</p>
+      </div>
+
+      <div class="dropzone" id="wmDropzone" onclick="document.getElementById('wmFileInput').click()">
+        <div class="dropzone-icon">🚫</div>
+        <div class="dropzone-title">Glisse une photo ici</div>
+        <div class="dropzone-sub">JPG, PNG, WEBP — un seul fichier</div>
+      </div>
+      <input type="file" id="wmFileInput" accept="image/*" style="display:none">
+
+      <div id="wmEditor" style="display:none">
+
+        <div class="card" style="margin-bottom:12px;">
+          <div class="card-header">
+            <span class="card-title">Zone à effacer</span>
+            <span style="font-size:11px;color:var(--gray-400);" id="wmSelInfo">Dessine un rectangle sur le filigrane</span>
+          </div>
+          <div class="card-body" style="padding:12px;">
+            <div class="wm-canvas-wrap" id="wmCanvasWrap">
+              <canvas id="wmCanvas"></canvas>
+            </div>
+            <div style="display:flex;justify-content:flex-end;margin-top:8px;">
+              <button onclick="wmClearSel()" style="background:none;border:1px solid var(--gray-200);border-radius:5px;padding:5px 12px;font-size:12px;color:var(--gray-400);cursor:pointer;font-family:Inter,sans-serif;">Effacer sélection</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><span class="card-title">Méthode</span></div>
+          <div class="card-body">
+            <div class="speed-options" style="grid-template-columns:1fr 1fr;">
+              <div class="speed-option active" id="wm-blur" onclick="wmSetMethod('blur')">
+                <div class="speed-radio"></div>
+                <div><div class="speed-name">Flou</div><div class="speed-desc">Floute la zone sélectionnée</div></div>
+              </div>
+              <div class="speed-option" id="wm-fill" onclick="wmSetMethod('fill')">
+                <div class="speed-radio"></div>
+                <div><div class="speed-name">Remplissage</div><div class="speed-desc">Remplace par la couleur dominante</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button class="btn-process" id="wmBtnApply" onclick="wmApply()">
+            <span class="btn-text">Appliquer</span>
+            <div class="spinner"></div>
+          </button>
+          <button class="btn-secondary" id="wmBtnDownload" style="display:none" onclick="wmDownload()">
+            ↓ Télécharger l'image traitée
+          </button>
+        </div>
+      </div>
+
+      <div class="footer-note">Traitement 100% local · Aucun fichier envoyé sur un serveur · NARIX AGENCY</div>
+    </div>
+  </div>
+
+  <div class="page" id="page-thumbnail">
+    <div class="tool-layout">
+      <div class="page-title">
+        <h1>THUMBNAIL — EXTRACTION</h1>
+        <p>Navigue dans ta vidéo, capture la frame parfaite et télécharge-la en HD.</p>
+      </div>
+
+      <div class="dropzone" id="thumbDropzone" onclick="document.getElementById('thumbFileInput').click()">
+        <div class="dropzone-icon">🎞</div>
+        <div class="dropzone-title">Glisse ta vidéo ici</div>
+        <div class="dropzone-sub">MP4, MOV, WEBM</div>
+      </div>
+      <input type="file" id="thumbFileInput" accept="video/*" style="display:none">
+
+      <div id="thumbEditor" style="display:none">
+        <div class="card" style="margin-bottom:12px;">
+          <div class="card-header">
+            <span class="card-title">Lecture</span>
+            <span class="thumb-time" id="thumbTime">0:00.00</span>
+          </div>
+          <div class="card-body" style="padding:0;">
+            <div class="thumb-video-wrap">
+              <video id="thumbVideo" preload="metadata" playsinline></video>
+            </div>
+            <div class="thumb-controls">
+              <input type="range" class="thumb-seek" id="thumbSeek" min="0" max="100" step="0.01" value="0">
+              <div style="display:flex;gap:8px;">
+                <button onclick="thumbTogglePlay()" id="thumbPlayBtn"
+                  style="padding:8px 18px;background:var(--black);color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;">
+                  ▶ Lecture
+                </button>
+                <button onclick="thumbStep(-1/30)"
+                  style="padding:8px 14px;background:var(--gray-100);border:1px solid var(--gray-200);border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;">
+                  ←1f
+                </button>
+                <button onclick="thumbStep(1/30)"
+                  style="padding:8px 14px;background:var(--gray-100);border:1px solid var(--gray-200);border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;">
+                  1f→
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="thumbCapturePreview" class="thumb-capture-preview" style="display:none">
+          <img id="thumbPreviewImg" alt="Frame capturée">
+        </div>
+
+        <div class="action-buttons">
+          <button class="btn-process" id="thumbBtnCapture" onclick="thumbCapture()">
+            <span class="btn-text">📸 Capturer cette frame</span>
+            <div class="spinner"></div>
+          </button>
+          <button class="btn-secondary" id="thumbBtnDownload" onclick="thumbDownload()" style="display:none">
+            ↓ Télécharger la frame
+          </button>
+        </div>
+      </div>
+
+      <div class="footer-note">Traitement 100% local · Aucun fichier envoyé sur un serveur · NARIX AGENCY</div>
+    </div>
+  </div>
+
+  <div class="page" id="page-metadata">
+    <div class="tool-layout">
+      <div class="page-title">
+        <h1>METADATA — NETTOYAGE</h1>
+        <p>Supprime toutes les données EXIF (GPS, appareil, date…) en redessinant via canvas.</p>
+      </div>
+
+      <div class="warning">
+        <span>🔒</span>
+        <div>Les données EXIF peuvent contenir ta <strong>localisation GPS</strong>, le modèle de ton appareil et la date de prise de vue. Cet outil les supprime en recréant l'image via canvas.</div>
+      </div>
+
+      <div class="dropzone" id="metaDropzone" onclick="document.getElementById('metaFileInput').click()">
+        <div class="dropzone-icon">🧹</div>
+        <div class="dropzone-title">Glisse tes photos ici</div>
+        <div class="dropzone-sub">JPG, PNG, WEBP</div>
+      </div>
+      <input type="file" id="metaFileInput" multiple accept="image/*" style="display:none">
+
+      <div class="file-list" id="metaFileList"></div>
+      <div class="add-more" id="metaAddMore" style="display:none" onclick="document.getElementById('metaFileInput').click()">
+        <span>+</span> Ajouter des photos
+      </div>
+
+      <div class="progress-container" id="metaProgress">
+        <div class="progress-top">
+          <span class="progress-label" id="metaProgressLabel">Nettoyage...</span>
+          <span class="progress-pct" id="metaProgressPct">0%</span>
+        </div>
+        <div class="progress-bar-wrap"><div class="progress-bar" id="metaProgressBar"></div></div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn-process" id="metaBtnProcess" onclick="metaProcess()" disabled>
+          <span class="btn-text">Supprimer les métadonnées</span>
+          <div class="spinner"></div>
+        </button>
+        <button class="btn-secondary" id="metaBtnDownload" onclick="metaDownloadAll()" disabled>
+          ↓ Télécharger tout
+        </button>
+      </div>
+      <div class="footer-note">Traitement 100% local · Aucun fichier envoyé sur un serveur · NARIX AGENCY</div>
+    </div>
+  </div>
+
+  <div class="page" id="page-crop">
+    <div class="tool-layout">
+      <div class="page-title">
+        <h1>CROP — RECADRAGE</h1>
+        <p>Recadre tes photos aux formats OF, MYM et Instagram. Glisse pour repositionner.</p>
+      </div>
+
+      <!-- Format presets -->
+      <div class="card" style="margin-bottom:12px;">
+        <div class="card-header"><span class="card-title">Format</span></div>
+        <div class="card-body">
+          <div class="crop-presets">
+            <button class="crop-preset active" id="crop-11" onclick="cropSetPreset(1,1,'crop-11')">
+              <div class="cp-box" style="width:28px;height:28px;"></div>
+              <div class="cp-name">Carré</div>
+              <div class="cp-desc">1:1 · Instagram / OF</div>
+            </button>
+            <button class="crop-preset" id="crop-45" onclick="cropSetPreset(4,5,'crop-45')">
+              <div class="cp-box" style="width:22px;height:28px;"></div>
+              <div class="cp-name">Portrait</div>
+              <div class="cp-desc">4:5 · Instagram</div>
+            </button>
+            <button class="crop-preset" id="crop-916" onclick="cropSetPreset(9,16,'crop-916')">
+              <div class="cp-box" style="width:16px;height:28px;"></div>
+              <div class="cp-name">Story</div>
+              <div class="cp-desc">9:16 · Réels / MYM</div>
+            </button>
+            <button class="crop-preset" id="crop-169" onclick="cropSetPreset(16,9,'crop-169')">
+              <div class="cp-box" style="width:28px;height:16px;"></div>
+              <div class="cp-name">Paysage</div>
+              <div class="cp-desc">16:9 · YouTube</div>
+            </button>
+            <button class="crop-preset" id="crop-custom" onclick="cropFocusCustom()">
+              <div class="cp-box" style="width:24px;height:22px;"></div>
+              <div class="cp-name">Custom</div>
+              <div class="cp-desc" id="cropCustomDesc">Ratio libre</div>
+            </button>
+          </div>
+          <div id="cropCustomRow" style="display:none;margin-top:12px;align-items:center;gap:8px;">
+            <input id="cropCW" type="number" min="1" value="3"
+              style="width:56px;padding:8px;border:1.5px solid var(--gray-200);border-radius:6px;font-family:Inter,sans-serif;text-align:center;font-size:14px;outline:none;">
+            <span style="font-size:18px;font-weight:600;color:var(--gray-400);">:</span>
+            <input id="cropCH" type="number" min="1" value="4"
+              style="width:56px;padding:8px;border:1.5px solid var(--gray-200);border-radius:6px;font-family:Inter,sans-serif;text-align:center;font-size:14px;outline:none;">
+            <button onclick="cropApplyCustom()"
+              style="padding:9px 16px;background:var(--black);color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;">
+              Appliquer
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dropzone -->
+      <div class="dropzone" id="cropDropzone" onclick="document.getElementById('cropFileInput').click()">
+        <div class="dropzone-icon">✂️</div>
+        <div class="dropzone-title">Glisse tes photos ici</div>
+        <div class="dropzone-sub">JPG, PNG, WEBP — une ou plusieurs</div>
+      </div>
+      <input type="file" id="cropFileInput" multiple accept="image/*" style="display:none">
+
+      <!-- Canvas preview (first image) -->
+      <div id="cropPreviewCard" style="display:none;margin-bottom:12px;">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Aperçu — Glisse pour repositionner</span>
+            <span style="font-size:11px;color:var(--gray-400);" id="cropPreviewInfo"></span>
+          </div>
+          <div class="card-body" style="padding:0;">
+            <div style="background:#111;border-radius:0 0 8px 8px;line-height:0;cursor:move;">
+              <canvas id="cropPreviewCanvas" style="display:block;max-width:100%;height:auto;cursor:move;"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="file-list" id="cropFileList"></div>
+      <div class="add-more" id="cropAddMore" style="display:none" onclick="document.getElementById('cropFileInput').click()">
+        <span>+</span> Ajouter des photos
+      </div>
+
+      <div class="progress-container" id="cropProgress">
+        <div class="progress-top">
+          <span class="progress-label" id="cropProgressLabel">Recadrage...</span>
+          <span class="progress-pct" id="cropProgressPct">0%</span>
+        </div>
+        <div class="progress-bar-wrap"><div class="progress-bar" id="cropProgressBar"></div></div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn-process" id="cropBtnProcess" onclick="cropProcess()" disabled>
+          <span class="btn-text">Recadrer tout</span>
+          <div class="spinner"></div>
+        </button>
+        <button class="btn-secondary" id="cropBtnDownload" onclick="cropDownloadAll()" disabled>
+          ↓ Télécharger tout
+        </button>
+      </div>
+      <div class="footer-note">Traitement 100% local · Aucun fichier envoyé sur un serveur · NARIX AGENCY</div>
+    </div>
+  </div>
+
+  <div class="page" id="page-download">
+    <div class="tool-layout">
+      <div class="page-title">
+        <h1>DOWNLOAD — INSTAGRAM</h1>
+        <p>Télécharge posts, reels, stories et carrousels via Cobalt.</p>
+      </div>
+
+      <!-- Cobalt instance selector -->
+      <div class="card" style="margin-bottom:12px;">
+        <div class="card-header"><span class="card-title">Instance Cobalt</span></div>
+        <div class="card-body">
+          <div class="dl-instance-row">
+            <span class="dl-instance-label">URL API :</span>
+            <input type="url" id="dlCobaltUrl" class="dl-instance-input"
+              value="https://api.cobalt.tools/" placeholder="https://api.cobalt.tools/">
+          </div>
+          <div style="font-size:11px;color:var(--gray-400);line-height:1.6;">
+            Instance publique par défaut. Tu peux utiliser ta propre instance
+            <a href="https://github.com/imputnet/cobalt" target="_blank" style="color:var(--black);">cobalt</a> pour éviter les limites.
+          </div>
+        </div>
+      </div>
+
+      <!-- URL input -->
+      <div class="card" style="margin-bottom:12px;">
+        <div class="card-header"><span class="card-title">Lien Instagram</span></div>
+        <div class="card-body">
+          <div class="dl-input-row">
+            <input type="url" id="dlUrlInput" class="dl-url-input"
+              placeholder="https://www.instagram.com/reel/..."
+              onkeydown="if(event.key==='Enter') dlFetch()">
+            <button class="btn-process" id="dlBtn" onclick="dlFetch()"
+              style="width:auto;padding:14px 20px;white-space:nowrap;">
+              <span class="btn-text">Télécharger</span>
+              <div class="spinner"></div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div id="dlResult" style="display:none"></div>
+
+      <div class="footer-note">Utilise Cobalt · Aucun fichier stocké sur nos serveurs · NARIX AGENCY</div>
+    </div>
+  </div>
+
+</div><!-- #appRoot -->
 
 <div class="toast" id="toast"></div>
 
 <script>
-// Chargement FFmpeg via script classique (pas module) pour éviter les problèmes CORS worker
-window.addEventListener('load', async () => {
-  try {
-    // Charger FFmpeg via CDN en tant que script global
-    await loadScript('https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js');
-    
-    const { createFFmpeg, fetchFile } = FFmpeg;
-    window._ffmpeg = createFFmpeg({
-      log: false,
-      corePath: 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js',
-    });
-    
-    window._fetchFile = fetchFile;
-    await window._ffmpeg.load();
-    
-    document.getElementById('loadingOverlay').classList.remove('visible');
-    document.getElementById('headerDot').className = 'header-dot ready';
-    document.getElementById('headerStatus').textContent = 'FFmpeg — Prêt';
-    window._ffmpegReady = true;
-  } catch(e) {
-    console.error(e);
-    document.getElementById('loadingMsg').textContent = '❌ Erreur : ' + e.message;
-    document.getElementById('loadingOverlay').innerHTML = `
-      <p style="color:#c0392b;font-size:15px;font-weight:700;text-align:center;padding:24px">❌ Erreur de chargement<br><small style="font-size:12px;color:#888;font-weight:400">${e.message}</small></p>
-      <button onclick="location.reload()" style="padding:10px 24px;background:#0a0a0a;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600">↺ Recharger</button>`;
+// ─── ROUTER ───────────────────────────────────────────────
+const TOOL_LABELS = {
+  home:      'Tools',
+  spoof:     'Spoof',
+  upscale:   'Upscale',
+  compress:  'Compress',
+  convert:   'Convert',
+  watermark: 'Watermark',
+  thumbnail: 'Thumbnail',
+  metadata:  'Metadata',
+  crop:      'Crop',
+  download:  'Download',
+};
+
+let currentPage = 'home';
+
+function goTo(toolId) {
+  if (currentPage === toolId) return;
+  switchPage(toolId);
+}
+
+function goHome() {
+  if (currentPage === 'home') return;
+  switchPage('home');
+}
+
+function switchPage(targetId) {
+  const from = document.getElementById('page-' + currentPage);
+  const to   = document.getElementById('page-' + targetId);
+  if (!to) return;
+
+  from.classList.remove('active');
+
+  setTimeout(() => {
+    to.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    // Fire per-tool init hook if defined
+    if (typeof pageEnterHooks !== 'undefined' && pageEnterHooks[targetId]) {
+      pageEnterHooks[targetId]();
+    }
+  }, 130);
+
+  currentPage = targetId;
+  updateHeader(targetId);
+}
+
+function updateHeader(pageId) {
+  const logoSub = document.getElementById('logoSub');
+  const backBtn = document.getElementById('backBtn');
+
+  logoSub.textContent = TOOL_LABELS[pageId] || 'Tools';
+
+  if (pageId === 'home') {
+    backBtn.classList.remove('visible');
+  } else {
+    backBtn.classList.add('visible');
   }
-});
+}
+
+// ─── HASH-BASED NAVIGATION ────────────────────────────────
+function handleHash() {
+  const hash = location.hash.replace('#', '') || 'home';
+  const validPages = Object.keys(TOOL_LABELS);
+  const target = validPages.includes(hash) ? hash : 'home';
+  if (target !== currentPage) switchPage(target);
+}
+
+function goTo(toolId) {
+  location.hash = toolId;
+}
+function goHome() {
+  location.hash = 'home';
+}
+
+window.addEventListener('hashchange', handleHash);
+window.addEventListener('DOMContentLoaded', handleHash);
+
+// ─── TOAST ────────────────────────────────────────────────
+function showToast(msg, type) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (type ? ' ' + type : '');
+  setTimeout(() => { t.className = 'toast'; }, 3500);
+}
+
+// ─── PAGE-ENTER HOOKS ─────────────────────────────────────
+const pageEnterHooks = {
+  spoof:    () => spoofInit(),
+  watermark: () => wmReset(),
+};
+
+// ══════════════════════════════════════════════════════════
+//  SPOOF TOOL
+// ══════════════════════════════════════════════════════════
+
+// ─── STATE ────────────────────────────────────────────────
+let spoofVersions    = 12;
+let spoofSpeed       = 'rapide';
+let spoofTab         = 'video';
+let spoofFiles       = [];
+let spoofBlobs       = [];
+
+function rand(min, max)    { return Math.random() * (max - min) + min; }
+function randInt(min, max) { return Math.floor(rand(min, max + 1)); }
+
+// ─── INIT (lazy FFmpeg load on first visit) ───────────────
+function spoofInit() {
+  ensureFFmpeg(document.getElementById('spoofFfmpegBanner')).then(() => {
+    if (spoofFiles.length) document.getElementById('spoofBtnProcess').disabled = false;
+  }).catch(() => {});
+}
 
 function loadScript(src) {
   return new Promise((resolve, reject) => {
+    if (document.querySelector(`script[src="${src}"]`)) { resolve(); return; }
     const s = document.createElement('script');
-    s.src = src;
-    s.onload = resolve;
-    s.onerror = reject;
+    s.src = src; s.onload = resolve; s.onerror = reject;
     document.head.appendChild(s);
   });
 }
 
-// STATE
-let versions = 12, currentSpeed = 'rapide', currentTab = 'video';
-let files = [], processedBlobs = [];
-
-function rand(min, max) { return Math.random() * (max - min) + min; }
-function randInt(min, max) { return Math.floor(rand(min, max + 1)); }
-
-function changeVersions(delta) {
-  versions = Math.max(1, Math.min(50, versions + delta));
-  document.getElementById('versionsValue').textContent = versions;
-  updateFileList();
-}
-
-function switchTab(tab) {
-  currentTab = tab;
-  document.getElementById('tabVideo').classList.toggle('active', tab === 'video');
-  document.getElementById('tabPhoto').classList.toggle('active', tab === 'photo');
+// ─── TAB SWITCH ───────────────────────────────────────────
+function spoofSwitchTab(tab) {
+  spoofTab = tab;
   const isVideo = tab === 'video';
-  document.getElementById('dropTitle').textContent = isVideo ? 'Glisse tes vidéos ici' : 'Glisse tes photos ici';
-  document.getElementById('dropSub').textContent = isVideo ? 'MP4, MOV, WEBM' : 'JPG, PNG, WEBP';
-  document.getElementById('fileInput').accept = isVideo ? 'video/*' : 'image/*';
-  document.getElementById('warningBox').style.display = isVideo ? 'flex' : 'none';
-  document.getElementById('perFileTag').textContent = isVideo ? 'PAR VIDÉO' : 'PAR PHOTO';
+  document.getElementById('spoofTabVideo').classList.toggle('active', isVideo);
+  document.getElementById('spoofTabPhoto').classList.toggle('active', !isVideo);
+  document.getElementById('spoofDropTitle').textContent = isVideo ? 'Glisse tes vidéos ici' : 'Glisse tes photos ici';
+  document.getElementById('spoofDropSub').textContent   = isVideo ? 'MP4, MOV, WEBM' : 'JPG, PNG, WEBP';
+  document.getElementById('spoofFileInput').accept      = isVideo ? 'video/*' : 'image/*';
+  document.getElementById('spoofWarning').style.display = isVideo ? 'flex' : 'none';
+  document.getElementById('spoofPerFileTag').textContent = isVideo ? 'PAR VIDÉO' : 'PAR PHOTO';
 }
 
-function selectSpeed(s) {
-  currentSpeed = s;
-  ['rapide','equilibre','max'].forEach(id => document.getElementById('speed-'+id).classList.remove('active'));
-  document.getElementById('speed-'+s).classList.add('active');
+// ─── VERSIONS COUNTER ────────────────────────────────────
+function spoofChangeVersions(delta) {
+  spoofVersions = Math.max(1, Math.min(50, spoofVersions + delta));
+  document.getElementById('spoofVersionsValue').textContent = spoofVersions;
+  spoofUpdateFileList();
 }
 
-const dropzone = document.getElementById('dropzone');
-dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFiles([...e.dataTransfer.files]); });
-document.getElementById('fileInput').addEventListener('change', e => { handleFiles([...e.target.files]); e.target.value = ''; });
+// ─── SPEED ───────────────────────────────────────────────
+function spoofSelectSpeed(s) {
+  spoofSpeed = s;
+  ['rapide','equilibre','max'].forEach(id =>
+    document.getElementById('spoof-speed-' + id).classList.remove('active')
+  );
+  document.getElementById('spoof-speed-' + s).classList.add('active');
+}
 
-function handleFiles(newFiles) {
-  newFiles.forEach(f => files.push({ file: f, name: f.name, size: (f.size/1024/1024).toFixed(1), status: 'pending', results: [] }));
-  if (files.length > 0) {
-    dropzone.style.display = 'none';
-    document.getElementById('addMoreBtn').style.display = 'flex';
-    document.getElementById('btnProcess').disabled = false;
+// ─── DRAG & DROP ─────────────────────────────────────────
+(function () {
+  const dz = document.getElementById('spoofDropzone');
+  dz.addEventListener('dragover',  e => { e.preventDefault(); dz.classList.add('dragover'); });
+  dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
+  dz.addEventListener('drop', e => {
+    e.preventDefault(); dz.classList.remove('dragover');
+    spoofHandleFiles([...e.dataTransfer.files]);
+  });
+  document.getElementById('spoofFileInput').addEventListener('change', e => {
+    spoofHandleFiles([...e.target.files]); e.target.value = '';
+  });
+})();
+
+// ─── FILE HANDLING ───────────────────────────────────────
+function spoofHandleFiles(newFiles) {
+  newFiles.forEach(f => spoofFiles.push({
+    file: f, name: f.name,
+    size: (f.size / 1024 / 1024).toFixed(1),
+    status: 'pending', results: []
+  }));
+  if (spoofFiles.length) {
+    document.getElementById('spoofDropzone').style.display   = 'none';
+    document.getElementById('spoofAddMoreBtn').style.display = 'flex';
+    const needsFFmpeg = spoofFiles.some(f => !isImageExt(f.name));
+    document.getElementById('spoofBtnProcess').disabled = needsFFmpeg && !_ffReady;
   }
-  updateFileList();
+  spoofUpdateFileList();
 }
 
-function updateFileList() {
-  const list = document.getElementById('fileList');
+function isImageExt(name) {
+  return ['jpg','jpeg','png','webp','gif','bmp'].includes(name.split('.').pop().toLowerCase());
+}
+
+function spoofUpdateFileList() {
+  const list = document.getElementById('spoofFileList');
   list.innerHTML = '';
-  files.forEach((f, i) => {
+  spoofFiles.forEach((f, i) => {
     const item = document.createElement('div');
-    item.className = 'file-item' + (f.status==='done'?' done':f.status==='processing'?' processing':'');
+    item.className = 'file-item' +
+      (f.status === 'done' ? ' done' : f.status === 'processing' ? ' processing' : '');
+
     let meta = '', dlBtn = `<button class="dl-btn" disabled>↓</button>`;
     if (f.status === 'done') {
-      meta = `<div class="file-meta done">✓ ${f.results.length} version(s) générée(s)</div>`;
-      dlBtn = `<button class="dl-btn" onclick="downloadFile(${i})">↓</button>`;
+      meta  = `<div class="file-meta done">✓ ${f.results.length} version(s) générée(s)</div>`;
+      dlBtn = `<button class="dl-btn" onclick="spoofDownloadFile(${i})">↓</button>`;
     } else if (f.status === 'processing') {
-      meta = `<div class="file-meta processing">Traitement ${f.progress||0}/${versions}...</div>`;
+      meta = `<div class="file-meta processing">Traitement ${f.progress || 0}/${spoofVersions}...</div>`;
     } else {
-      meta = `<div class="file-meta">${f.size} MB · ${versions} version(s)</div>`;
+      meta = `<div class="file-meta">${f.size} MB · ${spoofVersions} version(s)</div>`;
     }
-    item.innerHTML = `<div class="file-thumb">🎬</div><div class="file-info"><div class="file-name">${f.name}</div>${meta}</div><div class="file-actions"><span class="version-tag">×${versions}</span>${dlBtn}<button class="rm-btn" onclick="removeFile(${i})">×</button></div>`;
+
+    const icon = isImageExt(f.name) ? '🖼' : '🎬';
+    item.innerHTML = `
+      <div class="file-thumb">${icon}</div>
+      <div class="file-info">
+        <div class="file-name">${f.name}</div>
+        ${meta}
+      </div>
+      <div class="file-actions">
+        <span class="version-tag">×${spoofVersions}</span>
+        ${dlBtn}
+        <button class="rm-btn" onclick="spoofRemoveFile(${i})">×</button>
+      </div>`;
     list.appendChild(item);
   });
 }
 
-function removeFile(i) {
-  files.splice(i, 1);
-  if (!files.length) {
-    dropzone.style.display = 'block';
-    document.getElementById('addMoreBtn').style.display = 'none';
-    document.getElementById('btnProcess').disabled = true;
-    document.getElementById('btnDownloadAll').disabled = true;
+function spoofRemoveFile(i) {
+  spoofFiles.splice(i, 1);
+  if (!spoofFiles.length) {
+    document.getElementById('spoofDropzone').style.display    = 'block';
+    document.getElementById('spoofAddMoreBtn').style.display  = 'none';
+    document.getElementById('spoofBtnProcess').disabled       = true;
+    document.getElementById('spoofBtnDownloadAll').disabled   = true;
   }
-  updateFileList();
+  spoofUpdateFileList();
 }
 
-async function processFiles() {
-  if (!files.length) return;
-  const hasVideo = files.some(f => !['jpg','jpeg','png','webp','gif','bmp'].includes(f.name.split('.').pop().toLowerCase()));
-  if (hasVideo && !window._ffmpegReady) { showToast('FFmpeg pas encore prêt !', 'error'); return; }
+// ─── PROCESS ─────────────────────────────────────────────
+async function spoofProcessFiles() {
+  if (!spoofFiles.length) return;
+  const hasVideo = spoofFiles.some(f => !isImageExt(f.name));
+  if (hasVideo && !_ffReady) { showToast('FFmpeg pas encore prêt !', 'error'); return; }
 
-  const btn = document.getElementById('btnProcess');
+  const btn  = document.getElementById('spoofBtnProcess');
+  const prog = document.getElementById('spoofProgressContainer');
   btn.classList.add('loading'); btn.disabled = true;
-  const prog = document.getElementById('progressContainer');
   prog.classList.add('visible');
-  processedBlobs = [];
-  let total = files.length * versions, done = 0;
+  spoofBlobs = [];
 
-  for (let i = 0; i < files.length; i++) {
-    files[i].status = 'processing'; files[i].progress = 0; files[i].results = [];
-    updateFileList();
+  const total = spoofFiles.length * spoofVersions;
+  let done = 0;
 
-    for (let v = 1; v <= versions; v++) {
-      files[i].progress = v; updateFileList();
-      document.getElementById('progressLabel').textContent = `Fichier ${i+1}/${files.length} — Version ${v}/${versions}`;
+  for (let i = 0; i < spoofFiles.length; i++) {
+    spoofFiles[i].status = 'processing'; spoofFiles[i].progress = 0; spoofFiles[i].results = [];
+    spoofUpdateFileList();
+
+    for (let v = 1; v <= spoofVersions; v++) {
+      spoofFiles[i].progress = v; spoofUpdateFileList();
+      document.getElementById('spoofProgressLabel').textContent =
+        `Fichier ${i + 1}/${spoofFiles.length} — Version ${v}/${spoofVersions}`;
 
       try {
-        const blob = await applyTransforms(files[i].file, v);
-        const name = generateName(files[i].name, v);
-        files[i].results.push(blob);
-        processedBlobs.push({ blob, name });
-      } catch(e) {
+        const blob = await spoofApplyTransforms(spoofFiles[i].file);
+        const name = spoofGenName(spoofFiles[i].name, v);
+        spoofFiles[i].results.push(blob);
+        spoofBlobs.push({ blob, name });
+      } catch (e) {
         console.error(e);
-        showToast('Erreur sur ' + files[i].name, 'error');
+        showToast('Erreur sur ' + spoofFiles[i].name, 'error');
       }
 
       done++;
-      const p = Math.round(done/total*100);
-      document.getElementById('progressBar').style.width = p + '%';
-      document.getElementById('progressPct').textContent = p + '%';
+      const pct = Math.round(done / total * 100);
+      document.getElementById('spoofProgressBar').style.width    = pct + '%';
+      document.getElementById('spoofProgressPct').textContent    = pct + '%';
     }
-    files[i].status = 'done'; updateFileList();
+
+    spoofFiles[i].status = 'done'; spoofUpdateFileList();
   }
 
   btn.classList.remove('loading'); btn.disabled = false;
-  document.getElementById('btnDownloadAll').disabled = false;
+  document.getElementById('spoofBtnDownloadAll').disabled = false;
   prog.classList.remove('visible');
-  showToast('✓ ' + processedBlobs.length + ' fichiers générés !', 'success');
+  showToast('✓ ' + spoofBlobs.length + ' fichiers générés !', 'success');
 }
 
-async function applyTransforms(file, version) {
-  const ext = file.name.split('.').pop().toLowerCase();
-  const isImage = ['jpg','jpeg','png','webp','gif','bmp'].includes(ext);
-
-  if (isImage) {
-    return await applyPhotoTransforms(file);
-  } else {
-    return await applyVideoTransforms(file);
-  }
+// ─── TRANSFORMS ──────────────────────────────────────────
+async function spoofApplyTransforms(file) {
+  return isImageExt(file.name)
+    ? spoofPhotoTransforms(file)
+    : spoofVideoTransforms(file);
 }
 
-async function applyPhotoTransforms(file) {
+async function spoofPhotoTransforms(file) {
   return new Promise((resolve, reject) => {
     const img = new Image();
     const url = URL.createObjectURL(file);
@@ -398,194 +1513,1437 @@ async function applyPhotoTransforms(file) {
       URL.revokeObjectURL(url);
       try {
         const canvas = document.createElement('canvas');
-        let w = img.naturalWidth;
-        let h = img.naturalHeight;
-
-        // Crop 1-3px
+        let w = img.naturalWidth, h = img.naturalHeight;
         let cropX = 0, cropY = 0, cropW = w, cropH = h;
+
         if (document.getElementById('t_crop').checked) {
           const c = randInt(1, 3);
-          cropX = c; cropY = c;
-          cropW = w - c * 2;
-          cropH = h - c * 2;
+          cropX = c; cropY = c; cropW = w - c * 2; cropH = h - c * 2;
         }
+        let zoom = 1;
+        if (document.getElementById('t_zoom').checked) zoom = rand(1.01, 1.02);
 
-        // Zoom 1-2%
-        let zoomFactor = 1;
-        if (document.getElementById('t_zoom').checked) {
-          zoomFactor = rand(1.01, 1.02);
-        }
-
-        canvas.width  = Math.round(cropW * zoomFactor);
-        canvas.height = Math.round(cropH * zoomFactor);
+        canvas.width  = Math.round(cropW * zoom);
+        canvas.height = Math.round(cropH * zoom);
         const ctx = canvas.getContext('2d');
 
-        // Rotation 0.1-0.5°
         if (document.getElementById('t_rotation').checked) {
-          const angle = rand(0.001, 0.009); // radians (~0.06–0.5°)
+          const a = rand(0.001, 0.009);
           ctx.translate(canvas.width / 2, canvas.height / 2);
-          ctx.rotate(angle);
+          ctx.rotate(a);
           ctx.translate(-canvas.width / 2, -canvas.height / 2);
         }
-
-        // Flip horizontal
         if (document.getElementById('t_flip').checked) {
-          ctx.translate(canvas.width, 0);
-          ctx.scale(-1, 1);
+          ctx.translate(canvas.width, 0); ctx.scale(-1, 1);
         }
-
         ctx.drawImage(img, cropX, cropY, cropW, cropH, 0, 0, canvas.width, canvas.height);
 
-        // Colour variation via pixel manipulation
         if (document.getElementById('t_couleurs').checked) {
-          const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-          const d = imageData.data;
-          const brightness = rand(-8, 8);
-          const contrast   = rand(0.97, 1.03);
-          const saturation = rand(0.97, 1.03);
-          for (let i = 0; i < d.length; i += 4) {
-            // brightness + contrast
-            d[i]   = Math.min(255, Math.max(0, (d[i]   + brightness) * contrast));
-            d[i+1] = Math.min(255, Math.max(0, (d[i+1] + brightness) * contrast));
-            d[i+2] = Math.min(255, Math.max(0, (d[i+2] + brightness) * contrast));
-            // saturation
-            const avg = (d[i] + d[i+1] + d[i+2]) / 3;
-            d[i]   = Math.min(255, Math.max(0, avg + (d[i]   - avg) * saturation));
-            d[i+1] = Math.min(255, Math.max(0, avg + (d[i+1] - avg) * saturation));
-            d[i+2] = Math.min(255, Math.max(0, avg + (d[i+2] - avg) * saturation));
+          const d  = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          const px = d.data;
+          const br = rand(-8, 8), co = rand(0.97, 1.03), sa = rand(0.97, 1.03);
+          for (let i = 0; i < px.length; i += 4) {
+            px[i]   = Math.min(255, Math.max(0, (px[i]   + br) * co));
+            px[i+1] = Math.min(255, Math.max(0, (px[i+1] + br) * co));
+            px[i+2] = Math.min(255, Math.max(0, (px[i+2] + br) * co));
+            const avg = (px[i] + px[i+1] + px[i+2]) / 3;
+            px[i]   = Math.min(255, Math.max(0, avg + (px[i]   - avg) * sa));
+            px[i+1] = Math.min(255, Math.max(0, avg + (px[i+1] - avg) * sa));
+            px[i+2] = Math.min(255, Math.max(0, avg + (px[i+2] - avg) * sa));
           }
-          ctx.putImageData(imageData, 0, 0);
+          ctx.putImageData(d, 0, 0);
         }
 
-        // Quality based on speed setting
-        const quality = currentSpeed === 'rapide' ? 0.88 : currentSpeed === 'equilibre' ? 0.92 : 0.96;
-        const outType = 'image/jpeg';
-
-        canvas.toBlob(blob => {
-          if (blob) resolve(blob);
-          else reject(new Error('Canvas toBlob failed'));
-        }, outType, quality);
-
-      } catch(e) { reject(e); }
+        const quality = spoofSpeed === 'rapide' ? 0.88 : spoofSpeed === 'equilibre' ? 0.92 : 0.96;
+        canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error('toBlob failed')), 'image/jpeg', quality);
+      } catch (e) { reject(e); }
     };
     img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('Image load failed')); };
     img.src = url;
   });
 }
 
-async function applyVideoTransforms(file) {
+async function spoofVideoTransforms(file) {
   const ff = window._ffmpeg;
-  const fetchFile = window._fetchFile;
   const ext = file.name.split('.').pop() || 'mp4';
-  const inName = `in_${Date.now()}.${ext}`;
-  const outName = `out_${Date.now()}.mp4`;
+  const ts  = Date.now();
+  const inN = `in_${ts}.${ext}`, outN = `out_${ts}.mp4`;
 
-  ff.FS('writeFile', inName, await fetchFile(file));
+  ff.FS('writeFile', inN, await window._fetchFile(file));
 
-  const filters = [];
+  const vf = [], af = [];
+
   if (document.getElementById('t_crop').checked) {
-    const c = randInt(1,3);
-    filters.push(`crop=iw-${c*2}:ih-${c*2}:${c}:${c},scale=iw+${c*2}:ih+${c*2}`);
+    const c = randInt(1, 3);
+    vf.push(`crop=iw-${c*2}:ih-${c*2}:${c}:${c},scale=iw+${c*2}:ih+${c*2}`);
   }
-  if (document.getElementById('t_zoom').checked) {
-    const z = rand(1.01,1.02).toFixed(4);
-    filters.push(`scale=iw*${z}:-2`);
-  }
-  if (document.getElementById('t_rotation').checked) {
-    const a = rand(0.002,0.009).toFixed(4);
-    filters.push(`rotate=${a}`);
-  }
-  if (document.getElementById('t_couleurs').checked) {
-    const b = rand(-0.03,0.03).toFixed(3);
-    const c = rand(0.97,1.03).toFixed(3);
-    const s = rand(0.97,1.03).toFixed(3);
-    filters.push(`eq=brightness=${b}:contrast=${c}:saturation=${s}`);
-  }
-  if (document.getElementById('t_flip').checked) filters.push('hflip');
+  if (document.getElementById('t_zoom').checked)
+    vf.push(`scale=iw*${rand(1.01,1.02).toFixed(4)}:-2`);
+  if (document.getElementById('t_rotation').checked)
+    vf.push(`rotate=${rand(0.002,0.009).toFixed(4)}`);
+  if (document.getElementById('t_couleurs').checked)
+    vf.push(`eq=brightness=${rand(-0.03,0.03).toFixed(3)}:contrast=${rand(0.97,1.03).toFixed(3)}:saturation=${rand(0.97,1.03).toFixed(3)}`);
+  if (document.getElementById('t_flip').checked) vf.push('hflip');
+  if (document.getElementById('t_pitch').checked)
+    af.push(`asetrate=44100*${rand(0.99,1.01).toFixed(4)},aresample=44100`);
 
-  const aFilters = [];
-  if (document.getElementById('t_pitch').checked) {
-    const pitch = rand(0.99,1.01).toFixed(4);
-    aFilters.push(`asetrate=44100*${pitch},aresample=44100`);
-  }
+  const crf    = document.getElementById('t_crf').checked ? String(randInt(20, 26)) : '23';
+  const preset = spoofSpeed === 'rapide' ? 'ultrafast' : spoofSpeed === 'equilibre' ? 'medium' : 'slow';
 
-  const crf = document.getElementById('t_crf').checked ? String(randInt(20,26)) : '23';
-  const preset = currentSpeed === 'rapide' ? 'ultrafast' : currentSpeed === 'equilibre' ? 'medium' : 'slow';
-
-  const args = ['-i', inName];
-  if (filters.length) args.push('-vf', filters.join(','));
-  if (aFilters.length) args.push('-af', aFilters.join(','));
+  const args = ['-i', inN];
+  if (vf.length) args.push('-vf', vf.join(','));
+  if (af.length) args.push('-af', af.join(','));
   if (document.getElementById('t_vitesse').checked) {
-    const spd = rand(0.97,1.03).toFixed(4);
-    args.push('-filter:v', `setpts=${(1/spd).toFixed(4)}*PTS`);
+    const spd = rand(0.97, 1.03).toFixed(4);
+    args.push('-filter:v', `setpts=${(1 / spd).toFixed(4)}*PTS`);
   }
   args.push('-crf', crf, '-preset', preset);
-  if (document.getElementById('t_meta').checked) {
-    const r = Math.random().toString(36).slice(2,8);
-    args.push('-metadata', `comment=nrx_${r}`);
-  }
-  args.push('-y', outName);
+  if (document.getElementById('t_meta').checked)
+    args.push('-metadata', `comment=nrx_${Math.random().toString(36).slice(2,8)}`);
+  args.push('-y', outN);
 
   await ff.run(...args);
-  const data = ff.FS('readFile', outName);
-  ff.FS('unlink', inName);
-  ff.FS('unlink', outName);
-
+  const data = ff.FS('readFile', outN);
+  ff.FS('unlink', inN); ff.FS('unlink', outN);
   return new Blob([data.buffer], { type: 'video/mp4' });
 }
 
-function generateName(originalName, v) {
-  const ext = originalName.split('.').pop();
-  if (document.getElementById('t_filename').checked) {
+// ─── FILE NAME ───────────────────────────────────────────
+function spoofGenName(original, v) {
+  const ext = original.split('.').pop();
+  if (document.getElementById('t_filename').checked)
     return `nrx_${Date.now()}_${Math.random().toString(36).slice(2,8)}.${ext}`;
-  }
-  return originalName.replace(/\.[^.]+$/, '') + `_v${v}.${ext}`;
+  return original.replace(/\.[^.]+$/, '') + `_v${v}.${ext}`;
 }
 
-function downloadFile(i) {
-  files[i].results?.forEach((blob, v) => {
+// ─── DOWNLOAD ────────────────────────────────────────────
+function spoofDownloadFile(i) {
+  spoofFiles[i].results?.forEach((blob, v) => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url; a.download = generateName(files[i].name, v+1); a.click();
+    a.href = url; a.download = spoofGenName(spoofFiles[i].name, v + 1); a.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   });
 }
 
-function downloadAll() {
-  if (!processedBlobs.length) return;
+// ══════════════════════════════════════════════════════════
+//  SHARED FFMPEG LOADER
+// ══════════════════════════════════════════════════════════
+let _ffReady   = false;
+let _ffLoading = false;
+const _ffWaiters = [];
 
-  // Si un seul fichier → téléchargement direct
-  if (processedBlobs.length === 1) {
-    const { blob, name } = processedBlobs[0];
+async function ensureFFmpeg(bannerEl) {
+  if (_ffReady) { bannerEl?.classList.add('hidden'); return; }
+  bannerEl?.classList.remove('hidden');
+  if (_ffLoading) {
+    await new Promise((res, rej) => _ffWaiters.push({ res, rej }));
+    bannerEl?.classList.add('hidden');
+    return;
+  }
+  _ffLoading = true;
+  document.getElementById('headerStatus').textContent = 'Chargement FFmpeg...';
+  try {
+    await loadScript('https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js');
+    const { createFFmpeg, fetchFile } = FFmpeg;
+    window._ffmpeg = createFFmpeg({
+      log: false,
+      corePath: 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js',
+    });
+    window._fetchFile = fetchFile;
+    await window._ffmpeg.load();
+    _ffReady = true;
+    document.getElementById('headerDot').className      = 'header-dot ready';
+    document.getElementById('headerStatus').textContent = 'FFmpeg — Prêt';
+    bannerEl?.classList.add('hidden');
+    _ffWaiters.forEach(w => w.res()); _ffWaiters.length = 0;
+  } catch(e) {
+    _ffLoading = false;
+    if (bannerEl) bannerEl.innerHTML =
+      `<div style="color:var(--red);font-size:13px;font-weight:600;">❌ Erreur FFmpeg : ${e.message} —
+       <button onclick="ensureFFmpeg(document.getElementById('${bannerEl.id}'))"
+         style="background:none;border:none;cursor:pointer;color:var(--black);font-weight:700;text-decoration:underline;font-size:13px;">
+         Réessayer</button></div>`;
+    document.getElementById('headerStatus').textContent = 'Erreur FFmpeg';
+    _ffWaiters.forEach(w => w.rej(e)); _ffWaiters.length = 0;
+    throw e;
+  }
+}
+
+// ══════════════════════════════════════════════════════════
+//  UPSCALE
+// ══════════════════════════════════════════════════════════
+let upscaleFiles  = [];
+let upscaleBlobs  = [];
+let upscaleFactor = 2;
+let upscaleFmt    = 'image/jpeg';
+let upscaleExt    = 'jpg';
+
+(function () {
+  const dz = document.getElementById('upscaleDropzone');
+  dz.addEventListener('dragover',  e => { e.preventDefault(); dz.classList.add('dragover'); });
+  dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
+  dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('dragover'); upscaleHandle([...e.dataTransfer.files]); });
+  document.getElementById('upscaleFileInput').addEventListener('change', e => { upscaleHandle([...e.target.files]); e.target.value = ''; });
+})();
+
+function upscaleSetFactor(f) {
+  upscaleFactor = f;
+  [2,3,4].forEach(n => document.getElementById('upscale-x'+n).classList.toggle('active', n === f));
+}
+function upscaleSetFmt(mime, ext) {
+  upscaleFmt = mime; upscaleExt = ext;
+  ['jpeg','png','webp'].forEach(k => document.getElementById('upscale-fmt-'+k).classList.remove('active'));
+  const key = mime === 'image/jpeg' ? 'jpeg' : mime === 'image/png' ? 'png' : 'webp';
+  document.getElementById('upscale-fmt-'+key).classList.add('active');
+}
+
+function upscaleHandle(files) {
+  files.filter(f => f.type.startsWith('image/')).forEach(f =>
+    upscaleFiles.push({ file: f, name: f.name, size: (f.size/1024/1024).toFixed(2), status: 'pending', blob: null })
+  );
+  if (upscaleFiles.length) {
+    document.getElementById('upscaleDropzone').style.display = 'none';
+    document.getElementById('upscaleAddMore').style.display  = 'flex';
+    document.getElementById('upscaleBtnProcess').disabled    = false;
+  }
+  upscaleRender();
+}
+
+function upscaleRender() {
+  const list = document.getElementById('upscaleFileList');
+  list.innerHTML = '';
+  upscaleFiles.forEach((f, i) => {
+    const div = document.createElement('div');
+    div.className = 'file-item' + (f.status === 'done' ? ' done' : f.status === 'processing' ? ' processing' : '');
+    let meta = f.status === 'done'
+      ? `<div class="file-meta done">✓ ${f.outW}×${f.outH}px · <span class="size-badge saved">${f.outSize} MB</span></div>`
+      : f.status === 'processing'
+      ? `<div class="file-meta processing">Traitement...</div>`
+      : `<div class="file-meta">${f.size} MB → ×${upscaleFactor}</div>`;
+    const dlBtn = f.status === 'done'
+      ? `<button class="dl-btn" onclick="upscaleDL(${i})">↓</button>`
+      : `<button class="dl-btn" disabled>↓</button>`;
+    div.innerHTML = `<div class="file-thumb">🖼</div><div class="file-info"><div class="file-name">${f.name}</div>${meta}</div>
+      <div class="file-actions">${dlBtn}<button class="rm-btn" onclick="upscaleRM(${i})">×</button></div>`;
+    list.appendChild(div);
+  });
+}
+
+function upscaleRM(i) {
+  upscaleFiles.splice(i, 1);
+  if (!upscaleFiles.length) {
+    document.getElementById('upscaleDropzone').style.display = 'block';
+    document.getElementById('upscaleAddMore').style.display  = 'none';
+    document.getElementById('upscaleBtnProcess').disabled    = true;
+    document.getElementById('upscaleBtnDownload').disabled   = true;
+  }
+  upscaleRender();
+}
+
+async function upscaleProcess() {
+  if (!upscaleFiles.length) return;
+  const btn = document.getElementById('upscaleBtnProcess');
+  btn.classList.add('loading'); btn.disabled = true;
+  document.getElementById('upscaleProgress').classList.add('visible');
+  upscaleBlobs = [];
+
+  for (let i = 0; i < upscaleFiles.length; i++) {
+    upscaleFiles[i].status = 'processing'; upscaleRender();
+    document.getElementById('upscaleProgressLabel').textContent = `Photo ${i+1}/${upscaleFiles.length}`;
+    try {
+      const blob = await upscaleOne(upscaleFiles[i].file);
+      upscaleFiles[i].blob    = blob;
+      upscaleFiles[i].outSize = (blob.size/1024/1024).toFixed(2);
+      upscaleFiles[i].status  = 'done';
+      upscaleBlobs.push({ blob, name: upscaleFiles[i].name.replace(/\.[^.]+$/, `_x${upscaleFactor}.${upscaleExt}`) });
+    } catch(e) { upscaleFiles[i].status = 'pending'; showToast('Erreur : ' + upscaleFiles[i].name, 'error'); }
+    const pct = Math.round((i+1)/upscaleFiles.length*100);
+    document.getElementById('upscaleProgressBar').style.width = pct + '%';
+    document.getElementById('upscaleProgressPct').textContent = pct + '%';
+    upscaleRender();
+  }
+
+  btn.classList.remove('loading'); btn.disabled = false;
+  document.getElementById('upscaleProgress').classList.remove('visible');
+  document.getElementById('upscaleBtnDownload').disabled = false;
+  showToast(`✓ ${upscaleBlobs.length} photo(s) agrandie(s) !`, 'success');
+}
+
+function upscaleOne(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image(), url = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      const c = document.createElement('canvas');
+      c.width  = img.naturalWidth  * upscaleFactor;
+      c.height = img.naturalHeight * upscaleFactor;
+      const ctx = c.getContext('2d');
+      ctx.imageSmoothingEnabled  = true;
+      ctx.imageSmoothingQuality  = 'high';
+      ctx.drawImage(img, 0, 0, c.width, c.height);
+      // store dimensions for display
+      img._w = c.width; img._h = c.height;
+      c.toBlob(b => {
+        if (!b) { reject(new Error('toBlob failed')); return; }
+        resolve(b);
+      }, upscaleFmt, upscaleFmt === 'image/png' ? undefined : 0.95);
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('load failed')); };
+    img.src = url;
+  }).then(blob => { return blob; });
+}
+
+function upscaleDL(i) {
+  const { blob, name } = upscaleBlobs[i];
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = name; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+async function upscaleDownloadAll() {
+  if (!upscaleBlobs.length) return;
+  if (upscaleBlobs.length === 1) { upscaleDL(0); return; }
+  showToast('↓ Création du ZIP...');
+  const zip = new JSZip();
+  upscaleBlobs.forEach(({ blob, name }) => zip.file(name, blob));
+  const zBlob = await zip.generateAsync({ type: 'blob' });
+  const url = URL.createObjectURL(zBlob);
+  const a = document.createElement('a'); a.href = url; a.download = `narix_upscale_${Date.now()}.zip`; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+  showToast(`✓ ZIP téléchargé (${upscaleBlobs.length} fichiers)`, 'success');
+}
+
+// ══════════════════════════════════════════════════════════
+//  COMPRESS
+// ══════════════════════════════════════════════════════════
+let compressFiles = [];
+let compressBlobs = [];
+let compressTab   = 'images';
+let compressLevel = 'medium';
+
+// image quality / video CRF per level
+const COMPRESS_IMG = { light: 0.88, medium: 0.65, heavy: 0.40 };
+const COMPRESS_CRF = { light: '18', medium: '28', heavy: '35' };
+
+(function () {
+  const dz = document.getElementById('compressDropzone');
+  dz.addEventListener('dragover',  e => { e.preventDefault(); dz.classList.add('dragover'); });
+  dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
+  dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('dragover'); compressHandle([...e.dataTransfer.files]); });
+  document.getElementById('compressFileInput').addEventListener('change', e => { compressHandle([...e.target.files]); e.target.value = ''; });
+})();
+
+function compressSwitchTab(tab) {
+  compressTab = tab;
+  compressFiles = []; compressBlobs = [];
+  document.getElementById('compressTabImg').classList.toggle('active', tab === 'images');
+  document.getElementById('compressTabVid').classList.toggle('active', tab === 'videos');
+  const isVid = tab === 'videos';
+  document.getElementById('compressDropTitle').textContent    = isVid ? 'Glisse tes vidéos ici' : 'Glisse tes images ici';
+  document.getElementById('compressDropSub').textContent      = isVid ? 'MP4, MOV, WEBM' : 'JPG, PNG, WEBP';
+  document.getElementById('compressFileInput').accept         = isVid ? 'video/*' : 'image/*';
+  document.getElementById('compressDropzone').style.display   = 'block';
+  document.getElementById('compressAddMore').style.display    = 'none';
+  document.getElementById('compressBtnProcess').disabled      = true;
+  document.getElementById('compressBtnDownload').disabled     = true;
+  document.getElementById('compressFileList').innerHTML       = '';
+  if (isVid) ensureFFmpeg(document.getElementById('compressFfmpegBanner')).catch(() => {});
+}
+
+function compressSetLevel(l) {
+  compressLevel = l;
+  ['light','medium','heavy'].forEach(k => document.getElementById('compress-'+k).classList.toggle('active', k === l));
+}
+
+function compressHandle(files) {
+  files.forEach(f => compressFiles.push({ file: f, name: f.name, size: (f.size/1024/1024).toFixed(2), status: 'pending', blob: null }));
+  if (compressFiles.length) {
+    document.getElementById('compressDropzone').style.display = 'none';
+    document.getElementById('compressAddMore').style.display  = 'flex';
+    document.getElementById('compressBtnProcess').disabled    = compressTab === 'videos' && !_ffReady;
+  }
+  compressRender();
+}
+
+function compressRender() {
+  const list = document.getElementById('compressFileList');
+  list.innerHTML = '';
+  compressFiles.forEach((f, i) => {
+    const div = document.createElement('div');
+    div.className = 'file-item' + (f.status === 'done' ? ' done' : f.status === 'processing' ? ' processing' : '');
+    let meta = f.status === 'done'
+      ? `<div class="file-meta done">✓ ${f.size} MB → <span class="size-badge saved">${f.outSize} MB</span></div>`
+      : f.status === 'processing' ? `<div class="file-meta processing">Compression...</div>`
+      : `<div class="file-meta">${f.size} MB</div>`;
+    const isVid = !isImageExt(f.name);
+    const dlBtn = f.status === 'done'
+      ? `<button class="dl-btn" onclick="compressDL(${i})">↓</button>`
+      : `<button class="dl-btn" disabled>↓</button>`;
+    div.innerHTML = `<div class="file-thumb">${isVid ? '🎬' : '🖼'}</div><div class="file-info"><div class="file-name">${f.name}</div>${meta}</div>
+      <div class="file-actions">${dlBtn}<button class="rm-btn" onclick="compressRM(${i})">×</button></div>`;
+    list.appendChild(div);
+  });
+}
+
+function compressRM(i) {
+  compressFiles.splice(i, 1);
+  if (!compressFiles.length) {
+    document.getElementById('compressDropzone').style.display = 'block';
+    document.getElementById('compressAddMore').style.display  = 'none';
+    document.getElementById('compressBtnProcess').disabled    = true;
+    document.getElementById('compressBtnDownload').disabled   = true;
+  }
+  compressRender();
+}
+
+async function compressProcess() {
+  if (!compressFiles.length) return;
+  if (compressTab === 'videos' && !_ffReady) { showToast('FFmpeg pas encore prêt !', 'error'); return; }
+  const btn = document.getElementById('compressBtnProcess');
+  btn.classList.add('loading'); btn.disabled = true;
+  document.getElementById('compressProgress').classList.add('visible');
+  compressBlobs = [];
+
+  for (let i = 0; i < compressFiles.length; i++) {
+    compressFiles[i].status = 'processing'; compressRender();
+    document.getElementById('compressProgressLabel').textContent = `Fichier ${i+1}/${compressFiles.length}`;
+    try {
+      let blob;
+      if (isImageExt(compressFiles[i].name)) {
+        blob = await compressImage(compressFiles[i].file);
+      } else {
+        blob = await compressVideo(compressFiles[i].file);
+      }
+      compressFiles[i].blob    = blob;
+      compressFiles[i].outSize = (blob.size/1024/1024).toFixed(2);
+      compressFiles[i].status  = 'done';
+      const ext = compressFiles[i].name.split('.').pop();
+      compressBlobs.push({ blob, name: compressFiles[i].name.replace(/\.[^.]+$/, `_compressed.${ext}`) });
+    } catch(e) { console.error(e); compressFiles[i].status = 'pending'; showToast('Erreur : ' + compressFiles[i].name, 'error'); }
+    const pct = Math.round((i+1)/compressFiles.length*100);
+    document.getElementById('compressProgressBar').style.width = pct + '%';
+    document.getElementById('compressProgressPct').textContent = pct + '%';
+    compressRender();
+  }
+
+  btn.classList.remove('loading'); btn.disabled = false;
+  document.getElementById('compressProgress').classList.remove('visible');
+  document.getElementById('compressBtnDownload').disabled = false;
+  showToast(`✓ ${compressBlobs.length} fichier(s) compressé(s) !`, 'success');
+}
+
+function compressImage(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image(), url = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      const c = document.createElement('canvas');
+      c.width = img.naturalWidth; c.height = img.naturalHeight;
+      c.getContext('2d').drawImage(img, 0, 0);
+      c.toBlob(b => b ? resolve(b) : reject(new Error('toBlob')), 'image/jpeg', COMPRESS_IMG[compressLevel]);
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('load')); };
+    img.src = url;
+  });
+}
+
+async function compressVideo(file) {
+  const ff  = window._ffmpeg;
+  const ext = file.name.split('.').pop() || 'mp4';
+  const ts  = Date.now();
+  const inN = `cin_${ts}.${ext}`, outN = `cout_${ts}.mp4`;
+  ff.FS('writeFile', inN, await window._fetchFile(file));
+  await ff.run('-i', inN, '-crf', COMPRESS_CRF[compressLevel], '-preset', 'fast', '-y', outN);
+  const data = ff.FS('readFile', outN);
+  ff.FS('unlink', inN); ff.FS('unlink', outN);
+  return new Blob([data.buffer], { type: 'video/mp4' });
+}
+
+function compressDL(i) {
+  const { blob, name } = compressBlobs[i];
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = name; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+async function compressDownloadAll() {
+  if (!compressBlobs.length) return;
+  if (compressBlobs.length === 1) { compressDL(0); return; }
+  showToast('↓ Création du ZIP...');
+  const zip = new JSZip();
+  compressBlobs.forEach(({ blob, name }) => zip.file(name, blob));
+  const zBlob = await zip.generateAsync({ type: 'blob' });
+  const url = URL.createObjectURL(zBlob);
+  const a = document.createElement('a'); a.href = url; a.download = `narix_compress_${Date.now()}.zip`; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+  showToast(`✓ ZIP téléchargé (${compressBlobs.length} fichiers)`, 'success');
+}
+
+// ══════════════════════════════════════════════════════════
+//  CONVERT
+// ══════════════════════════════════════════════════════════
+let convertFiles = [];
+let convertBlobs = [];
+let convertTab   = 'images';
+let convertFmt   = 'image/jpeg';
+let convertExt   = 'jpg';
+
+(function () {
+  const dz = document.getElementById('convertDropzone');
+  dz.addEventListener('dragover',  e => { e.preventDefault(); dz.classList.add('dragover'); });
+  dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
+  dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('dragover'); convertHandle([...e.dataTransfer.files]); });
+  document.getElementById('convertFileInput').addEventListener('change', e => { convertHandle([...e.target.files]); e.target.value = ''; });
+})();
+
+function convertSwitchTab(tab) {
+  convertTab = tab;
+  convertFiles = []; convertBlobs = [];
+  document.getElementById('convertTabImg').classList.toggle('active', tab === 'images');
+  document.getElementById('convertTabVid').classList.toggle('active', tab === 'videos');
+  const isVid = tab === 'videos';
+  document.getElementById('convertDropTitle').textContent  = isVid ? 'Glisse tes vidéos ici' : 'Glisse tes images ici';
+  document.getElementById('convertDropSub').textContent    = isVid ? 'MOV, WEBM, AVI...' : 'JPG, PNG, WEBP';
+  document.getElementById('convertFileInput').accept       = isVid ? 'video/*' : 'image/*';
+  document.getElementById('convertDropzone').style.display = 'block';
+  document.getElementById('convertAddMore').style.display  = 'none';
+  document.getElementById('convertBtnProcess').disabled    = true;
+  document.getElementById('convertBtnDownload').disabled   = true;
+  document.getElementById('convertFileList').innerHTML     = '';
+  // Show/hide format card: videos always → MP4 (no choice)
+  document.getElementById('convertFmtCard').style.display = isVid ? 'none' : 'block';
+  document.getElementById('convertBtnProcess').querySelector('.btn-text').textContent =
+    isVid ? 'Convertir en MP4' : 'Convertir les images';
+  if (isVid) ensureFFmpeg(document.getElementById('convertFfmpegBanner')).catch(() => {});
+}
+
+function convertSetFmt(mime, ext) {
+  convertFmt = mime; convertExt = ext;
+  ['jpg','png','webp'].forEach(k => document.getElementById('convert-fmt-'+k).classList.remove('active'));
+  const key = mime === 'image/jpeg' ? 'jpg' : mime === 'image/png' ? 'png' : 'webp';
+  document.getElementById('convert-fmt-'+key).classList.add('active');
+}
+
+function convertHandle(files) {
+  files.forEach(f => convertFiles.push({ file: f, name: f.name, size: (f.size/1024/1024).toFixed(2), status: 'pending', blob: null }));
+  if (convertFiles.length) {
+    document.getElementById('convertDropzone').style.display = 'none';
+    document.getElementById('convertAddMore').style.display  = 'flex';
+    document.getElementById('convertBtnProcess').disabled    = convertTab === 'videos' && !_ffReady;
+  }
+  convertRender();
+}
+
+function convertRender() {
+  const list = document.getElementById('convertFileList');
+  list.innerHTML = '';
+  const outExt = convertTab === 'videos' ? 'mp4' : convertExt;
+  convertFiles.forEach((f, i) => {
+    const div = document.createElement('div');
+    div.className = 'file-item' + (f.status === 'done' ? ' done' : f.status === 'processing' ? ' processing' : '');
+    let meta = f.status === 'done'
+      ? `<div class="file-meta done">✓ Converti en .${outExt}</div>`
+      : f.status === 'processing' ? `<div class="file-meta processing">Conversion...</div>`
+      : `<div class="file-meta">${f.size} MB → .${outExt}</div>`;
+    const isVid = !isImageExt(f.name);
+    const dlBtn = f.status === 'done'
+      ? `<button class="dl-btn" onclick="convertDL(${i})">↓</button>`
+      : `<button class="dl-btn" disabled>↓</button>`;
+    div.innerHTML = `<div class="file-thumb">${isVid ? '🎬' : '🖼'}</div><div class="file-info"><div class="file-name">${f.name}</div>${meta}</div>
+      <div class="file-actions">${dlBtn}<button class="rm-btn" onclick="convertRM(${i})">×</button></div>`;
+    list.appendChild(div);
+  });
+}
+
+function convertRM(i) {
+  convertFiles.splice(i, 1);
+  if (!convertFiles.length) {
+    document.getElementById('convertDropzone').style.display = 'block';
+    document.getElementById('convertAddMore').style.display  = 'none';
+    document.getElementById('convertBtnProcess').disabled    = true;
+    document.getElementById('convertBtnDownload').disabled   = true;
+  }
+  convertRender();
+}
+
+async function convertProcess() {
+  if (!convertFiles.length) return;
+  if (convertTab === 'videos' && !_ffReady) { showToast('FFmpeg pas encore prêt !', 'error'); return; }
+  const btn = document.getElementById('convertBtnProcess');
+  btn.classList.add('loading'); btn.disabled = true;
+  document.getElementById('convertProgress').classList.add('visible');
+  convertBlobs = [];
+
+  for (let i = 0; i < convertFiles.length; i++) {
+    convertFiles[i].status = 'processing'; convertRender();
+    document.getElementById('convertProgressLabel').textContent = `Fichier ${i+1}/${convertFiles.length}`;
+    try {
+      let blob, outName;
+      if (convertTab === 'images') {
+        blob    = await convertImage(convertFiles[i].file);
+        outName = convertFiles[i].name.replace(/\.[^.]+$/, `.${convertExt}`);
+      } else {
+        blob    = await convertVideo(convertFiles[i].file);
+        outName = convertFiles[i].name.replace(/\.[^.]+$/, '.mp4');
+      }
+      convertFiles[i].blob   = blob;
+      convertFiles[i].status = 'done';
+      convertBlobs.push({ blob, name: outName });
+    } catch(e) { console.error(e); convertFiles[i].status = 'pending'; showToast('Erreur : ' + convertFiles[i].name, 'error'); }
+    const pct = Math.round((i+1)/convertFiles.length*100);
+    document.getElementById('convertProgressBar').style.width = pct + '%';
+    document.getElementById('convertProgressPct').textContent = pct + '%';
+    convertRender();
+  }
+
+  btn.classList.remove('loading'); btn.disabled = false;
+  document.getElementById('convertProgress').classList.remove('visible');
+  document.getElementById('convertBtnDownload').disabled = false;
+  showToast(`✓ ${convertBlobs.length} fichier(s) converti(s) !`, 'success');
+}
+
+function convertImage(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image(), url = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      const c = document.createElement('canvas');
+      c.width = img.naturalWidth; c.height = img.naturalHeight;
+      c.getContext('2d').drawImage(img, 0, 0);
+      c.toBlob(b => b ? resolve(b) : reject(new Error('toBlob')),
+        convertFmt, convertFmt === 'image/png' ? undefined : 0.92);
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('load')); };
+    img.src = url;
+  });
+}
+
+async function convertVideo(file) {
+  const ff  = window._ffmpeg;
+  const ext = file.name.split('.').pop() || 'mp4';
+  const ts  = Date.now();
+  const inN = `cvtin_${ts}.${ext}`, outN = `cvtout_${ts}.mp4`;
+  ff.FS('writeFile', inN, await window._fetchFile(file));
+  await ff.run('-i', inN, '-c:v', 'libx264', '-preset', 'fast', '-crf', '23', '-c:a', 'aac', '-y', outN);
+  const data = ff.FS('readFile', outN);
+  ff.FS('unlink', inN); ff.FS('unlink', outN);
+  return new Blob([data.buffer], { type: 'video/mp4' });
+}
+
+function convertDL(i) {
+  const { blob, name } = convertBlobs[i];
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = name; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+async function convertDownloadAll() {
+  if (!convertBlobs.length) return;
+  if (convertBlobs.length === 1) { convertDL(0); return; }
+  showToast('↓ Création du ZIP...');
+  const zip = new JSZip();
+  convertBlobs.forEach(({ blob, name }) => zip.file(name, blob));
+  const zBlob = await zip.generateAsync({ type: 'blob' });
+  const url = URL.createObjectURL(zBlob);
+  const a = document.createElement('a'); a.href = url; a.download = `narix_convert_${Date.now()}.zip`; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+  showToast(`✓ ZIP téléchargé (${convertBlobs.length} fichiers)`, 'success');
+}
+
+// ══════════════════════════════════════════════════════════
+//  WATERMARK REMOVER
+// ══════════════════════════════════════════════════════════
+let wmImg       = null;   // original Image object
+let wmCanvas    = null;   // display + work canvas
+let wmCtx       = null;
+let wmSel       = null;   // { x, y, w, h } in display coords
+let wmDragging  = false;
+let wmDragStart = null;
+let wmMethod    = 'blur';
+let wmResultBlob = null;
+let wmScale     = 1;      // canvas CSS px → natural px ratio
+
+function wmReset() {
+  wmImg = wmCanvas = wmCtx = wmSel = wmResultBlob = null;
+  wmDragging = false;
+  document.getElementById('wmDropzone').style.display = 'block';
+  document.getElementById('wmEditor').style.display   = 'none';
+  document.getElementById('wmBtnDownload').style.display = 'none';
+}
+
+(function () {
+  const dz = document.getElementById('wmDropzone');
+  dz.addEventListener('dragover',  e => { e.preventDefault(); dz.classList.add('dragover'); });
+  dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
+  dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('dragover'); wmLoad(e.dataTransfer.files[0]); });
+  document.getElementById('wmFileInput').addEventListener('change', e => { wmLoad(e.target.files[0]); e.target.value = ''; });
+})();
+
+function wmSetMethod(m) {
+  wmMethod = m;
+  ['blur','fill'].forEach(k => document.getElementById('wm-'+k).classList.toggle('active', k === m));
+}
+
+function wmLoad(file) {
+  if (!file || !file.type.startsWith('image/')) return;
+  const url = URL.createObjectURL(file);
+  const img = new Image();
+  img.onload = () => {
+    URL.revokeObjectURL(url);
+    wmImg = img;
+    document.getElementById('wmDropzone').style.display = 'none';
+    document.getElementById('wmEditor').style.display   = 'block';
+    document.getElementById('wmBtnDownload').style.display = 'none';
+    wmSel = null;
+    wmSetupCanvas();
+  };
+  img.onerror = () => { URL.revokeObjectURL(url); showToast('Erreur de chargement', 'error'); };
+  img.src = url;
+}
+
+function wmSetupCanvas() {
+  const wrap = document.getElementById('wmCanvasWrap');
+  wmCanvas = document.getElementById('wmCanvas');
+  wmCtx = wmCanvas.getContext('2d');
+
+  const maxW = wrap.clientWidth || 800;
+  wmScale = wmImg.naturalWidth / Math.min(maxW, wmImg.naturalWidth);
+
+  wmCanvas.width  = Math.round(wmImg.naturalWidth  / wmScale);
+  wmCanvas.height = Math.round(wmImg.naturalHeight / wmScale);
+  wmDrawBase();
+
+  wmCanvas.onmousedown = wmCanvas.ontouchstart = wmStartDrag;
+  wmCanvas.onmousemove = wmCanvas.ontouchmove  = wmDoDrag;
+  wmCanvas.onmouseup   = wmCanvas.ontouchend   = wmEndDrag;
+}
+
+function wmDrawBase() {
+  wmCtx.drawImage(wmImg, 0, 0, wmCanvas.width, wmCanvas.height);
+  if (wmSel && wmSel.w && wmSel.h) {
+    wmCtx.strokeStyle = '#fff';
+    wmCtx.lineWidth   = 2;
+    wmCtx.setLineDash([5, 4]);
+    wmCtx.strokeRect(wmSel.x, wmSel.y, wmSel.w, wmSel.h);
+    wmCtx.fillStyle = 'rgba(255,255,255,0.12)';
+    wmCtx.fillRect(wmSel.x, wmSel.y, wmSel.w, wmSel.h);
+    wmCtx.setLineDash([]);
+    document.getElementById('wmSelInfo').textContent =
+      `Sélection : ${Math.abs(Math.round(wmSel.w * wmScale))}×${Math.abs(Math.round(wmSel.h * wmScale))} px`;
+  } else {
+    document.getElementById('wmSelInfo').textContent = 'Dessine un rectangle sur le filigrane';
+  }
+}
+
+function wmGetPos(e) {
+  const r = wmCanvas.getBoundingClientRect();
+  const src = e.touches ? e.touches[0] : e;
+  return { x: src.clientX - r.left, y: src.clientY - r.top };
+}
+
+function wmStartDrag(e) {
+  e.preventDefault();
+  wmDragging = true;
+  wmDragStart = wmGetPos(e);
+  wmSel = { x: wmDragStart.x, y: wmDragStart.y, w: 0, h: 0 };
+}
+function wmDoDrag(e) {
+  if (!wmDragging) return;
+  e.preventDefault();
+  const p = wmGetPos(e);
+  wmSel.w = p.x - wmDragStart.x;
+  wmSel.h = p.y - wmDragStart.y;
+  wmDrawBase();
+}
+function wmEndDrag(e) {
+  wmDragging = false;
+  if (wmSel && Math.abs(wmSel.w) < 4 && Math.abs(wmSel.h) < 4) wmSel = null;
+  wmDrawBase();
+}
+
+function wmClearSel() {
+  wmSel = null;
+  wmDrawBase();
+  document.getElementById('wmBtnDownload').style.display = 'none';
+}
+
+async function wmApply() {
+  if (!wmSel || !wmSel.w || !wmSel.h) { showToast('Dessine d\'abord une sélection', 'error'); return; }
+
+  // Normalise rect (handle negative w/h from reverse-drag)
+  const rx = wmSel.w < 0 ? wmSel.x + wmSel.w : wmSel.x;
+  const ry = wmSel.h < 0 ? wmSel.y + wmSel.h : wmSel.y;
+  const rw = Math.abs(wmSel.w);
+  const rh = Math.abs(wmSel.h);
+
+  // Work at full resolution
+  const offC = document.createElement('canvas');
+  offC.width  = wmImg.naturalWidth;
+  offC.height = wmImg.naturalHeight;
+  const offCtx = offC.getContext('2d');
+  offCtx.drawImage(wmImg, 0, 0);
+
+  // Scale selection back to natural coords
+  const nx = Math.round(rx * wmScale);
+  const ny = Math.round(ry * wmScale);
+  const nw = Math.round(rw * wmScale);
+  const nh = Math.round(rh * wmScale);
+
+  if (wmMethod === 'blur') {
+    // Extract region, apply heavy blur, draw back
+    const tmp = document.createElement('canvas');
+    tmp.width = nw; tmp.height = nh;
+    const tCtx = tmp.getContext('2d');
+    tCtx.drawImage(wmImg, nx, ny, nw, nh, 0, 0, nw, nh);
+    // Stack multiple pixel-smear passes for a strong blur effect
+    const passes = Math.max(6, Math.round(Math.min(nw, nh) / 8));
+    for (let p = 0; p < passes; p++) {
+      tCtx.filter = `blur(${Math.round(Math.min(nw, nh) / 4)}px)`;
+      tCtx.drawImage(tmp, 0, 0);
+      tCtx.filter = 'none';
+    }
+    offCtx.drawImage(tmp, nx, ny);
+  } else {
+    // Sample a thin border around the selection, compute average colour, fill
+    const sample = offCtx.getImageData(nx, ny, nw, nh).data;
+    let r = 0, g = 0, b = 0, count = 0;
+    for (let i = 0; i < sample.length; i += 4) {
+      r += sample[i]; g += sample[i+1]; b += sample[i+2]; count++;
+    }
+    r = Math.round(r/count); g = Math.round(g/count); b = Math.round(b/count);
+    offCtx.fillStyle = `rgb(${r},${g},${b})`;
+    offCtx.fillRect(nx, ny, nw, nh);
+  }
+
+  offC.toBlob(blob => {
+    wmResultBlob = blob;
+    // Refresh display canvas with processed image
+    const pUrl = URL.createObjectURL(blob);
+    const newImg = new Image();
+    newImg.onload = () => {
+      URL.revokeObjectURL(pUrl);
+      wmImg = newImg;
+      wmSel = null;
+      wmSetupCanvas();
+      showToast('✓ Filigrane supprimé !', 'success');
+    };
+    newImg.src = pUrl;
+    document.getElementById('wmBtnDownload').style.display = 'flex';
+  }, 'image/jpeg', 0.95);
+}
+
+function wmDownload() {
+  if (!wmResultBlob) return;
+  const url = URL.createObjectURL(wmResultBlob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `narix_nowm_${Date.now()}.jpg`; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+// ══════════════════════════════════════════════════════════
+//  THUMBNAIL EXTRACTOR
+// ══════════════════════════════════════════════════════════
+let thumbBlob = null;
+
+(function () {
+  const dz = document.getElementById('thumbDropzone');
+  dz.addEventListener('dragover',  e => { e.preventDefault(); dz.classList.add('dragover'); });
+  dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
+  dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('dragover'); thumbLoad(e.dataTransfer.files[0]); });
+  document.getElementById('thumbFileInput').addEventListener('change', e => { thumbLoad(e.target.files[0]); e.target.value = ''; });
+})();
+
+function thumbLoad(file) {
+  if (!file || !file.type.startsWith('video/')) { showToast('Fichier vidéo requis', 'error'); return; }
+  document.getElementById('thumbDropzone').style.display = 'none';
+  document.getElementById('thumbEditor').style.display   = 'block';
+  document.getElementById('thumbBtnDownload').style.display = 'none';
+  document.getElementById('thumbCapturePreview').style.display = 'none';
+  thumbBlob = null;
+
+  const video = document.getElementById('thumbVideo');
+  const seek  = document.getElementById('thumbSeek');
+
+  video.src = URL.createObjectURL(file);
+  video.onloadedmetadata = () => {
+    seek.max   = video.duration;
+    seek.value = 0;
+    thumbUpdateTime(video.currentTime);
+  };
+  video.ontimeupdate = () => {
+    seek.value = video.currentTime;
+    thumbUpdateTime(video.currentTime);
+  };
+  seek.oninput = () => { video.currentTime = parseFloat(seek.value); };
+}
+
+function thumbUpdateTime(t) {
+  const m  = Math.floor(t / 60);
+  const s  = Math.floor(t % 60);
+  const cs = Math.floor((t % 1) * 100);
+  document.getElementById('thumbTime').textContent =
+    `${m}:${String(s).padStart(2,'0')}.${String(cs).padStart(2,'0')}`;
+}
+
+function thumbTogglePlay() {
+  const video = document.getElementById('thumbVideo');
+  const btn   = document.getElementById('thumbPlayBtn');
+  if (video.paused) { video.play(); btn.textContent = '⏸ Pause'; }
+  else              { video.pause(); btn.textContent = '▶ Lecture'; }
+}
+
+function thumbStep(delta) {
+  const video = document.getElementById('thumbVideo');
+  video.pause();
+  document.getElementById('thumbPlayBtn').textContent = '▶ Lecture';
+  video.currentTime = Math.max(0, Math.min(video.duration, video.currentTime + delta));
+}
+
+function thumbCapture() {
+  const video = document.getElementById('thumbVideo');
+  const btn   = document.getElementById('thumbBtnCapture');
+  btn.classList.add('loading');
+  video.pause();
+  document.getElementById('thumbPlayBtn').textContent = '▶ Lecture';
+
+  const c = document.createElement('canvas');
+  c.width  = video.videoWidth;
+  c.height = video.videoHeight;
+  c.getContext('2d').drawImage(video, 0, 0);
+  c.toBlob(blob => {
+    btn.classList.remove('loading');
+    thumbBlob = blob;
+    const url = URL.createObjectURL(blob);
+    const prev = document.getElementById('thumbPreviewImg');
+    prev.onload = () => URL.revokeObjectURL(url);
+    prev.src = url;
+    document.getElementById('thumbCapturePreview').style.display = 'block';
+    document.getElementById('thumbBtnDownload').style.display    = 'flex';
+    showToast('✓ Frame capturée !', 'success');
+  }, 'image/jpeg', 0.95);
+}
+
+function thumbDownload() {
+  if (!thumbBlob) return;
+  const url = URL.createObjectURL(thumbBlob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `narix_thumb_${Date.now()}.jpg`;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+// ══════════════════════════════════════════════════════════
+//  METADATA REMOVER
+// ══════════════════════════════════════════════════════════
+let metaFiles = [];
+let metaBlobs = [];
+
+(function () {
+  const dz = document.getElementById('metaDropzone');
+  dz.addEventListener('dragover',  e => { e.preventDefault(); dz.classList.add('dragover'); });
+  dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
+  dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('dragover'); metaHandle([...e.dataTransfer.files]); });
+  document.getElementById('metaFileInput').addEventListener('change', e => { metaHandle([...e.target.files]); e.target.value = ''; });
+})();
+
+function metaHandle(files) {
+  files.filter(f => f.type.startsWith('image/')).forEach(f =>
+    metaFiles.push({ file: f, name: f.name, size: (f.size/1024/1024).toFixed(2), status: 'pending', blob: null })
+  );
+  if (metaFiles.length) {
+    document.getElementById('metaDropzone').style.display = 'none';
+    document.getElementById('metaAddMore').style.display  = 'flex';
+    document.getElementById('metaBtnProcess').disabled    = false;
+  }
+  metaRender();
+}
+
+function metaRender() {
+  const list = document.getElementById('metaFileList');
+  list.innerHTML = '';
+  metaFiles.forEach((f, i) => {
+    const div = document.createElement('div');
+    div.className = 'file-item' + (f.status === 'done' ? ' done' : f.status === 'processing' ? ' processing' : '');
+    const meta = f.status === 'done'
+      ? `<div class="file-meta done">✓ Métadonnées supprimées</div>`
+      : f.status === 'processing' ? `<div class="file-meta processing">Traitement...</div>`
+      : `<div class="file-meta">${f.size} MB</div>`;
+    const dlBtn = f.status === 'done'
+      ? `<button class="dl-btn" onclick="metaDL(${i})">↓</button>`
+      : `<button class="dl-btn" disabled>↓</button>`;
+    div.innerHTML = `<div class="file-thumb">🖼</div><div class="file-info"><div class="file-name">${f.name}</div>${meta}</div>
+      <div class="file-actions">${dlBtn}<button class="rm-btn" onclick="metaRM(${i})">×</button></div>`;
+    list.appendChild(div);
+  });
+}
+
+function metaRM(i) {
+  metaFiles.splice(i, 1);
+  if (!metaFiles.length) {
+    document.getElementById('metaDropzone').style.display = 'block';
+    document.getElementById('metaAddMore').style.display  = 'none';
+    document.getElementById('metaBtnProcess').disabled    = true;
+    document.getElementById('metaBtnDownload').disabled   = true;
+  }
+  metaRender();
+}
+
+async function metaProcess() {
+  if (!metaFiles.length) return;
+  const btn = document.getElementById('metaBtnProcess');
+  btn.classList.add('loading'); btn.disabled = true;
+  document.getElementById('metaProgress').classList.add('visible');
+  metaBlobs = [];
+
+  for (let i = 0; i < metaFiles.length; i++) {
+    metaFiles[i].status = 'processing'; metaRender();
+    document.getElementById('metaProgressLabel').textContent = `Photo ${i+1}/${metaFiles.length}`;
+    try {
+      const blob = await metaStrip(metaFiles[i].file);
+      metaFiles[i].blob = blob; metaFiles[i].status = 'done';
+      metaBlobs.push({ blob, name: metaFiles[i].name.replace(/\.[^.]+$/, '_clean.jpg') });
+    } catch(e) { metaFiles[i].status = 'pending'; showToast('Erreur : ' + metaFiles[i].name, 'error'); }
+    const pct = Math.round((i+1)/metaFiles.length*100);
+    document.getElementById('metaProgressBar').style.width = pct + '%';
+    document.getElementById('metaProgressPct').textContent = pct + '%';
+    metaRender();
+  }
+
+  btn.classList.remove('loading'); btn.disabled = false;
+  document.getElementById('metaProgress').classList.remove('visible');
+  document.getElementById('metaBtnDownload').disabled = false;
+  showToast(`✓ ${metaBlobs.length} photo(s) nettoyée(s) !`, 'success');
+}
+
+function metaStrip(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image(), url = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      const c = document.createElement('canvas');
+      c.width = img.naturalWidth; c.height = img.naturalHeight;
+      c.getContext('2d').drawImage(img, 0, 0);
+      // toBlob without quality preserves more detail; use 0.98 for near-lossless JPEG
+      c.toBlob(b => b ? resolve(b) : reject(new Error('toBlob')), 'image/jpeg', 0.98);
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('load')); };
+    img.src = url;
+  });
+}
+
+function metaDL(i) {
+  const { blob, name } = metaBlobs[i];
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = name; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+async function metaDownloadAll() {
+  if (!metaBlobs.length) return;
+  if (metaBlobs.length === 1) { metaDL(0); return; }
+  showToast('↓ Création du ZIP...');
+  const zip = new JSZip();
+  metaBlobs.forEach(({ blob, name }) => zip.file(name, blob));
+  const zBlob = await zip.generateAsync({ type: 'blob' });
+  const url = URL.createObjectURL(zBlob);
+  const a = document.createElement('a'); a.href = url; a.download = `narix_clean_${Date.now()}.zip`; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+  showToast(`✓ ZIP téléchargé (${metaBlobs.length} fichiers)`, 'success');
+}
+
+// ══════════════════════════════════════════════════════════
+//  CROP
+// ══════════════════════════════════════════════════════════
+let cropFiles   = [];
+let cropBlobs   = [];
+let cropRatioW  = 1;
+let cropRatioH  = 1;
+
+// Preview pan state
+let cropImg       = null;   // first image's Image obj
+let cropCanvasEl  = null;
+let cropCanvasCtx = null;
+let cropOffX      = 0;      // offset of image inside crop box (display px)
+let cropOffY      = 0;
+let cropBoxW      = 0;      // crop box size in display px
+let cropBoxH      = 0;
+let cropImgDispW  = 0;      // displayed image size (canvas size)
+let cropImgDispH  = 0;
+let cropDragging  = false;
+let cropDragLast  = null;
+
+(function () {
+  const dz = document.getElementById('cropDropzone');
+  dz.addEventListener('dragover',  e => { e.preventDefault(); dz.classList.add('dragover'); });
+  dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
+  dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('dragover'); cropHandle([...e.dataTransfer.files]); });
+  document.getElementById('cropFileInput').addEventListener('change', e => { cropHandle([...e.target.files]); e.target.value = ''; });
+})();
+
+function cropSetPreset(w, h, btnId) {
+  cropRatioW = w; cropRatioH = h;
+  document.querySelectorAll('.crop-preset').forEach(b => b.classList.remove('active'));
+  document.getElementById(btnId).classList.add('active');
+  document.getElementById('cropCustomRow').style.display = 'none';
+  if (cropImg) cropInitPreview();
+}
+
+function cropFocusCustom() {
+  document.querySelectorAll('.crop-preset').forEach(b => b.classList.remove('active'));
+  document.getElementById('crop-custom').classList.add('active');
+  const row = document.getElementById('cropCustomRow');
+  row.style.display = 'flex';
+}
+
+function cropApplyCustom() {
+  const w = parseInt(document.getElementById('cropCW').value) || 1;
+  const h = parseInt(document.getElementById('cropCH').value) || 1;
+  cropRatioW = w; cropRatioH = h;
+  document.getElementById('cropCustomDesc').textContent = `${w}:${h} personnalisé`;
+  if (cropImg) cropInitPreview();
+}
+
+function cropHandle(files) {
+  const imgs = files.filter(f => f.type.startsWith('image/'));
+  imgs.forEach(f => cropFiles.push({ file: f, name: f.name, status: 'pending', blob: null }));
+  if (cropFiles.length) {
+    document.getElementById('cropDropzone').style.display = 'none';
+    document.getElementById('cropAddMore').style.display  = 'flex';
+    document.getElementById('cropBtnProcess').disabled    = false;
+    // Load first image for preview
+    if (!cropImg) {
+      const url = URL.createObjectURL(cropFiles[0].file);
+      const img = new Image();
+      img.onload = () => { URL.revokeObjectURL(url); cropImg = img; cropInitPreview(); };
+      img.src = url;
+    }
+  }
+  cropRender();
+}
+
+function cropInitPreview() {
+  document.getElementById('cropPreviewCard').style.display = 'block';
+  cropCanvasEl  = document.getElementById('cropPreviewCanvas');
+  cropCanvasCtx = cropCanvasEl.getContext('2d');
+
+  const maxW = cropCanvasEl.parentElement.clientWidth || 800;
+  const scale = cropImg.naturalWidth / Math.min(maxW, cropImg.naturalWidth);
+  cropImgDispW = Math.round(cropImg.naturalWidth  / scale);
+  cropImgDispH = Math.round(cropImg.naturalHeight / scale);
+  cropCanvasEl.width  = cropImgDispW;
+  cropCanvasEl.height = cropImgDispH;
+
+  // Crop box fills the shorter dimension
+  const imgRatio = cropImgDispW / cropImgDispH;
+  const tgtRatio = cropRatioW / cropRatioH;
+  if (imgRatio > tgtRatio) {
+    cropBoxH = cropImgDispH;
+    cropBoxW = cropBoxH * tgtRatio;
+  } else {
+    cropBoxW = cropImgDispW;
+    cropBoxH = cropBoxW / tgtRatio;
+  }
+  // Center the crop box over the image
+  cropOffX = (cropImgDispW - cropBoxW) / 2;
+  cropOffY = (cropImgDispH - cropBoxH) / 2;
+
+  const outW = Math.round(cropBoxW * scale);
+  const outH = Math.round(cropBoxH * scale);
+  document.getElementById('cropPreviewInfo').textContent = `${outW}×${outH}px sortie`;
+
+  cropDrawPreview();
+
+  // Pan events
+  cropCanvasEl.onmousedown = cropCanvasEl.ontouchstart = cropPanStart;
+  cropCanvasEl.onmousemove = cropCanvasEl.ontouchmove  = cropPanMove;
+  cropCanvasEl.onmouseup   = cropCanvasEl.ontouchend   = () => { cropDragging = false; };
+  cropCanvasEl.onmouseleave = () => { cropDragging = false; };
+}
+
+function cropDrawPreview() {
+  const ctx = cropCanvasCtx;
+  // Draw image
+  ctx.drawImage(cropImg, 0, 0, cropImgDispW, cropImgDispH);
+  // Dark overlay outside crop box
+  ctx.fillStyle = 'rgba(0,0,0,0.50)';
+  ctx.fillRect(0, 0, cropImgDispW, cropOffY);
+  ctx.fillRect(0, cropOffY + cropBoxH, cropImgDispW, cropImgDispH - cropOffY - cropBoxH);
+  ctx.fillRect(0, cropOffY, cropOffX, cropBoxH);
+  ctx.fillRect(cropOffX + cropBoxW, cropOffY, cropImgDispW - cropOffX - cropBoxW, cropBoxH);
+  // Crop border
+  ctx.strokeStyle = '#fff';
+  ctx.lineWidth   = 1.5;
+  ctx.strokeRect(cropOffX + 0.5, cropOffY + 0.5, cropBoxW - 1, cropBoxH - 1);
+  // Rule of thirds grid
+  ctx.strokeStyle = 'rgba(255,255,255,0.25)';
+  ctx.lineWidth = 0.5;
+  for (let t = 1; t < 3; t++) {
+    ctx.beginPath();
+    ctx.moveTo(cropOffX + cropBoxW * t / 3, cropOffY);
+    ctx.lineTo(cropOffX + cropBoxW * t / 3, cropOffY + cropBoxH);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cropOffX, cropOffY + cropBoxH * t / 3);
+    ctx.lineTo(cropOffX + cropBoxW, cropOffY + cropBoxH * t / 3);
+    ctx.stroke();
+  }
+}
+
+function cropGetEvtPos(e) {
+  const r = cropCanvasEl.getBoundingClientRect();
+  const src = e.touches ? e.touches[0] : e;
+  return { x: src.clientX - r.left, y: src.clientY - r.top };
+}
+function cropPanStart(e) {
+  e.preventDefault();
+  cropDragging = true;
+  cropDragLast = cropGetEvtPos(e);
+}
+function cropPanMove(e) {
+  if (!cropDragging) return;
+  e.preventDefault();
+  const p = cropGetEvtPos(e);
+  const dx = p.x - cropDragLast.x;
+  const dy = p.y - cropDragLast.y;
+  cropDragLast = p;
+  cropOffX = Math.max(0, Math.min(cropImgDispW - cropBoxW, cropOffX - dx));
+  cropOffY = Math.max(0, Math.min(cropImgDispH - cropBoxH, cropOffY - dy));
+  cropDrawPreview();
+}
+
+function cropRender() {
+  const list = document.getElementById('cropFileList');
+  list.innerHTML = '';
+  cropFiles.forEach((f, i) => {
+    const div = document.createElement('div');
+    div.className = 'file-item' + (f.status === 'done' ? ' done' : f.status === 'processing' ? ' processing' : '');
+    const label = `${cropRatioW}:${cropRatioH}`;
+    const meta = f.status === 'done'
+      ? `<div class="file-meta done">✓ Recadré ${label}</div>`
+      : f.status === 'processing' ? `<div class="file-meta processing">Recadrage...</div>`
+      : `<div class="file-meta">${label}</div>`;
+    const dlBtn = f.status === 'done'
+      ? `<button class="dl-btn" onclick="cropDL(${i})">↓</button>`
+      : `<button class="dl-btn" disabled>↓</button>`;
+    div.innerHTML = `<div class="file-thumb">🖼</div><div class="file-info"><div class="file-name">${f.name}</div>${meta}</div>
+      <div class="file-actions">${dlBtn}<button class="rm-btn" onclick="cropRM(${i})">×</button></div>`;
+    list.appendChild(div);
+  });
+}
+
+function cropRM(i) {
+  cropFiles.splice(i, 1);
+  if (!cropFiles.length) {
+    cropImg = null;
+    document.getElementById('cropDropzone').style.display  = 'block';
+    document.getElementById('cropAddMore').style.display   = 'none';
+    document.getElementById('cropPreviewCard').style.display = 'none';
+    document.getElementById('cropBtnProcess').disabled     = true;
+    document.getElementById('cropBtnDownload').disabled    = true;
+  }
+  cropRender();
+}
+
+async function cropProcess() {
+  if (!cropFiles.length) return;
+  const btn = document.getElementById('cropBtnProcess');
+  btn.classList.add('loading'); btn.disabled = true;
+  document.getElementById('cropProgress').classList.add('visible');
+  cropBlobs = [];
+
+  // Compute relative crop position from preview (as fraction of image)
+  let relX = 0.5, relY = 0.5;
+  if (cropImg) {
+    relX = (cropOffX + cropBoxW / 2) / cropImgDispW;
+    relY = (cropOffY + cropBoxH / 2) / cropImgDispH;
+  }
+
+  for (let i = 0; i < cropFiles.length; i++) {
+    cropFiles[i].status = 'processing'; cropRender();
+    document.getElementById('cropProgressLabel').textContent = `Photo ${i+1}/${cropFiles.length}`;
+    try {
+      const blob = await cropOne(cropFiles[i].file, relX, relY);
+      cropFiles[i].blob = blob; cropFiles[i].status = 'done';
+      const suffix = `${cropRatioW}x${cropRatioH}`;
+      cropBlobs.push({ blob, name: cropFiles[i].name.replace(/\.[^.]+$/, `_${suffix}.jpg`) });
+    } catch(e) { console.error(e); cropFiles[i].status = 'pending'; showToast('Erreur : ' + cropFiles[i].name, 'error'); }
+    const pct = Math.round((i+1)/cropFiles.length*100);
+    document.getElementById('cropProgressBar').style.width = pct + '%';
+    document.getElementById('cropProgressPct').textContent = pct + '%';
+    cropRender();
+  }
+
+  btn.classList.remove('loading'); btn.disabled = false;
+  document.getElementById('cropProgress').classList.remove('visible');
+  document.getElementById('cropBtnDownload').disabled = false;
+  showToast(`✓ ${cropBlobs.length} photo(s) recadrée(s) !`, 'success');
+}
+
+function cropOne(file, relX, relY) {
+  return new Promise((resolve, reject) => {
+    const img = new Image(), url = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      const iw = img.naturalWidth, ih = img.naturalHeight;
+      const iRatio = iw / ih, tRatio = cropRatioW / cropRatioH;
+      let srcW, srcH;
+      if (iRatio > tRatio) { srcH = ih; srcW = ih * tRatio; }
+      else                  { srcW = iw; srcH = iw / tRatio; }
+      const srcX = Math.max(0, Math.min(iw - srcW, relX * iw - srcW / 2));
+      const srcY = Math.max(0, Math.min(ih - srcH, relY * ih - srcH / 2));
+      const c = document.createElement('canvas');
+      c.width = Math.round(srcW); c.height = Math.round(srcH);
+      c.getContext('2d').drawImage(img, srcX, srcY, srcW, srcH, 0, 0, c.width, c.height);
+      c.toBlob(b => b ? resolve(b) : reject(new Error('toBlob')), 'image/jpeg', 0.95);
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('load')); };
+    img.src = url;
+  });
+}
+
+function cropDL(i) {
+  const { blob, name } = cropBlobs[i];
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = name; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+async function cropDownloadAll() {
+  if (!cropBlobs.length) return;
+  if (cropBlobs.length === 1) { cropDL(0); return; }
+  showToast('↓ Création du ZIP...');
+  const zip = new JSZip();
+  cropBlobs.forEach(({ blob, name }) => zip.file(name, blob));
+  const zBlob = await zip.generateAsync({ type: 'blob' });
+  const url = URL.createObjectURL(zBlob);
+  const a = document.createElement('a'); a.href = url; a.download = `narix_crop_${Date.now()}.zip`; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+  showToast(`✓ ZIP téléchargé (${cropBlobs.length} fichiers)`, 'success');
+}
+
+// ══════════════════════════════════════════════════════════
+//  INSTAGRAM DOWNLOADER (Cobalt API)
+// ══════════════════════════════════════════════════════════
+async function dlFetch() {
+  const rawUrl  = document.getElementById('dlUrlInput').value.trim();
+  const apiBase = document.getElementById('dlCobaltUrl').value.trim().replace(/\/$/, '') + '/';
+  const btn     = document.getElementById('dlBtn');
+  const result  = document.getElementById('dlResult');
+
+  if (!rawUrl) { showToast('Colle un lien Instagram', 'error'); return; }
+
+  btn.classList.add('loading'); btn.disabled = true;
+  result.style.display = 'none'; result.innerHTML = '';
+
+  try {
+    const res = await fetch(apiBase, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url: rawUrl }),
+    });
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err?.error?.code || `HTTP ${res.status}`);
+    }
+
+    const data = await res.json();
+    btn.classList.remove('loading'); btn.disabled = false;
+    dlRenderResult(data);
+
+  } catch(e) {
+    btn.classList.remove('loading'); btn.disabled = false;
+    result.style.display = 'block';
+    result.innerHTML = `
+      <div class="dl-result">
+        <div style="color:var(--red);font-size:13px;font-weight:600;">❌ Erreur : ${e.message}</div>
+        <div class="dl-note" style="margin-top:8px;">Vérifie que le lien est public et que l'instance Cobalt est accessible.</div>
+      </div>`;
+  }
+}
+
+function dlRenderResult(data) {
+  const result = document.getElementById('dlResult');
+  result.style.display = 'block';
+
+  if (data.status === 'error') {
+    result.innerHTML = `
+      <div class="dl-result">
+        <div style="color:var(--red);font-size:13px;font-weight:600;">❌ ${data.error?.code || 'Erreur inconnue'}</div>
+      </div>`;
+    return;
+  }
+
+  if (data.status === 'picker') {
+    // Carousel / multiple items
+    const items = data.picker || [];
+    const grid  = items.map((item, i) => `
+      <div class="dl-picker-item">
+        ${item.thumb ? `<img class="dl-picker-thumb" src="${item.thumb}" alt="item ${i+1}" loading="lazy">` : `<div style="aspect-ratio:1;background:var(--gray-100);display:flex;align-items:center;justify-content:center;font-size:24px;">${item.type==='video'?'🎬':'🖼'}</div>`}
+        <button class="dl-picker-btn" onclick="window.open('${item.url}','_blank')">↓ ${item.type === 'video' ? 'Vidéo' : 'Photo'} ${i+1}</button>
+      </div>`).join('');
+
+    result.innerHTML = `
+      <div class="dl-result">
+        <div class="dl-result-title">${items.length} élément(s) trouvé(s)</div>
+        <div class="dl-picker-grid">${grid}</div>
+        <div class="dl-note">Clique sur chaque bouton pour télécharger. Si le navigateur ouvre au lieu de télécharger, fais clic droit → Enregistrer.</div>
+      </div>`;
+    return;
+  }
+
+  // Single item — redirect or tunnel
+  if (data.url) {
+    const isVideo = /\.(mp4|webm|mov)/i.test(data.filename || '') || data.url.includes('video');
+    result.innerHTML = `
+      <div class="dl-result">
+        <div class="dl-result-title">Média prêt</div>
+        <button class="dl-single-btn" onclick="dlTrigger('${data.url}','${data.filename || 'media'}')">
+          ↓ Télécharger ${isVideo ? 'la vidéo' : 'le média'}
+        </button>
+        <div class="dl-note">Le fichier s'ouvrira dans un nouvel onglet — fais clic droit → Enregistrer si le téléchargement ne démarre pas automatiquement.</div>
+      </div>`;
+    return;
+  }
+
+  result.innerHTML = `<div class="dl-result"><div style="font-size:13px;color:var(--gray-600);">Réponse inattendue de l'API Cobalt.</div></div>`;
+}
+
+function dlTrigger(url, filename) {
+  // Try fetch-as-blob first; fall back to new tab
+  fetch(url, { mode: 'cors' })
+    .then(r => { if (!r.ok) throw new Error(); return r.blob(); })
+    .then(blob => {
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = filename;
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    })
+    .catch(() => window.open(url, '_blank'));
+}
+
+async function spoofDownloadAll() {
+  if (!spoofBlobs.length) return;
+  if (spoofBlobs.length === 1) {
+    const { blob, name } = spoofBlobs[0];
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url; a.download = name; a.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
     return;
   }
-
-  // Plusieurs fichiers → ZIP
-  showToast(`↓ Création du ZIP...`);
+  showToast('↓ Création du ZIP...');
   const zip = new JSZip();
-  processedBlobs.forEach(({ blob, name }) => {
-    zip.file(name, blob);
-  });
-  zip.generateAsync({ type: 'blob' }).then(zipBlob => {
-    const url = URL.createObjectURL(zipBlob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `narix_${Date.now()}.zip`;
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(url), 2000);
-    showToast(`✓ ZIP téléchargé (${processedBlobs.length} fichiers)`, 'success');
-  });
-}
-
-function showToast(msg, type) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'toast show' + (type ? ' '+type : '');
-  setTimeout(() => t.className = 'toast', 3500);
+  spoofBlobs.forEach(({ blob, name }) => zip.file(name, blob));
+  const zipBlob = await zip.generateAsync({ type: 'blob' });
+  const url = URL.createObjectURL(zipBlob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `narix_spoof_${Date.now()}.zip`; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+  showToast(`✓ ZIP téléchargé (${spoofBlobs.length} fichiers)`, 'success');
 }
 </script>
 </body>
