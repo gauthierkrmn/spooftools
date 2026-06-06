@@ -727,16 +727,16 @@
           <span class="tool-tag">Vidéo · Photo</span>
         </div>
 
-        <div class="tool-card" onclick="goTo('watermark')">
+        <div class="tool-card" onclick="goTo('ppv')">
           <div class="tool-card-top">
-            <div class="tool-icon">🚫</div>
+            <div class="tool-icon">💰</div>
             <span class="tool-arrow">→</span>
           </div>
           <div class="tool-card-body">
-            <div class="tool-name">Watermark</div>
-            <div class="tool-desc">Efface un filigrane en floutant ou masquant une zone sélectionnée.</div>
+            <div class="tool-name">PPV Thumbnail</div>
+            <div class="tool-desc">Génère des miniatures PPV — flou de zone, texte prix/titre, export HD pour OF et MYM.</div>
           </div>
-          <span class="tool-tag">Photo</span>
+          <span class="tool-tag">OF · MYM</span>
         </div>
 
         <div class="tool-card" onclick="goTo('thumbnail')">
@@ -782,9 +782,9 @@
           </div>
           <div class="tool-card-body">
             <div class="tool-name">Download</div>
-            <div class="tool-desc">Télécharge des posts, reels et stories directement depuis Instagram.</div>
+            <div class="tool-desc">Télécharge posts, reels et stories depuis Instagram et TikTok via Cobalt.</div>
           </div>
-          <span class="tool-tag">Instagram</span>
+          <span class="tool-tag">Instagram · TikTok</span>
         </div>
 
       </div>
@@ -871,7 +871,7 @@
       <div class="card">
         <div class="card-header">
           <span class="card-title">Transformations</span>
-          <span style="font-size:11px;color:var(--gray-400);">Sélectionne les modifications à appliquer</span>
+          <span style="font-size:11px;color:var(--subtext);">Sélectionne les modifications à appliquer</span>
         </div>
         <div class="card-body">
           <div class="transforms-grid">
@@ -1145,60 +1145,121 @@
     </div>
   </div>
 
-  <div class="page" id="page-watermark">
+  <div class="page" id="page-ppv">
     <div class="tool-layout">
       <div class="page-title">
-        <h1>WATERMARK — SUPPRESSION</h1>
-        <p>Dessine un rectangle sur le filigrane, choisis la méthode et applique.</p>
+        <h1>PPV THUMBNAIL</h1>
+        <p>Importe une image ou capte une frame vidéo — ajoute flous, prix et titre, exporte en HD.</p>
       </div>
 
-      <div class="dropzone" id="wmDropzone" onclick="document.getElementById('wmFileInput').click()">
-        <div class="dropzone-icon">🚫</div>
-        <div class="dropzone-title">Glisse une photo ici</div>
-        <div class="dropzone-sub">JPG, PNG, WEBP — un seul fichier</div>
+      <!-- Dropzone -->
+      <div class="dropzone" id="ppvDropzone" onclick="document.getElementById('ppvFileInput').click()">
+        <div class="dropzone-icon">💰</div>
+        <div class="dropzone-title">Glisse une image ou une vidéo</div>
+        <div class="dropzone-sub">JPG, PNG, WEBP, MP4, MOV</div>
       </div>
-      <input type="file" id="wmFileInput" accept="image/*" style="display:none">
+      <input type="file" id="ppvFileInput" accept="image/*,video/*" style="display:none">
 
-      <div id="wmEditor" style="display:none">
+      <!-- Editor (shown after file load) -->
+      <div id="ppvEditor" style="display:none">
 
-        <div class="card" style="margin-bottom:12px;">
-          <div class="card-header">
-            <span class="card-title">Zone à effacer</span>
-            <span style="font-size:11px;color:var(--gray-400);" id="wmSelInfo">Dessine un rectangle sur le filigrane</span>
-          </div>
-          <div class="card-body" style="padding:12px;">
-            <div class="wm-canvas-wrap" id="wmCanvasWrap">
-              <canvas id="wmCanvas"></canvas>
+        <!-- Video frame picker (shown only for video) -->
+        <div id="ppvVideoSection" style="display:none">
+          <div class="card" style="margin-bottom:12px;">
+            <div class="card-header">
+              <span class="card-title">Sélection de frame</span>
+              <span class="thumb-time" id="ppvTime">0:00.00</span>
             </div>
-            <div style="display:flex;justify-content:flex-end;margin-top:8px;">
-              <button onclick="wmClearSel()" style="background:none;border:1px solid var(--gray-200);border-radius:5px;padding:5px 12px;font-size:12px;color:var(--gray-400);cursor:pointer;font-family:Inter,sans-serif;">Effacer sélection</button>
+            <div class="card-body" style="padding:0;">
+              <div class="thumb-video-wrap">
+                <video id="ppvVideo" preload="metadata" playsinline></video>
+              </div>
+              <div class="thumb-controls">
+                <input type="range" class="thumb-seek" id="ppvSeek" min="0" max="100" step="0.01" value="0">
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                  <button onclick="ppvTogglePlay()" id="ppvPlayBtn"
+                    style="padding:8px 16px;background:var(--surface-2);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;">
+                    ▶ Lecture
+                  </button>
+                  <button onclick="ppvCaptureFrame()"
+                    style="padding:8px 16px;background:var(--accent);color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;">
+                    📸 Utiliser cette frame
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="card">
-          <div class="card-header"><span class="card-title">Méthode</span></div>
+        <!-- Canvas editor -->
+        <div class="card" style="margin-bottom:12px;">
+          <div class="card-header">
+            <span class="card-title">Aperçu · Zones floues</span>
+            <span style="font-size:11px;color:var(--subtext);" id="ppvZoneCount">Aucune zone</span>
+          </div>
+          <div class="card-body" style="padding:0;">
+            <div style="background:#000;border-radius:0 0 0 0;overflow:hidden;line-height:0;">
+              <canvas id="ppvCanvas" style="display:block;max-width:100%;height:auto;cursor:default;"></canvas>
+            </div>
+            <div style="padding:12px 16px;display:flex;gap:8px;align-items:center;border-top:1px solid var(--border);flex-wrap:wrap;">
+              <button id="ppvToggleDrawBtn" onclick="ppvToggleDraw()"
+                style="padding:7px 14px;background:var(--accent);color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;">
+                ✚ Ajouter zone floue
+              </button>
+              <button onclick="ppvClearZones()"
+                style="padding:7px 14px;background:transparent;color:var(--subtext);border:1px solid var(--border);border-radius:6px;font-size:12px;cursor:pointer;font-family:Inter,sans-serif;">
+                Tout effacer
+              </button>
+              <span style="font-size:11px;color:var(--subtext);" id="ppvDrawMode"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text overlays -->
+        <div class="card" style="margin-bottom:12px;">
+          <div class="card-header"><span class="card-title">Texte superposé</span></div>
           <div class="card-body">
-            <div class="speed-options" style="grid-template-columns:1fr 1fr;">
-              <div class="speed-option active" id="wm-blur" onclick="wmSetMethod('blur')">
-                <div class="speed-radio"></div>
-                <div><div class="speed-name">Flou</div><div class="speed-desc">Floute la zone sélectionnée</div></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+              <div>
+                <label style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--subtext);display:block;margin-bottom:6px;">TITRE</label>
+                <input type="text" id="ppvTitle" placeholder="Exclusive Content" oninput="ppvRedraw()"
+                  style="width:100%;padding:10px 12px;font-size:13px;border:1px solid var(--border);border-radius:8px;background:var(--surface-2);color:var(--text);font-family:Inter,sans-serif;outline:none;">
               </div>
-              <div class="speed-option" id="wm-fill" onclick="wmSetMethod('fill')">
-                <div class="speed-radio"></div>
-                <div><div class="speed-name">Remplissage</div><div class="speed-desc">Remplace par la couleur dominante</div></div>
+              <div>
+                <label style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--subtext);display:block;margin-bottom:6px;">PRIX</label>
+                <input type="text" id="ppvPrice" placeholder="19.99€" oninput="ppvRedraw()"
+                  style="width:100%;padding:10px 12px;font-size:13px;border:1px solid var(--border);border-radius:8px;background:var(--surface-2);color:var(--text);font-family:Inter,sans-serif;outline:none;">
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+              <div>
+                <label style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--subtext);display:block;margin-bottom:6px;">TAILLE TITRE</label>
+                <input type="range" id="ppvTitleSize" min="12" max="80" value="28" oninput="ppvRedraw()" style="width:100%;accent-color:var(--accent);">
+              </div>
+              <div>
+                <label style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--subtext);display:block;margin-bottom:6px;">TAILLE PRIX</label>
+                <input type="range" id="ppvPriceSize" min="16" max="100" value="48" oninput="ppvRedraw()" style="width:100%;accent-color:var(--accent);">
+              </div>
+              <div>
+                <label style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--subtext);display:block;margin-bottom:6px;">POSITION</label>
+                <select id="ppvTextPos" onchange="ppvRedraw()"
+                  style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:8px;background:var(--surface-2);color:var(--text);font-family:Inter,sans-serif;font-size:12px;outline:none;">
+                  <option value="bottom">Bas</option>
+                  <option value="center">Centre</option>
+                  <option value="top">Haut</option>
+                </select>
               </div>
             </div>
           </div>
         </div>
 
         <div class="action-buttons">
-          <button class="btn-process" id="wmBtnApply" onclick="wmApply()">
-            <span class="btn-text">Appliquer</span>
+          <button class="btn-process" onclick="ppvExport()">
+            <span class="btn-text">↓ Exporter la miniature HD</span>
             <div class="spinner"></div>
           </button>
-          <button class="btn-secondary" id="wmBtnDownload" style="display:none" onclick="wmDownload()">
-            ↓ Télécharger l'image traitée
+          <button class="btn-secondary" onclick="ppvReset()">
+            Recommencer
           </button>
         </div>
       </div>
@@ -1235,15 +1296,15 @@
               <input type="range" class="thumb-seek" id="thumbSeek" min="0" max="100" step="0.01" value="0">
               <div style="display:flex;gap:8px;">
                 <button onclick="thumbTogglePlay()" id="thumbPlayBtn"
-                  style="padding:8px 18px;background:var(--black);color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;">
+                  style="padding:8px 18px;background:var(--text);color:var(--inv);border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;">
                   ▶ Lecture
                 </button>
                 <button onclick="thumbStep(-1/30)"
-                  style="padding:8px 14px;background:var(--gray-100);border:1px solid var(--gray-200);border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;">
+                  style="padding:8px 14px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;color:var(--text);">
                   ←1f
                 </button>
                 <button onclick="thumbStep(1/30)"
-                  style="padding:8px 14px;background:var(--gray-100);border:1px solid var(--gray-200);border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;">
+                  style="padding:8px 14px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;color:var(--text);">
                   1f→
                 </button>
               </div>
@@ -1355,12 +1416,12 @@
           </div>
           <div id="cropCustomRow" style="display:none;margin-top:12px;align-items:center;gap:8px;">
             <input id="cropCW" type="number" min="1" value="3"
-              style="width:56px;padding:8px;border:1.5px solid var(--gray-200);border-radius:6px;font-family:Inter,sans-serif;text-align:center;font-size:14px;outline:none;">
-            <span style="font-size:18px;font-weight:600;color:var(--gray-400);">:</span>
+              style="width:56px;padding:8px;border:1.5px solid var(--border);border-radius:6px;font-family:Inter,sans-serif;text-align:center;font-size:14px;outline:none;background:var(--surface-2);color:var(--text);">
+            <span style="font-size:18px;font-weight:600;color:var(--subtext);">:</span>
             <input id="cropCH" type="number" min="1" value="4"
-              style="width:56px;padding:8px;border:1.5px solid var(--gray-200);border-radius:6px;font-family:Inter,sans-serif;text-align:center;font-size:14px;outline:none;">
+              style="width:56px;padding:8px;border:1.5px solid var(--border);border-radius:6px;font-family:Inter,sans-serif;text-align:center;font-size:14px;outline:none;background:var(--surface-2);color:var(--text);">
             <button onclick="cropApplyCustom()"
-              style="padding:9px 16px;background:var(--black);color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;">
+              style="padding:9px 16px;background:var(--text);color:var(--inv);border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;">
               Appliquer
             </button>
           </div>
@@ -1380,7 +1441,7 @@
         <div class="card">
           <div class="card-header">
             <span class="card-title">Aperçu — Glisse pour repositionner</span>
-            <span style="font-size:11px;color:var(--gray-400);" id="cropPreviewInfo"></span>
+            <span style="font-size:11px;color:var(--subtext);" id="cropPreviewInfo"></span>
           </div>
           <div class="card-body" style="padding:0;">
             <div style="background:#111;border-radius:0 0 8px 8px;line-height:0;cursor:move;">
@@ -1419,29 +1480,57 @@
   <div class="page" id="page-download">
     <div class="tool-layout">
       <div class="page-title">
-        <h1>DOWNLOAD — INSTAGRAM</h1>
-        <p>Télécharge posts, reels, stories et carrousels via Cobalt.</p>
+        <h1>DOWNLOAD</h1>
+        <p>Télécharge posts, reels et stories depuis Instagram et TikTok via Cobalt.</p>
       </div>
 
-      <!-- Cobalt instance selector -->
+      <!-- Platform selector -->
       <div class="card" style="margin-bottom:12px;">
-        <div class="card-header"><span class="card-title">Instance Cobalt</span></div>
+        <div class="card-header"><span class="card-title">Plateforme</span></div>
         <div class="card-body">
-          <div class="dl-instance-row">
-            <span class="dl-instance-label">URL API :</span>
-            <input type="url" id="dlCobaltUrl" class="dl-instance-input"
-              value="https://api.cobalt.tools/" placeholder="https://api.cobalt.tools/">
+          <div class="speed-options" style="grid-template-columns:1fr 1fr;">
+            <div class="speed-option active" id="dl-plat-instagram" onclick="dlSetPlatform('instagram')">
+              <div class="speed-radio"></div>
+              <div>
+                <div class="speed-name">Instagram</div>
+                <div class="speed-desc">Posts · Reels · Stories · Carrousels</div>
+              </div>
+            </div>
+            <div class="speed-option" id="dl-plat-tiktok" onclick="dlSetPlatform('tiktok')">
+              <div class="speed-radio"></div>
+              <div>
+                <div class="speed-name">TikTok</div>
+                <div class="speed-desc">Vidéos · Sons</div>
+              </div>
+            </div>
           </div>
-          <div style="font-size:11px;color:var(--gray-400);line-height:1.6;">
-            Instance publique par défaut. Tu peux utiliser ta propre instance
-            <a href="https://github.com/imputnet/cobalt" target="_blank" style="color:var(--black);">cobalt</a> pour éviter les limites.
+        </div>
+      </div>
+
+      <!-- Content type -->
+      <div class="card" style="margin-bottom:12px;">
+        <div class="card-header"><span class="card-title">Type de contenu</span></div>
+        <div class="card-body">
+          <div class="speed-options">
+            <div class="speed-option active" id="dl-type-auto" onclick="dlSetType('auto')">
+              <div class="speed-radio"></div>
+              <div><div class="speed-name">Auto</div><div class="speed-desc">Détection automatique</div></div>
+            </div>
+            <div class="speed-option" id="dl-type-post" onclick="dlSetType('post')">
+              <div class="speed-radio"></div>
+              <div><div class="speed-name">Post / Reel</div><div class="speed-desc">Photo ou vidéo</div></div>
+            </div>
+            <div class="speed-option" id="dl-type-story" onclick="dlSetType('story')">
+              <div class="speed-radio"></div>
+              <div><div class="speed-name">Story</div><div class="speed-desc">Expire dans 24h</div></div>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- URL input -->
       <div class="card" style="margin-bottom:12px;">
-        <div class="card-header"><span class="card-title">Lien Instagram</span></div>
+        <div class="card-header"><span class="card-title" id="dlUrlLabel">Lien Instagram</span></div>
         <div class="card-body">
           <div class="dl-input-row">
             <input type="url" id="dlUrlInput" class="dl-url-input"
@@ -1452,6 +1541,26 @@
               <span class="btn-text">Télécharger</span>
               <div class="spinner"></div>
             </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cobalt instance (collapsed by default) -->
+      <div class="card" style="margin-bottom:12px;">
+        <div class="card-header" style="cursor:pointer;"
+          onclick="var b=this.nextElementSibling;b.style.display=b.style.display==='none'?'block':'none'">
+          <span class="card-title">Instance Cobalt</span>
+          <span style="font-size:11px;color:var(--subtext);">Avancé ▾</span>
+        </div>
+        <div class="card-body" style="display:none;">
+          <div class="dl-instance-row">
+            <span class="dl-instance-label">URL API :</span>
+            <input type="url" id="dlCobaltUrl" class="dl-instance-input"
+              value="https://api.cobalt.tools/" placeholder="https://api.cobalt.tools/">
+          </div>
+          <div style="font-size:11px;color:var(--subtext);line-height:1.6;">
+            Instance publique par défaut. Tu peux utiliser ta propre instance
+            <a href="https://github.com/imputnet/cobalt" target="_blank" style="color:var(--text);">cobalt</a> pour éviter les limites.
           </div>
         </div>
       </div>
@@ -1487,7 +1596,7 @@ const TOOL_LABELS = {
   upscale:   'Upscale',
   compress:  'Compress',
   convert:   'Convert',
-  watermark: 'Watermark',
+  ppv:       'PPV Thumbnail',
   thumbnail: 'Thumbnail',
   metadata:  'Metadata',
   crop:      'Crop',
@@ -1567,8 +1676,8 @@ function showToast(msg, type) {
 
 // ─── PAGE-ENTER HOOKS ─────────────────────────────────────
 const pageEnterHooks = {
-  spoof:    () => spoofInit(),
-  watermark: () => wmReset(),
+  spoof: () => spoofInit(),
+  ppv:   () => ppvReset(),
 };
 
 // ══════════════════════════════════════════════════════════
@@ -1924,7 +2033,7 @@ async function ensureFFmpeg(bannerEl) {
     if (bannerEl) bannerEl.innerHTML =
       `<div style="color:var(--red);font-size:13px;font-weight:600;">❌ Erreur FFmpeg : ${e.message} —
        <button onclick="ensureFFmpeg(document.getElementById('${bannerEl.id}'))"
-         style="background:none;border:none;cursor:pointer;color:var(--black);font-weight:700;text-decoration:underline;font-size:13px;">
+         style="background:none;border:none;cursor:pointer;color:var(--text);font-weight:700;text-decoration:underline;font-size:13px;">
          Réessayer</button></div>`;
     document.getElementById('headerStatus').textContent = 'Erreur FFmpeg';
     _ffWaiters.forEach(w => w.rej(e)); _ffWaiters.length = 0;
@@ -2414,193 +2523,290 @@ async function convertDownloadAll() {
 }
 
 // ══════════════════════════════════════════════════════════
-//  WATERMARK REMOVER
+//  PPV THUMBNAIL GENERATOR
 // ══════════════════════════════════════════════════════════
-let wmImg       = null;   // original Image object
-let wmCanvas    = null;   // display + work canvas
-let wmCtx       = null;
-let wmSel       = null;   // { x, y, w, h } in display coords
-let wmDragging  = false;
-let wmDragStart = null;
-let wmMethod    = 'blur';
-let wmResultBlob = null;
-let wmScale     = 1;      // canvas CSS px → natural px ratio
+let ppvSourceImg   = null;
+let ppvCanvas      = null;
+let ppvCtx         = null;
+let ppvBlurZones   = [];
+let ppvDrawing     = false;
+let ppvDragging    = false;
+let ppvDragStart   = null;
+let ppvCurrentRect = null;
 
-function wmReset() {
-  wmImg = wmCanvas = wmCtx = wmSel = wmResultBlob = null;
-  wmDragging = false;
-  document.getElementById('wmDropzone').style.display = 'block';
-  document.getElementById('wmEditor').style.display   = 'none';
-  document.getElementById('wmBtnDownload').style.display = 'none';
+function ppvReset() {
+  ppvSourceImg = null; ppvBlurZones = [];
+  ppvDrawing = false; ppvDragging = false; ppvCurrentRect = null;
+  document.getElementById('ppvDropzone').style.display      = 'block';
+  document.getElementById('ppvEditor').style.display        = 'none';
+  document.getElementById('ppvVideoSection').style.display  = 'none';
 }
 
 (function () {
-  const dz = document.getElementById('wmDropzone');
+  const dz = document.getElementById('ppvDropzone');
   dz.addEventListener('dragover',  e => { e.preventDefault(); dz.classList.add('dragover'); });
   dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
-  dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('dragover'); wmLoad(e.dataTransfer.files[0]); });
-  document.getElementById('wmFileInput').addEventListener('change', e => { wmLoad(e.target.files[0]); e.target.value = ''; });
+  dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('dragover'); ppvLoad(e.dataTransfer.files[0]); });
+  document.getElementById('ppvFileInput').addEventListener('change', e => { ppvLoad(e.target.files[0]); e.target.value = ''; });
 })();
 
-function wmSetMethod(m) {
-  wmMethod = m;
-  ['blur','fill'].forEach(k => document.getElementById('wm-'+k).classList.toggle('active', k === m));
+function ppvLoad(file) {
+  if (!file) return;
+  if (file.type.startsWith('video/'))      ppvLoadVideo(file);
+  else if (file.type.startsWith('image/')) ppvLoadImage(file);
+  else showToast('Format non supporté', 'error');
 }
 
-function wmLoad(file) {
-  if (!file || !file.type.startsWith('image/')) return;
+function ppvLoadImage(file) {
   const url = URL.createObjectURL(file);
   const img = new Image();
   img.onload = () => {
     URL.revokeObjectURL(url);
-    wmImg = img;
-    document.getElementById('wmDropzone').style.display = 'none';
-    document.getElementById('wmEditor').style.display   = 'block';
-    document.getElementById('wmBtnDownload').style.display = 'none';
-    wmSel = null;
-    wmSetupCanvas();
+    ppvSourceImg = img; ppvBlurZones = [];
+    document.getElementById('ppvDropzone').style.display     = 'none';
+    document.getElementById('ppvEditor').style.display       = 'block';
+    document.getElementById('ppvVideoSection').style.display = 'none';
+    ppvSetupCanvas();
   };
   img.onerror = () => { URL.revokeObjectURL(url); showToast('Erreur de chargement', 'error'); };
   img.src = url;
 }
 
-function wmSetupCanvas() {
-  const wrap = document.getElementById('wmCanvasWrap');
-  wmCanvas = document.getElementById('wmCanvas');
-  wmCtx = wmCanvas.getContext('2d');
-
-  const maxW = wrap.clientWidth || 800;
-  wmScale = wmImg.naturalWidth / Math.min(maxW, wmImg.naturalWidth);
-
-  wmCanvas.width  = Math.round(wmImg.naturalWidth  / wmScale);
-  wmCanvas.height = Math.round(wmImg.naturalHeight / wmScale);
-  wmDrawBase();
-
-  wmCanvas.onmousedown = wmCanvas.ontouchstart = wmStartDrag;
-  wmCanvas.onmousemove = wmCanvas.ontouchmove  = wmDoDrag;
-  wmCanvas.onmouseup   = wmCanvas.ontouchend   = wmEndDrag;
+function ppvLoadVideo(file) {
+  document.getElementById('ppvDropzone').style.display     = 'none';
+  document.getElementById('ppvEditor').style.display       = 'block';
+  document.getElementById('ppvVideoSection').style.display = 'block';
+  const video = document.getElementById('ppvVideo');
+  const seek  = document.getElementById('ppvSeek');
+  video.src = URL.createObjectURL(file);
+  video.onloadedmetadata = () => { seek.max = video.duration; seek.value = 0; ppvUpdateTime(0); };
+  video.ontimeupdate = () => { seek.value = video.currentTime; ppvUpdateTime(video.currentTime); };
+  seek.oninput = () => { video.currentTime = parseFloat(seek.value); };
 }
 
-function wmDrawBase() {
-  wmCtx.drawImage(wmImg, 0, 0, wmCanvas.width, wmCanvas.height);
-  if (wmSel && wmSel.w && wmSel.h) {
-    wmCtx.strokeStyle = '#fff';
-    wmCtx.lineWidth   = 2;
-    wmCtx.setLineDash([5, 4]);
-    wmCtx.strokeRect(wmSel.x, wmSel.y, wmSel.w, wmSel.h);
-    wmCtx.fillStyle = 'rgba(255,255,255,0.12)';
-    wmCtx.fillRect(wmSel.x, wmSel.y, wmSel.w, wmSel.h);
-    wmCtx.setLineDash([]);
-    document.getElementById('wmSelInfo').textContent =
-      `Sélection : ${Math.abs(Math.round(wmSel.w * wmScale))}×${Math.abs(Math.round(wmSel.h * wmScale))} px`;
+function ppvUpdateTime(t) {
+  const m = Math.floor(t/60), s = Math.floor(t%60), cs = Math.floor((t%1)*100);
+  document.getElementById('ppvTime').textContent = `${m}:${String(s).padStart(2,'0')}.${String(cs).padStart(2,'0')}`;
+}
+
+function ppvTogglePlay() {
+  const v = document.getElementById('ppvVideo'), b = document.getElementById('ppvPlayBtn');
+  if (v.paused) { v.play(); b.textContent = '⏸ Pause'; }
+  else          { v.pause(); b.textContent = '▶ Lecture'; }
+}
+
+function ppvCaptureFrame() {
+  const v = document.getElementById('ppvVideo');
+  v.pause(); document.getElementById('ppvPlayBtn').textContent = '▶ Lecture';
+  const c = document.createElement('canvas');
+  c.width = v.videoWidth; c.height = v.videoHeight;
+  c.getContext('2d').drawImage(v, 0, 0);
+  const img = new Image();
+  img.onload = () => {
+    ppvSourceImg = img; ppvBlurZones = [];
+    document.getElementById('ppvVideoSection').style.display = 'none';
+    ppvSetupCanvas();
+    showToast('✓ Frame capturée !', 'success');
+  };
+  img.src = c.toDataURL();
+}
+
+function ppvSetupCanvas() {
+  ppvCanvas = document.getElementById('ppvCanvas');
+  ppvCtx    = ppvCanvas.getContext('2d');
+  const maxW = ppvCanvas.parentElement.clientWidth || 800;
+  const scale = ppvSourceImg.naturalWidth / Math.min(maxW, ppvSourceImg.naturalWidth);
+  ppvCanvas.width  = Math.round(ppvSourceImg.naturalWidth  / scale);
+  ppvCanvas.height = Math.round(ppvSourceImg.naturalHeight / scale);
+  ppvRedraw();
+  ppvCanvas.onmousedown  = ppvStartDrag;
+  ppvCanvas.onmousemove  = ppvDoDrag;
+  ppvCanvas.onmouseup    = ppvEndDrag;
+  ppvCanvas.ontouchstart = ppvStartDrag;
+  ppvCanvas.ontouchmove  = ppvDoDrag;
+  ppvCanvas.ontouchend   = ppvEndDrag;
+}
+
+function ppvToggleDraw() {
+  ppvDrawing = !ppvDrawing;
+  const btn = document.getElementById('ppvToggleDrawBtn');
+  const lbl = document.getElementById('ppvDrawMode');
+  if (ppvDrawing) {
+    btn.textContent = '✓ Terminer le tracé';
+    lbl.textContent = 'Dessine un rectangle sur le canvas';
+    ppvCanvas.style.cursor = 'crosshair';
   } else {
-    document.getElementById('wmSelInfo').textContent = 'Dessine un rectangle sur le filigrane';
+    btn.textContent = '✚ Ajouter zone floue';
+    lbl.textContent = '';
+    ppvCanvas.style.cursor = 'default';
   }
 }
 
-function wmGetPos(e) {
-  const r = wmCanvas.getBoundingClientRect();
+function ppvClearZones() {
+  ppvBlurZones = [];
+  document.getElementById('ppvZoneCount').textContent = 'Aucune zone';
+  ppvRedraw();
+}
+
+function ppvGetPos(e) {
+  const r = ppvCanvas.getBoundingClientRect();
   const src = e.touches ? e.touches[0] : e;
-  return { x: src.clientX - r.left, y: src.clientY - r.top };
+  const scaleX = ppvCanvas.width / r.width;
+  const scaleY = ppvCanvas.height / r.height;
+  return { x: (src.clientX - r.left) * scaleX, y: (src.clientY - r.top) * scaleY };
 }
 
-function wmStartDrag(e) {
-  e.preventDefault();
-  wmDragging = true;
-  wmDragStart = wmGetPos(e);
-  wmSel = { x: wmDragStart.x, y: wmDragStart.y, w: 0, h: 0 };
+function ppvStartDrag(e) {
+  if (!ppvDrawing) return;
+  if (e.cancelable) e.preventDefault();
+  ppvDragging = true;
+  ppvDragStart = ppvGetPos(e);
+  ppvCurrentRect = { x: ppvDragStart.x, y: ppvDragStart.y, w: 0, h: 0 };
 }
-function wmDoDrag(e) {
-  if (!wmDragging) return;
-  e.preventDefault();
-  const p = wmGetPos(e);
-  wmSel.w = p.x - wmDragStart.x;
-  wmSel.h = p.y - wmDragStart.y;
-  wmDrawBase();
+function ppvDoDrag(e) {
+  if (!ppvDragging) return;
+  if (e.cancelable) e.preventDefault();
+  const p = ppvGetPos(e);
+  ppvCurrentRect.w = p.x - ppvDragStart.x;
+  ppvCurrentRect.h = p.y - ppvDragStart.y;
+  ppvRedraw();
 }
-function wmEndDrag(e) {
-  wmDragging = false;
-  if (wmSel && Math.abs(wmSel.w) < 4 && Math.abs(wmSel.h) < 4) wmSel = null;
-  wmDrawBase();
-}
-
-function wmClearSel() {
-  wmSel = null;
-  wmDrawBase();
-  document.getElementById('wmBtnDownload').style.display = 'none';
-}
-
-async function wmApply() {
-  if (!wmSel || !wmSel.w || !wmSel.h) { showToast('Dessine d\'abord une sélection', 'error'); return; }
-
-  // Normalise rect (handle negative w/h from reverse-drag)
-  const rx = wmSel.w < 0 ? wmSel.x + wmSel.w : wmSel.x;
-  const ry = wmSel.h < 0 ? wmSel.y + wmSel.h : wmSel.y;
-  const rw = Math.abs(wmSel.w);
-  const rh = Math.abs(wmSel.h);
-
-  // Work at full resolution
-  const offC = document.createElement('canvas');
-  offC.width  = wmImg.naturalWidth;
-  offC.height = wmImg.naturalHeight;
-  const offCtx = offC.getContext('2d');
-  offCtx.drawImage(wmImg, 0, 0);
-
-  // Scale selection back to natural coords
-  const nx = Math.round(rx * wmScale);
-  const ny = Math.round(ry * wmScale);
-  const nw = Math.round(rw * wmScale);
-  const nh = Math.round(rh * wmScale);
-
-  if (wmMethod === 'blur') {
-    // Extract region, apply heavy blur, draw back
-    const tmp = document.createElement('canvas');
-    tmp.width = nw; tmp.height = nh;
-    const tCtx = tmp.getContext('2d');
-    tCtx.drawImage(wmImg, nx, ny, nw, nh, 0, 0, nw, nh);
-    // Stack multiple pixel-smear passes for a strong blur effect
-    const passes = Math.max(6, Math.round(Math.min(nw, nh) / 8));
-    for (let p = 0; p < passes; p++) {
-      tCtx.filter = `blur(${Math.round(Math.min(nw, nh) / 4)}px)`;
-      tCtx.drawImage(tmp, 0, 0);
-      tCtx.filter = 'none';
-    }
-    offCtx.drawImage(tmp, nx, ny);
-  } else {
-    // Sample a thin border around the selection, compute average colour, fill
-    const sample = offCtx.getImageData(nx, ny, nw, nh).data;
-    let r = 0, g = 0, b = 0, count = 0;
-    for (let i = 0; i < sample.length; i += 4) {
-      r += sample[i]; g += sample[i+1]; b += sample[i+2]; count++;
-    }
-    r = Math.round(r/count); g = Math.round(g/count); b = Math.round(b/count);
-    offCtx.fillStyle = `rgb(${r},${g},${b})`;
-    offCtx.fillRect(nx, ny, nw, nh);
+function ppvEndDrag(e) {
+  if (!ppvDragging) return;
+  ppvDragging = false;
+  if (ppvCurrentRect && Math.abs(ppvCurrentRect.w) > 6 && Math.abs(ppvCurrentRect.h) > 6) {
+    ppvBlurZones.push({ ...ppvCurrentRect });
+    document.getElementById('ppvZoneCount').textContent = `${ppvBlurZones.length} zone(s) floue(s)`;
   }
+  ppvCurrentRect = null;
+  ppvDrawing = false;
+  const btn = document.getElementById('ppvToggleDrawBtn');
+  if (btn) { btn.textContent = '✚ Ajouter zone floue'; document.getElementById('ppvDrawMode').textContent = ''; }
+  ppvCanvas.style.cursor = 'default';
+  ppvRedraw();
+}
+
+function ppvPixelate(ctx, srcImg, dispX, dispY, dispW, dispH) {
+  const rx = dispW < 0 ? dispX + dispW : dispX, ry = dispH < 0 ? dispY + dispH : dispY;
+  const rw = Math.abs(dispW), rh = Math.abs(dispH);
+  if (rw < 2 || rh < 2) return;
+  const scaleX = srcImg.naturalWidth  / ppvCanvas.width;
+  const scaleY = srcImg.naturalHeight / ppvCanvas.height;
+  const BLOCK = Math.max(6, Math.round(Math.min(rw, rh) / 8));
+  const tw = Math.max(1, Math.floor(rw / BLOCK));
+  const th = Math.max(1, Math.floor(rh / BLOCK));
+  const tmp = document.createElement('canvas');
+  tmp.width = tw; tmp.height = th;
+  tmp.getContext('2d').drawImage(srcImg,
+    Math.round(rx * scaleX), Math.round(ry * scaleY),
+    Math.round(rw * scaleX), Math.round(rh * scaleY),
+    0, 0, tw, th
+  );
+  ctx.imageSmoothingEnabled = false;
+  ctx.drawImage(tmp, rx, ry, rw, rh);
+  ctx.imageSmoothingEnabled = true;
+}
+
+function ppvDrawText(ctx, cw, ch, titleSize, priceSize, pos) {
+  const title = document.getElementById('ppvTitle')?.value || '';
+  const price = document.getElementById('ppvPrice')?.value || '';
+  if (!title && !price) return;
+
+  const gradH = ch * 0.40;
+  const gradY = pos === 'center' ? (ch - gradH) / 2 : pos === 'top' ? 0 : ch - gradH;
+  if (pos === 'center') {
+    ctx.fillStyle = 'rgba(0,0,0,0.62)';
+    ctx.fillRect(0, gradY, cw, gradH);
+  } else {
+    const g = ctx.createLinearGradient(0, gradY, 0, gradY + gradH);
+    g.addColorStop(0, pos === 'top' ? 'rgba(0,0,0,0.82)' : 'rgba(0,0,0,0)');
+    g.addColorStop(1, pos === 'top' ? 'rgba(0,0,0,0)' : 'rgba(0,0,0,0.85)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, gradY, cw, gradH);
+  }
+
+  ctx.textAlign = 'center';
+  const cx = cw / 2;
+  const anchor = pos === 'bottom' ? ch - Math.round(ch * 0.04)
+               : pos === 'top'    ? Math.round(ch * 0.06) + priceSize + titleSize
+               : ch / 2 + (priceSize + titleSize) / 2;
+
+  if (price) {
+    ctx.font = `bold ${priceSize}px 'Bebas Neue', Impact, sans-serif`;
+    ctx.shadowColor = 'rgba(0,0,0,0.85)'; ctx.shadowBlur = 14;
+    ctx.fillStyle = '#e63946';
+    const py = pos === 'bottom' ? anchor - (title ? titleSize + Math.round(priceSize * 0.3) : 0) : anchor - priceSize;
+    ctx.fillText(price, cx, py);
+    ctx.shadowBlur = 0;
+  }
+  if (title) {
+    ctx.font = `700 ${titleSize}px Inter, Arial, sans-serif`;
+    ctx.shadowColor = 'rgba(0,0,0,0.85)'; ctx.shadowBlur = 10;
+    ctx.fillStyle = '#ffffff';
+    const ty = pos === 'bottom' ? anchor : anchor + Math.round(titleSize * 0.2);
+    ctx.fillText(title, cx, ty);
+    ctx.shadowBlur = 0;
+  }
+}
+
+function ppvRedraw() {
+  if (!ppvCanvas || !ppvSourceImg) return;
+  ppvCtx.drawImage(ppvSourceImg, 0, 0, ppvCanvas.width, ppvCanvas.height);
+  ppvBlurZones.forEach(z => ppvPixelate(ppvCtx, ppvSourceImg, z.x, z.y, z.w, z.h));
+  if (ppvDragging && ppvCurrentRect) {
+    ppvCtx.save();
+    ppvCtx.strokeStyle = '#e63946'; ppvCtx.lineWidth = 2;
+    ppvCtx.setLineDash([5, 4]);
+    ppvCtx.strokeRect(ppvCurrentRect.x, ppvCurrentRect.y, ppvCurrentRect.w, ppvCurrentRect.h);
+    ppvCtx.fillStyle = 'rgba(230,57,70,0.18)';
+    ppvCtx.fillRect(ppvCurrentRect.x, ppvCurrentRect.y, ppvCurrentRect.w, ppvCurrentRect.h);
+    ppvCtx.setLineDash([]); ppvCtx.restore();
+  }
+  const titleSize = parseInt(document.getElementById('ppvTitleSize')?.value || 28);
+  const priceSize = parseInt(document.getElementById('ppvPriceSize')?.value || 48);
+  const pos       = document.getElementById('ppvTextPos')?.value || 'bottom';
+  ppvDrawText(ppvCtx, ppvCanvas.width, ppvCanvas.height, titleSize, priceSize, pos);
+}
+
+function ppvExport() {
+  if (!ppvSourceImg) { showToast('Importe d\'abord une image', 'error'); return; }
+  const natW = ppvSourceImg.naturalWidth, natH = ppvSourceImg.naturalHeight;
+  const scaleX = natW / ppvCanvas.width, scaleY = natH / ppvCanvas.height;
+  const offC = document.createElement('canvas');
+  offC.width = natW; offC.height = natH;
+  const offCtx = offC.getContext('2d');
+  offCtx.drawImage(ppvSourceImg, 0, 0);
+
+  ppvBlurZones.forEach(z => {
+    const rx = z.w < 0 ? z.x + z.w : z.x, ry = z.h < 0 ? z.y + z.h : z.y;
+    const rw = Math.abs(z.w), rh = Math.abs(z.h);
+    const BLOCK = Math.max(12, Math.round(Math.min(rw * scaleX, rh * scaleY) / 8));
+    const tw = Math.max(1, Math.floor(rw * scaleX / BLOCK));
+    const th = Math.max(1, Math.floor(rh * scaleY / BLOCK));
+    const tmp = document.createElement('canvas');
+    tmp.width = tw; tmp.height = th;
+    tmp.getContext('2d').drawImage(ppvSourceImg,
+      Math.round(rx * scaleX), Math.round(ry * scaleY),
+      Math.round(rw * scaleX), Math.round(rh * scaleY),
+      0, 0, tw, th
+    );
+    offCtx.imageSmoothingEnabled = false;
+    offCtx.drawImage(tmp, Math.round(rx * scaleX), Math.round(ry * scaleY), Math.round(rw * scaleX), Math.round(rh * scaleY));
+    offCtx.imageSmoothingEnabled = true;
+  });
+
+  const titleSize = parseInt(document.getElementById('ppvTitleSize').value) * scaleY;
+  const priceSize = parseInt(document.getElementById('ppvPriceSize').value) * scaleY;
+  const pos       = document.getElementById('ppvTextPos').value;
+  ppvDrawText(offCtx, natW, natH, titleSize, priceSize, pos);
 
   offC.toBlob(blob => {
-    wmResultBlob = blob;
-    // Refresh display canvas with processed image
-    const pUrl = URL.createObjectURL(blob);
-    const newImg = new Image();
-    newImg.onload = () => {
-      URL.revokeObjectURL(pUrl);
-      wmImg = newImg;
-      wmSel = null;
-      wmSetupCanvas();
-      showToast('✓ Filigrane supprimé !', 'success');
-    };
-    newImg.src = pUrl;
-    document.getElementById('wmBtnDownload').style.display = 'flex';
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = `narix_ppv_${Date.now()}.jpg`; a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    showToast('✓ Miniature exportée !', 'success');
   }, 'image/jpeg', 0.95);
-}
-
-function wmDownload() {
-  if (!wmResultBlob) return;
-  const url = URL.createObjectURL(wmResultBlob);
-  const a = document.createElement('a');
-  a.href = url; a.download = `narix_nowm_${Date.now()}.jpg`; a.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 // ══════════════════════════════════════════════════════════
@@ -3086,15 +3292,38 @@ async function cropDownloadAll() {
 }
 
 // ══════════════════════════════════════════════════════════
-//  INSTAGRAM DOWNLOADER (Cobalt API)
+//  DOWNLOADER (Instagram + TikTok via Cobalt API)
 // ══════════════════════════════════════════════════════════
+let dlPlatform = 'instagram';
+let dlType     = 'auto';
+
+function dlSetPlatform(p) {
+  dlPlatform = p;
+  ['instagram','tiktok'].forEach(k => document.getElementById('dl-plat-'+k).classList.toggle('active', k === p));
+  document.getElementById('dlUrlLabel').textContent = p === 'instagram' ? 'Lien Instagram' : 'Lien TikTok';
+  document.getElementById('dlUrlInput').placeholder = p === 'instagram'
+    ? 'https://www.instagram.com/reel/...'
+    : 'https://www.tiktok.com/@user/video/...';
+  const storyOpt = document.getElementById('dl-type-story');
+  storyOpt.style.opacity = p === 'tiktok' ? '0.35' : '1';
+  storyOpt.style.pointerEvents = p === 'tiktok' ? 'none' : '';
+  if (p === 'tiktok' && dlType === 'story') dlSetType('auto');
+  document.getElementById('dlResult').style.display = 'none';
+}
+
+function dlSetType(t) {
+  dlType = t;
+  ['auto','post','story'].forEach(k => document.getElementById('dl-type-'+k).classList.toggle('active', k === t));
+}
+
 async function dlFetch() {
   const rawUrl  = document.getElementById('dlUrlInput').value.trim();
   const apiBase = document.getElementById('dlCobaltUrl').value.trim().replace(/\/$/, '') + '/';
   const btn     = document.getElementById('dlBtn');
   const result  = document.getElementById('dlResult');
+  const platName = dlPlatform === 'instagram' ? 'Instagram' : 'TikTok';
 
-  if (!rawUrl) { showToast('Colle un lien Instagram', 'error'); return; }
+  if (!rawUrl) { showToast(`Colle un lien ${platName}`, 'error'); return; }
 
   btn.classList.add('loading'); btn.disabled = true;
   result.style.display = 'none'; result.innerHTML = '';
@@ -3105,16 +3334,13 @@ async function dlFetch() {
       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
       body: JSON.stringify({ url: rawUrl }),
     });
-
     if (!res.ok) {
       const err = await res.json().catch(() => ({}));
       throw new Error(err?.error?.code || `HTTP ${res.status}`);
     }
-
     const data = await res.json();
     btn.classList.remove('loading'); btn.disabled = false;
     dlRenderResult(data);
-
   } catch(e) {
     btn.classList.remove('loading'); btn.disabled = false;
     result.style.display = 'block';
@@ -3127,7 +3353,8 @@ async function dlFetch() {
 }
 
 function dlRenderResult(data) {
-  const result = document.getElementById('dlResult');
+  const result   = document.getElementById('dlResult');
+  const platName = dlPlatform === 'instagram' ? 'Instagram' : 'TikTok';
   result.style.display = 'block';
 
   if (data.status === 'error') {
@@ -3139,49 +3366,53 @@ function dlRenderResult(data) {
   }
 
   if (data.status === 'picker') {
-    // Carousel / multiple items
     const items = data.picker || [];
     const grid  = items.map((item, i) => `
       <div class="dl-picker-item">
-        ${item.thumb ? `<img class="dl-picker-thumb" src="${item.thumb}" alt="item ${i+1}" loading="lazy">` : `<div style="aspect-ratio:1;background:var(--gray-100);display:flex;align-items:center;justify-content:center;font-size:24px;">${item.type==='video'?'🎬':'🖼'}</div>`}
+        ${item.thumb
+          ? `<img class="dl-picker-thumb" src="${item.thumb}" alt="item ${i+1}" loading="lazy">`
+          : `<div style="aspect-ratio:1;background:var(--surface-2);display:flex;align-items:center;justify-content:center;font-size:24px;">${item.type==='video'?'🎬':'🖼'}</div>`}
         <button class="dl-picker-btn" onclick="window.open('${item.url}','_blank')">↓ ${item.type === 'video' ? 'Vidéo' : 'Photo'} ${i+1}</button>
       </div>`).join('');
-
     result.innerHTML = `
       <div class="dl-result">
         <div class="dl-result-title">${items.length} élément(s) trouvé(s)</div>
         <div class="dl-picker-grid">${grid}</div>
-        <div class="dl-note">Clique sur chaque bouton pour télécharger. Si le navigateur ouvre au lieu de télécharger, fais clic droit → Enregistrer.</div>
+        <div class="dl-note">Clique sur chaque bouton pour télécharger. Clic droit → Enregistrer si ça ouvre au lieu de télécharger.</div>
       </div>`;
     return;
   }
 
-  // Single item — redirect or tunnel
   if (data.url) {
     const isVideo = /\.(mp4|webm|mov)/i.test(data.filename || '') || data.url.includes('video');
+    const safeUrl  = data.url.replace(/'/g, '%27');
+    const safeName = (data.filename || 'media').replace(/'/g, '_');
     result.innerHTML = `
       <div class="dl-result">
-        <div class="dl-result-title">Média prêt</div>
-        <button class="dl-single-btn" onclick="dlTrigger('${data.url}','${data.filename || 'media'}')">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">${isVideo ? '🎬' : '🖼'}</div>
+          <div>
+            <div style="font-size:14px;font-weight:700;color:var(--text);">Média prêt au téléchargement</div>
+            <div style="font-size:11px;color:var(--subtext);margin-top:2px;">${isVideo ? 'Vidéo' : 'Image'} · Via Cobalt · ${platName}</div>
+          </div>
+        </div>
+        <button class="dl-single-btn" onclick="dlTrigger('${safeUrl}','${safeName}')">
           ↓ Télécharger ${isVideo ? 'la vidéo' : 'le média'}
         </button>
-        <div class="dl-note">Le fichier s'ouvrira dans un nouvel onglet — fais clic droit → Enregistrer si le téléchargement ne démarre pas automatiquement.</div>
+        <div class="dl-note">Si le navigateur ouvre le fichier au lieu de le télécharger, fais clic droit → Enregistrer.</div>
       </div>`;
     return;
   }
 
-  result.innerHTML = `<div class="dl-result"><div style="font-size:13px;color:var(--gray-600);">Réponse inattendue de l'API Cobalt.</div></div>`;
+  result.innerHTML = `<div class="dl-result"><div style="font-size:13px;color:var(--subtext);">Réponse inattendue de l'API Cobalt.</div></div>`;
 }
 
 function dlTrigger(url, filename) {
-  // Try fetch-as-blob first; fall back to new tab
   fetch(url, { mode: 'cors' })
     .then(r => { if (!r.ok) throw new Error(); return r.blob(); })
     .then(blob => {
       const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = filename;
-      a.click();
+      a.href = URL.createObjectURL(blob); a.download = filename; a.click();
       setTimeout(() => URL.revokeObjectURL(a.href), 2000);
     })
     .catch(() => window.open(url, '_blank'));
