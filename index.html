@@ -6,7 +6,7 @@
 <link rel="icon" type="image/png" href="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/wAARCAH0AfQDASIAAhEBAxEB/8QAHQABAAMAAwEBAQAAAAAAAAAAAAcICQQFBgEDAv/EAFEQAQABAwICBAUODAIKAQUAAAABAgMEBQYHEQgSITETIkFRYQkUFRYXGDdCZ3F0dZSzMjY4UldigZGlstHkI4IkMzVWcnODoaLTQyVTVWPB/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/ALlgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/9k=">
 <title>NARIX AGENCY — Tools</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=Dancing+Script:wght@600;700&display=swap');
 
   /* ─── VARIABLES (dark default) ─── */
   :root {
@@ -542,18 +542,53 @@
   .wm-canvas-wrap canvas { display: block; max-width: 100%; height: auto; }
   .wm-hint { text-align: center; font-size: 12px; color: var(--subtext); padding: 40px 24px; background: var(--surface-2); border-radius: 10px; margin-bottom: 12px; }
 
-  /* ─── THUMBNAIL VIDEO ─── */
-  .thumb-video-wrap { background: #000; border-radius: 8px; overflow: hidden; line-height: 0; }
-  .thumb-video-wrap video { display: block; width: 100%; max-height: 360px; object-fit: contain; }
-  .thumb-controls {
-    padding: 14px 16px; background: var(--surface);
-    border-top: 1px solid var(--border);
-    display: flex; flex-direction: column; gap: 10px;
+  /* ─── FORM ELEMENTS (Contract / Commission / Currency) ─── */
+  .form-group { margin-bottom: 16px; }
+  .form-group:last-child { margin-bottom: 0; }
+  .form-label {
+    display: block; font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--subtext); margin-bottom: 8px;
   }
-  .thumb-seek  { width: 100%; accent-color: var(--accent); height: 4px; cursor: pointer; }
-  .thumb-time  { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 2px; color: var(--accent); }
-  .thumb-capture-preview { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 12px; line-height: 0; }
-  .thumb-capture-preview img { display: block; width: 100%; }
+  .form-input, .form-select {
+    width: 100%; padding: 12px 14px; background: var(--surface-2);
+    border: 1.5px solid var(--border); border-radius: 8px;
+    font-family: 'Inter', sans-serif; font-size: 14px; color: var(--text);
+    outline: none; transition: border-color 0.15s;
+  }
+  .form-select { appearance: none; cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23888886'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 12px center; background-size: 16px; padding-right: 36px;
+  }
+  .form-input:focus, .form-select:focus { border-color: var(--accent); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
+
+  /* ─── RESULT ROWS (Commission Calculator) ─── */
+  .result-row { display: flex; align-items: center; justify-content: space-between; padding: 13px 0; border-bottom: 1px solid var(--border); }
+  .result-row:last-child { border-bottom: none; }
+  .result-label { font-size: 12px; color: var(--subtext); }
+  .result-value { font-size: 15px; font-weight: 700; color: var(--text); }
+  .result-value.accent { color: var(--accent); }
+  .result-value.green  { color: var(--green); }
+  .result-highlight { text-align: center; padding: 20px 0 26px; }
+  .result-highlight .big-number { font-family: 'Bebas Neue', sans-serif; font-size: 46px; letter-spacing: 2px; color: var(--text); line-height: 1; word-break: break-all; }
+  .result-highlight .sub-rate { font-size: 12px; color: var(--subtext); margin-top: 10px; }
+
+  /* ─── ELECTRONIC SIGNATURE ─── */
+  .sig-draw-wrap { background: #fff; border-radius: 8px; overflow: hidden; touch-action: none; }
+  .sig-draw-wrap canvas { display: block; width: 100%; height: 150px; cursor: crosshair; }
+  .sig-typed-preview {
+    background: #fff; border-radius: 8px; min-height: 150px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Dancing Script', cursive; font-weight: 700; font-size: 40px; color: #111;
+    padding: 12px; text-align: center; word-break: break-word;
+  }
+  .swap-btn {
+    width: 38px; height: 38px; flex-shrink: 0; background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 8px; color: var(--text); font-size: 15px; cursor: pointer; transition: all 0.15s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .swap-btn:hover { border-color: var(--accent); color: var(--accent); }
 
   /* ─── CROP PRESETS ─── */
   .crop-presets { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
@@ -643,6 +678,7 @@
   })();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 </head>
 <body>
 
@@ -691,18 +727,6 @@
           <span class="tool-tag">Vidéo · Photo</span>
         </div>
 
-        <div class="tool-card" onclick="goTo('upscale')">
-          <div class="tool-card-top">
-            <div class="tool-icon">🔍</div>
-            <span class="tool-arrow">→</span>
-          </div>
-          <div class="tool-card-body">
-            <div class="tool-name">Upscale</div>
-            <div class="tool-desc">Agrandis tes photos en ×2, ×3 ou ×4 sans perte de netteté.</div>
-          </div>
-          <span class="tool-tag">Photo</span>
-        </div>
-
         <div class="tool-card" onclick="goTo('compress')">
           <div class="tool-card-top">
             <div class="tool-icon">📦</div>
@@ -739,18 +763,6 @@
           <span class="tool-tag">OF · MYM</span>
         </div>
 
-        <div class="tool-card" onclick="goTo('thumbnail')">
-          <div class="tool-card-top">
-            <div class="tool-icon">🎞</div>
-            <span class="tool-arrow">→</span>
-          </div>
-          <div class="tool-card-body">
-            <div class="tool-name">Thumbnail</div>
-            <div class="tool-desc">Extrait une frame précise de ta vidéo en image HD.</div>
-          </div>
-          <span class="tool-tag">Vidéo</span>
-        </div>
-
         <div class="tool-card" onclick="goTo('metadata')">
           <div class="tool-card-top">
             <div class="tool-icon">🧹</div>
@@ -785,6 +797,54 @@
             <div class="tool-desc">Télécharge posts, reels et stories depuis Instagram et TikTok via Cobalt.</div>
           </div>
           <span class="tool-tag">Instagram · TikTok</span>
+        </div>
+
+        <div class="tool-card" onclick="goTo('contract')">
+          <div class="tool-card-top">
+            <div class="tool-icon">📄</div>
+            <span class="tool-arrow">→</span>
+          </div>
+          <div class="tool-card-body">
+            <div class="tool-name">Contract Generator</div>
+            <div class="tool-desc">Génère un contrat de représentation PDF prêt à signer en quelques champs.</div>
+          </div>
+          <span class="tool-tag">PDF · Agence</span>
+        </div>
+
+        <div class="tool-card" onclick="goTo('commission')">
+          <div class="tool-card-top">
+            <div class="tool-icon">🧮</div>
+            <span class="tool-arrow">→</span>
+          </div>
+          <div class="tool-card-body">
+            <div class="tool-name">Commission Calculator</div>
+            <div class="tool-desc">Calcule la part agence, la part modèle et les frais OF à partir du revenu brut.</div>
+          </div>
+          <span class="tool-tag">OF · Finance</span>
+        </div>
+
+        <div class="tool-card" onclick="goTo('signature')">
+          <div class="tool-card-top">
+            <div class="tool-icon">✍️</div>
+            <span class="tool-arrow">→</span>
+          </div>
+          <div class="tool-card-body">
+            <div class="tool-name">Electronic Signature</div>
+            <div class="tool-desc">Signe un PDF à la main ou au clavier et télécharge-le horodaté.</div>
+          </div>
+          <span class="tool-tag">PDF</span>
+        </div>
+
+        <div class="tool-card" onclick="goTo('currency')">
+          <div class="tool-card-top">
+            <div class="tool-icon">💱</div>
+            <span class="tool-arrow">→</span>
+          </div>
+          <div class="tool-card-body">
+            <div class="tool-name">Currency Converter</div>
+            <div class="tool-desc">Convertis USD, EUR, COP et USDT en temps réel avec des taux à jour.</div>
+          </div>
+          <span class="tool-tag">USD · EUR · COP · USDT</span>
         </div>
 
       </div>
@@ -915,86 +975,6 @@
         </button>
       </div>
 
-      <div class="footer-note">Traitement 100% local · Aucun fichier envoyé sur un serveur · NARIX AGENCY</div>
-    </div>
-  </div>
-
-  <div class="page" id="page-upscale">
-    <div class="tool-layout">
-      <div class="page-title">
-        <h1>UPSCALE — AGRANDISSEMENT</h1>
-        <p>Agrandis tes photos ×2, ×3 ou ×4 — traitement 100% local via canvas haute qualité.</p>
-      </div>
-
-      <div class="dropzone" id="upscaleDropzone" onclick="document.getElementById('upscaleFileInput').click()">
-        <div class="dropzone-icon">🔍</div>
-        <div class="dropzone-title">Glisse tes photos ici</div>
-        <div class="dropzone-sub">JPG, PNG, WEBP</div>
-      </div>
-      <input type="file" id="upscaleFileInput" multiple accept="image/*" style="display:none">
-
-      <div class="card">
-        <div class="card-header"><span class="card-title">Facteur d'agrandissement</span></div>
-        <div class="card-body">
-          <div class="speed-options">
-            <div class="speed-option active" id="upscale-x2" onclick="upscaleSetFactor(2)">
-              <div class="speed-radio"></div>
-              <div><div class="speed-name">×2</div><div class="speed-desc">Double la résolution</div></div>
-            </div>
-            <div class="speed-option" id="upscale-x3" onclick="upscaleSetFactor(3)">
-              <div class="speed-radio"></div>
-              <div><div class="speed-name">×3</div><div class="speed-desc">Triple la résolution</div></div>
-            </div>
-            <div class="speed-option" id="upscale-x4" onclick="upscaleSetFactor(4)">
-              <div class="speed-radio"></div>
-              <div><div class="speed-name">×4</div><div class="speed-desc">Résolution ×4</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header"><span class="card-title">Format de sortie</span></div>
-        <div class="card-body">
-          <div class="speed-options">
-            <div class="speed-option active" id="upscale-fmt-jpeg" onclick="upscaleSetFmt('image/jpeg','jpg')">
-              <div class="speed-radio"></div>
-              <div><div class="speed-name">JPEG</div><div class="speed-desc">Petit poids, photos</div></div>
-            </div>
-            <div class="speed-option" id="upscale-fmt-png" onclick="upscaleSetFmt('image/png','png')">
-              <div class="speed-radio"></div>
-              <div><div class="speed-name">PNG</div><div class="speed-desc">Sans perte</div></div>
-            </div>
-            <div class="speed-option" id="upscale-fmt-webp" onclick="upscaleSetFmt('image/webp','webp')">
-              <div class="speed-radio"></div>
-              <div><div class="speed-name">WEBP</div><div class="speed-desc">Moderne, web</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="file-list" id="upscaleFileList"></div>
-      <div class="add-more" id="upscaleAddMore" style="display:none" onclick="document.getElementById('upscaleFileInput').click()">
-        <span>+</span> Ajouter des photos
-      </div>
-
-      <div class="progress-container" id="upscaleProgress">
-        <div class="progress-top">
-          <span class="progress-label" id="upscaleProgressLabel">Traitement...</span>
-          <span class="progress-pct" id="upscaleProgressPct">0%</span>
-        </div>
-        <div class="progress-bar-wrap"><div class="progress-bar" id="upscaleProgressBar"></div></div>
-      </div>
-
-      <div class="action-buttons">
-        <button class="btn-process" id="upscaleBtnProcess" onclick="upscaleProcess()" disabled>
-          <span class="btn-text">Agrandir les photos</span>
-          <div class="spinner"></div>
-        </button>
-        <button class="btn-secondary" id="upscaleBtnDownload" onclick="upscaleDownloadAll()" disabled>
-          ↓ Télécharger tous
-        </button>
-      </div>
       <div class="footer-note">Traitement 100% local · Aucun fichier envoyé sur un serveur · NARIX AGENCY</div>
     </div>
   </div>
@@ -1268,69 +1248,6 @@
     </div>
   </div>
 
-  <div class="page" id="page-thumbnail">
-    <div class="tool-layout">
-      <div class="page-title">
-        <h1>THUMBNAIL — EXTRACTION</h1>
-        <p>Navigue dans ta vidéo, capture la frame parfaite et télécharge-la en HD.</p>
-      </div>
-
-      <div class="dropzone" id="thumbDropzone" onclick="document.getElementById('thumbFileInput').click()">
-        <div class="dropzone-icon">🎞</div>
-        <div class="dropzone-title">Glisse ta vidéo ici</div>
-        <div class="dropzone-sub">MP4, MOV, WEBM</div>
-      </div>
-      <input type="file" id="thumbFileInput" accept="video/*" style="display:none">
-
-      <div id="thumbEditor" style="display:none">
-        <div class="card" style="margin-bottom:12px;">
-          <div class="card-header">
-            <span class="card-title">Lecture</span>
-            <span class="thumb-time" id="thumbTime">0:00.00</span>
-          </div>
-          <div class="card-body" style="padding:0;">
-            <div class="thumb-video-wrap">
-              <video id="thumbVideo" preload="metadata" playsinline></video>
-            </div>
-            <div class="thumb-controls">
-              <input type="range" class="thumb-seek" id="thumbSeek" min="0" max="100" step="0.01" value="0">
-              <div style="display:flex;gap:8px;">
-                <button onclick="thumbTogglePlay()" id="thumbPlayBtn"
-                  style="padding:8px 18px;background:var(--text);color:var(--inv);border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;">
-                  ▶ Lecture
-                </button>
-                <button onclick="thumbStep(-1/30)"
-                  style="padding:8px 14px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;color:var(--text);">
-                  ←1f
-                </button>
-                <button onclick="thumbStep(1/30)"
-                  style="padding:8px 14px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;color:var(--text);">
-                  1f→
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div id="thumbCapturePreview" class="thumb-capture-preview" style="display:none">
-          <img id="thumbPreviewImg" alt="Frame capturée">
-        </div>
-
-        <div class="action-buttons">
-          <button class="btn-process" id="thumbBtnCapture" onclick="thumbCapture()">
-            <span class="btn-text">📸 Capturer cette frame</span>
-            <div class="spinner"></div>
-          </button>
-          <button class="btn-secondary" id="thumbBtnDownload" onclick="thumbDownload()" style="display:none">
-            ↓ Télécharger la frame
-          </button>
-        </div>
-      </div>
-
-      <div class="footer-note">Traitement 100% local · Aucun fichier envoyé sur un serveur · NARIX AGENCY</div>
-    </div>
-  </div>
-
   <div class="page" id="page-metadata">
     <div class="tool-layout">
       <div class="page-title">
@@ -1572,6 +1489,260 @@
     </div>
   </div>
 
+  <div class="page" id="page-contract">
+    <div class="tool-layout">
+      <div class="page-title">
+        <h1>CONTRACT GENERATOR</h1>
+        <p>Remplis les champs ci-dessous pour générer un contrat de représentation PDF, prêt à télécharger.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><span class="card-title">Informations du contrat</span></div>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="ctModelName">Nom de la créatrice / du créateur</label>
+              <input type="text" id="ctModelName" class="form-input" placeholder="Ex : Jane Doe">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="ctAgencyName">Nom de l'agence</label>
+              <input type="text" id="ctAgencyName" class="form-input" placeholder="Ex : NARIX AGENCY">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="ctCommission">Commission agence (%)</label>
+              <input type="number" id="ctCommission" class="form-input" min="0" max="100" step="0.1" value="20">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="ctStartDate">Date de début</label>
+              <input type="date" id="ctStartDate" class="form-input">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="warning">
+        <span>⚠️</span>
+        <div>Ce document est un modèle générique généré automatiquement et ne constitue pas un conseil juridique. Fais-le relire par un professionnel avant signature.</div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn-process" id="ctBtnGenerate" onclick="ctGenerate()">
+          <span class="btn-text">📄 Générer le contrat PDF</span>
+          <div class="spinner"></div>
+        </button>
+      </div>
+      <div class="footer-note">Génération 100% locale · Aucune donnée envoyée sur un serveur · NARIX AGENCY</div>
+    </div>
+  </div>
+
+  <div class="page" id="page-commission">
+    <div class="tool-layout">
+      <div class="page-title">
+        <h1>COMMISSION CALCULATOR</h1>
+        <p>Entre le revenu brut OF pour calculer automatiquement les frais OF, la part agence et la part modèle.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><span class="card-title">Revenu &amp; commission</span></div>
+        <div class="card-body">
+          <div class="form-group">
+            <label class="form-label" for="ccGross">Revenu brut OF ($)</label>
+            <input type="number" id="ccGross" class="form-input" min="0" step="0.01" placeholder="0.00" oninput="ccRender()">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="ccCommission">Commission agence (%)</label>
+            <input type="number" id="ccCommission" class="form-input" min="0" max="100" step="0.1" value="20" oninput="ccRender()">
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><span class="card-title">Répartition</span></div>
+        <div class="card-body">
+          <div class="result-row">
+            <span class="result-label">Revenu brut OF</span>
+            <span class="result-value" id="ccOutGross">$0.00</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Frais OF (20%)</span>
+            <span class="result-value accent" id="ccOutFees">− $0.00</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Revenu net (après frais OF)</span>
+            <span class="result-value" id="ccOutNet">$0.00</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label" id="ccOutCommissionLabel">Part agence (20%)</span>
+            <span class="result-value accent" id="ccOutCommission">− $0.00</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Part modèle</span>
+            <span class="result-value green" id="ccOutModel">$0.00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-note">Calcul 100% local · Aucune donnée envoyée sur un serveur · NARIX AGENCY</div>
+    </div>
+  </div>
+
+  <div class="page" id="page-signature">
+    <div class="tool-layout">
+      <div class="page-title">
+        <h1>ELECTRONIC SIGNATURE</h1>
+        <p>Importe un PDF, dessine ou tape ta signature, choisis son emplacement et télécharge le PDF signé et horodaté.</p>
+      </div>
+
+      <div class="dropzone" id="sigDropzone" onclick="document.getElementById('sigFileInput').click()">
+        <div class="dropzone-icon">📄</div>
+        <div class="dropzone-title">Glisse ton PDF ici</div>
+        <div class="dropzone-sub">Fichier PDF uniquement</div>
+      </div>
+      <input type="file" id="sigFileInput" accept="application/pdf" style="display:none">
+
+      <div id="sigEditor" style="display:none">
+
+        <div class="file-list" style="margin-bottom:12px;">
+          <div class="file-item">
+            <div class="file-thumb">📄</div>
+            <div class="file-info">
+              <div class="file-name" id="sigFileName">—</div>
+              <div class="file-meta" id="sigFileMeta">—</div>
+            </div>
+            <div class="file-actions"><button class="rm-btn" onclick="sigReset()">×</button></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:12px;">
+          <div class="card-header">
+            <span class="card-title">Signature</span>
+          </div>
+          <div class="card-body">
+            <div class="tabs">
+              <button class="tab active" id="sigTabDraw" onclick="sigSwitchTab('draw')">Dessiner</button>
+              <button class="tab" id="sigTabType" onclick="sigSwitchTab('type')">Taper</button>
+            </div>
+
+            <div id="sigPaneDraw">
+              <div class="sig-draw-wrap">
+                <canvas id="sigDrawCanvas"></canvas>
+              </div>
+              <div class="action-buttons" style="margin-top:10px;">
+                <button class="btn-secondary" onclick="sigClearDraw()">Effacer la signature</button>
+              </div>
+            </div>
+
+            <div id="sigPaneType" style="display:none">
+              <input type="text" id="sigTypedInput" class="form-input" placeholder="Tape ton nom" oninput="sigRenderTyped()" style="margin-bottom:10px;">
+              <div class="sig-typed-preview" id="sigTypedPreview">Aperçu de la signature</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:12px;">
+          <div class="card-header"><span class="card-title">Emplacement sur la page</span></div>
+          <div class="card-body">
+            <div class="speed-options">
+              <div class="speed-option active" id="sig-pos-br" onclick="sigSetPosition('br')">
+                <div class="speed-radio"></div>
+                <div><div class="speed-name">Bas droite</div><div class="speed-desc">Position classique</div></div>
+              </div>
+              <div class="speed-option" id="sig-pos-bl" onclick="sigSetPosition('bl')">
+                <div class="speed-radio"></div>
+                <div><div class="speed-name">Bas gauche</div></div>
+              </div>
+              <div class="speed-option" id="sig-pos-tr" onclick="sigSetPosition('tr')">
+                <div class="speed-radio"></div>
+                <div><div class="speed-name">Haut droite</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><span class="card-title">Page à signer</span></div>
+          <div class="card-body">
+            <div class="speed-options">
+              <div class="speed-option active" id="sig-page-last" onclick="sigSetPage('last')">
+                <div class="speed-radio"></div>
+                <div><div class="speed-name">Dernière page</div></div>
+              </div>
+              <div class="speed-option" id="sig-page-first" onclick="sigSetPage('first')">
+                <div class="speed-radio"></div>
+                <div><div class="speed-name">Première page</div></div>
+              </div>
+              <div class="speed-option" id="sig-page-all" onclick="sigSetPage('all')">
+                <div class="speed-radio"></div>
+                <div><div class="speed-name">Toutes les pages</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="action-buttons" style="margin-top:12px;">
+          <button class="btn-process" id="sigBtnSign" onclick="sigSign()">
+            <span class="btn-text">✍️ Signer et télécharger le PDF</span>
+            <div class="spinner"></div>
+          </button>
+        </div>
+      </div>
+
+      <div class="footer-note">Traitement 100% local · Aucun fichier envoyé sur un serveur · NARIX AGENCY</div>
+    </div>
+  </div>
+
+  <div class="page" id="page-currency">
+    <div class="tool-layout">
+      <div class="page-title">
+        <h1>CURRENCY CONVERTER</h1>
+        <p>Convertis entre USD, EUR, COP et USDT avec des taux de change en temps réel.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Montant</span>
+          <span class="card-title" id="curStatus" style="text-transform:none;letter-spacing:0;font-weight:500;">Chargement des taux...</span>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <input type="number" id="curAmount" class="form-input" min="0" step="0.01" value="100" oninput="currencyRender()">
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <select id="curFrom" class="form-select" onchange="currencyRender()" style="flex:1;">
+              <option value="USD">USD — Dollar américain</option>
+              <option value="EUR">EUR — Euro</option>
+              <option value="COP">COP — Peso colombien</option>
+              <option value="USDT">USDT — Tether</option>
+            </select>
+            <button class="swap-btn" onclick="currencySwap()" title="Inverser">⇄</button>
+            <select id="curTo" class="form-select" onchange="currencyRender()" style="flex:1;">
+              <option value="USD">USD — Dollar américain</option>
+              <option value="EUR" selected>EUR — Euro</option>
+              <option value="COP">COP — Peso colombien</option>
+              <option value="USDT">USDT — Tether</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="result-highlight">
+            <div class="big-number" id="curResult">—</div>
+            <div class="sub-rate" id="curRateLine">Chargement des taux de change...</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn-secondary" onclick="currencyFetchRates(true)">🔄 Rafraîchir les taux</button>
+      </div>
+      <div class="footer-note">Taux fournis par open.er-api.com &amp; CoinGecko · NARIX AGENCY</div>
+    </div>
+  </div>
+
 </div><!-- #appRoot -->
 
 <div class="toast" id="toast"></div>
@@ -1591,16 +1762,18 @@ function toggleTheme() {
 
 // ─── ROUTER ───────────────────────────────────────────────
 const TOOL_LABELS = {
-  home:      'Tools',
-  spoof:     'Spoof',
-  upscale:   'Upscale',
-  compress:  'Compress',
-  convert:   'Convert',
-  ppv:       'PPV Thumbnail',
-  thumbnail: 'Thumbnail',
-  metadata:  'Metadata',
-  crop:      'Crop',
-  download:  'Download',
+  home:       'Tools',
+  spoof:      'Spoof',
+  compress:   'Compress',
+  convert:    'Convert',
+  ppv:        'PPV Thumbnail',
+  metadata:   'Metadata',
+  crop:       'Crop',
+  download:   'Download',
+  contract:   'Contract Generator',
+  commission: 'Commission Calculator',
+  signature:  'Electronic Signature',
+  currency:   'Currency Converter',
 };
 
 let currentPage = 'home';
@@ -1676,8 +1849,9 @@ function showToast(msg, type) {
 
 // ─── PAGE-ENTER HOOKS ─────────────────────────────────────
 const pageEnterHooks = {
-  spoof: () => spoofInit(),
-  ppv:   () => ppvReset(),
+  spoof:    () => spoofInit(),
+  ppv:      () => ppvReset(),
+  currency: () => currencyInit(),
 };
 
 // ══════════════════════════════════════════════════════════
@@ -2041,149 +2215,6 @@ async function ensureFFmpeg(bannerEl) {
   }
 }
 
-// ══════════════════════════════════════════════════════════
-//  UPSCALE
-// ══════════════════════════════════════════════════════════
-let upscaleFiles  = [];
-let upscaleBlobs  = [];
-let upscaleFactor = 2;
-let upscaleFmt    = 'image/jpeg';
-let upscaleExt    = 'jpg';
-
-(function () {
-  const dz = document.getElementById('upscaleDropzone');
-  dz.addEventListener('dragover',  e => { e.preventDefault(); dz.classList.add('dragover'); });
-  dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
-  dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('dragover'); upscaleHandle([...e.dataTransfer.files]); });
-  document.getElementById('upscaleFileInput').addEventListener('change', e => { upscaleHandle([...e.target.files]); e.target.value = ''; });
-})();
-
-function upscaleSetFactor(f) {
-  upscaleFactor = f;
-  [2,3,4].forEach(n => document.getElementById('upscale-x'+n).classList.toggle('active', n === f));
-}
-function upscaleSetFmt(mime, ext) {
-  upscaleFmt = mime; upscaleExt = ext;
-  ['jpeg','png','webp'].forEach(k => document.getElementById('upscale-fmt-'+k).classList.remove('active'));
-  const key = mime === 'image/jpeg' ? 'jpeg' : mime === 'image/png' ? 'png' : 'webp';
-  document.getElementById('upscale-fmt-'+key).classList.add('active');
-}
-
-function upscaleHandle(files) {
-  files.filter(f => f.type.startsWith('image/')).forEach(f =>
-    upscaleFiles.push({ file: f, name: f.name, size: (f.size/1024/1024).toFixed(2), status: 'pending', blob: null })
-  );
-  if (upscaleFiles.length) {
-    document.getElementById('upscaleDropzone').style.display = 'none';
-    document.getElementById('upscaleAddMore').style.display  = 'flex';
-    document.getElementById('upscaleBtnProcess').disabled    = false;
-  }
-  upscaleRender();
-}
-
-function upscaleRender() {
-  const list = document.getElementById('upscaleFileList');
-  list.innerHTML = '';
-  upscaleFiles.forEach((f, i) => {
-    const div = document.createElement('div');
-    div.className = 'file-item' + (f.status === 'done' ? ' done' : f.status === 'processing' ? ' processing' : '');
-    let meta = f.status === 'done'
-      ? `<div class="file-meta done">✓ ${f.outW}×${f.outH}px · <span class="size-badge saved">${f.outSize} MB</span></div>`
-      : f.status === 'processing'
-      ? `<div class="file-meta processing">Traitement...</div>`
-      : `<div class="file-meta">${f.size} MB → ×${upscaleFactor}</div>`;
-    const dlBtn = f.status === 'done'
-      ? `<button class="dl-btn" onclick="upscaleDL(${i})">↓</button>`
-      : `<button class="dl-btn" disabled>↓</button>`;
-    div.innerHTML = `<div class="file-thumb">🖼</div><div class="file-info"><div class="file-name">${f.name}</div>${meta}</div>
-      <div class="file-actions">${dlBtn}<button class="rm-btn" onclick="upscaleRM(${i})">×</button></div>`;
-    list.appendChild(div);
-  });
-}
-
-function upscaleRM(i) {
-  upscaleFiles.splice(i, 1);
-  if (!upscaleFiles.length) {
-    document.getElementById('upscaleDropzone').style.display = 'block';
-    document.getElementById('upscaleAddMore').style.display  = 'none';
-    document.getElementById('upscaleBtnProcess').disabled    = true;
-    document.getElementById('upscaleBtnDownload').disabled   = true;
-  }
-  upscaleRender();
-}
-
-async function upscaleProcess() {
-  if (!upscaleFiles.length) return;
-  const btn = document.getElementById('upscaleBtnProcess');
-  btn.classList.add('loading'); btn.disabled = true;
-  document.getElementById('upscaleProgress').classList.add('visible');
-  upscaleBlobs = [];
-
-  for (let i = 0; i < upscaleFiles.length; i++) {
-    upscaleFiles[i].status = 'processing'; upscaleRender();
-    document.getElementById('upscaleProgressLabel').textContent = `Photo ${i+1}/${upscaleFiles.length}`;
-    try {
-      const blob = await upscaleOne(upscaleFiles[i].file);
-      upscaleFiles[i].blob    = blob;
-      upscaleFiles[i].outSize = (blob.size/1024/1024).toFixed(2);
-      upscaleFiles[i].status  = 'done';
-      upscaleBlobs.push({ blob, name: upscaleFiles[i].name.replace(/\.[^.]+$/, `_x${upscaleFactor}.${upscaleExt}`) });
-    } catch(e) { upscaleFiles[i].status = 'pending'; showToast('Erreur : ' + upscaleFiles[i].name, 'error'); }
-    const pct = Math.round((i+1)/upscaleFiles.length*100);
-    document.getElementById('upscaleProgressBar').style.width = pct + '%';
-    document.getElementById('upscaleProgressPct').textContent = pct + '%';
-    upscaleRender();
-  }
-
-  btn.classList.remove('loading'); btn.disabled = false;
-  document.getElementById('upscaleProgress').classList.remove('visible');
-  document.getElementById('upscaleBtnDownload').disabled = false;
-  showToast(`✓ ${upscaleBlobs.length} photo(s) agrandie(s) !`, 'success');
-}
-
-function upscaleOne(file) {
-  return new Promise((resolve, reject) => {
-    const img = new Image(), url = URL.createObjectURL(file);
-    img.onload = () => {
-      URL.revokeObjectURL(url);
-      const c = document.createElement('canvas');
-      c.width  = img.naturalWidth  * upscaleFactor;
-      c.height = img.naturalHeight * upscaleFactor;
-      const ctx = c.getContext('2d');
-      ctx.imageSmoothingEnabled  = true;
-      ctx.imageSmoothingQuality  = 'high';
-      ctx.drawImage(img, 0, 0, c.width, c.height);
-      // store dimensions for display
-      img._w = c.width; img._h = c.height;
-      c.toBlob(b => {
-        if (!b) { reject(new Error('toBlob failed')); return; }
-        resolve(b);
-      }, upscaleFmt, upscaleFmt === 'image/png' ? undefined : 0.95);
-    };
-    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('load failed')); };
-    img.src = url;
-  }).then(blob => { return blob; });
-}
-
-function upscaleDL(i) {
-  const { blob, name } = upscaleBlobs[i];
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a'); a.href = url; a.download = name; a.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-}
-
-async function upscaleDownloadAll() {
-  if (!upscaleBlobs.length) return;
-  if (upscaleBlobs.length === 1) { upscaleDL(0); return; }
-  showToast('↓ Création du ZIP...');
-  const zip = new JSZip();
-  upscaleBlobs.forEach(({ blob, name }) => zip.file(name, blob));
-  const zBlob = await zip.generateAsync({ type: 'blob' });
-  const url = URL.createObjectURL(zBlob);
-  const a = document.createElement('a'); a.href = url; a.download = `narix_upscale_${Date.now()}.zip`; a.click();
-  setTimeout(() => URL.revokeObjectURL(url), 2000);
-  showToast(`✓ ZIP téléchargé (${upscaleBlobs.length} fichiers)`, 'success');
-}
 
 // ══════════════════════════════════════════════════════════
 //  COMPRESS
@@ -2810,99 +2841,6 @@ function ppvExport() {
 }
 
 // ══════════════════════════════════════════════════════════
-//  THUMBNAIL EXTRACTOR
-// ══════════════════════════════════════════════════════════
-let thumbBlob = null;
-
-(function () {
-  const dz = document.getElementById('thumbDropzone');
-  dz.addEventListener('dragover',  e => { e.preventDefault(); dz.classList.add('dragover'); });
-  dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
-  dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('dragover'); thumbLoad(e.dataTransfer.files[0]); });
-  document.getElementById('thumbFileInput').addEventListener('change', e => { thumbLoad(e.target.files[0]); e.target.value = ''; });
-})();
-
-function thumbLoad(file) {
-  if (!file || !file.type.startsWith('video/')) { showToast('Fichier vidéo requis', 'error'); return; }
-  document.getElementById('thumbDropzone').style.display = 'none';
-  document.getElementById('thumbEditor').style.display   = 'block';
-  document.getElementById('thumbBtnDownload').style.display = 'none';
-  document.getElementById('thumbCapturePreview').style.display = 'none';
-  thumbBlob = null;
-
-  const video = document.getElementById('thumbVideo');
-  const seek  = document.getElementById('thumbSeek');
-
-  video.src = URL.createObjectURL(file);
-  video.onloadedmetadata = () => {
-    seek.max   = video.duration;
-    seek.value = 0;
-    thumbUpdateTime(video.currentTime);
-  };
-  video.ontimeupdate = () => {
-    seek.value = video.currentTime;
-    thumbUpdateTime(video.currentTime);
-  };
-  seek.oninput = () => { video.currentTime = parseFloat(seek.value); };
-}
-
-function thumbUpdateTime(t) {
-  const m  = Math.floor(t / 60);
-  const s  = Math.floor(t % 60);
-  const cs = Math.floor((t % 1) * 100);
-  document.getElementById('thumbTime').textContent =
-    `${m}:${String(s).padStart(2,'0')}.${String(cs).padStart(2,'0')}`;
-}
-
-function thumbTogglePlay() {
-  const video = document.getElementById('thumbVideo');
-  const btn   = document.getElementById('thumbPlayBtn');
-  if (video.paused) { video.play(); btn.textContent = '⏸ Pause'; }
-  else              { video.pause(); btn.textContent = '▶ Lecture'; }
-}
-
-function thumbStep(delta) {
-  const video = document.getElementById('thumbVideo');
-  video.pause();
-  document.getElementById('thumbPlayBtn').textContent = '▶ Lecture';
-  video.currentTime = Math.max(0, Math.min(video.duration, video.currentTime + delta));
-}
-
-function thumbCapture() {
-  const video = document.getElementById('thumbVideo');
-  const btn   = document.getElementById('thumbBtnCapture');
-  btn.classList.add('loading');
-  video.pause();
-  document.getElementById('thumbPlayBtn').textContent = '▶ Lecture';
-
-  const c = document.createElement('canvas');
-  c.width  = video.videoWidth;
-  c.height = video.videoHeight;
-  c.getContext('2d').drawImage(video, 0, 0);
-  c.toBlob(blob => {
-    btn.classList.remove('loading');
-    thumbBlob = blob;
-    const url = URL.createObjectURL(blob);
-    const prev = document.getElementById('thumbPreviewImg');
-    prev.onload = () => URL.revokeObjectURL(url);
-    prev.src = url;
-    document.getElementById('thumbCapturePreview').style.display = 'block';
-    document.getElementById('thumbBtnDownload').style.display    = 'flex';
-    showToast('✓ Frame capturée !', 'success');
-  }, 'image/jpeg', 0.95);
-}
-
-function thumbDownload() {
-  if (!thumbBlob) return;
-  const url = URL.createObjectURL(thumbBlob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `narix_thumb_${Date.now()}.jpg`;
-  a.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-}
-
-// ══════════════════════════════════════════════════════════
 //  METADATA REMOVER
 // ══════════════════════════════════════════════════════════
 let metaFiles = [];
@@ -3437,6 +3375,416 @@ async function spoofDownloadAll() {
   a.href = url; a.download = `narix_spoof_${Date.now()}.zip`; a.click();
   setTimeout(() => URL.revokeObjectURL(url), 2000);
   showToast(`✓ ZIP téléchargé (${spoofBlobs.length} fichiers)`, 'success');
+}
+
+// ══════════════════════════════════════════════════════════
+//  CONTRACT GENERATOR
+// ══════════════════════════════════════════════════════════
+function ctWrapText(text, font, size, maxWidth) {
+  const words = text.split(' ');
+  const lines = [];
+  let line = '';
+  words.forEach(word => {
+    const test = line ? line + ' ' + word : word;
+    if (font.widthOfTextAtSize(test, size) > maxWidth && line) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = test;
+    }
+  });
+  if (line) lines.push(line);
+  return lines;
+}
+
+async function ctGenerate() {
+  const modelName  = document.getElementById('ctModelName').value.trim();
+  const agencyName = document.getElementById('ctAgencyName').value.trim();
+  const commission = parseFloat(document.getElementById('ctCommission').value);
+  const startDate  = document.getElementById('ctStartDate').value;
+
+  if (!modelName || !agencyName || !startDate || isNaN(commission)) {
+    showToast('Merci de remplir tous les champs', 'error');
+    return;
+  }
+
+  const btn = document.getElementById('ctBtnGenerate');
+  btn.classList.add('loading'); btn.disabled = true;
+
+  try {
+    const { PDFDocument, StandardFonts, rgb } = PDFLib;
+    const pdfDoc   = await PDFDocument.create();
+    const font     = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const fontBold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+
+    const pageWidth  = 595.28; // A4
+    const pageHeight = 841.89;
+    const margin     = 56;
+    const maxWidth   = pageWidth - margin * 2;
+    let page = pdfDoc.addPage([pageWidth, pageHeight]);
+    let y = pageHeight - margin;
+
+    const dateFmt = new Date(startDate + 'T00:00:00').toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+
+    function newPageIfNeeded(lineHeight) {
+      if (y < margin + lineHeight) {
+        page = pdfDoc.addPage([pageWidth, pageHeight]);
+        y = pageHeight - margin;
+      }
+    }
+    function drawTitle(text, size = 18) {
+      newPageIfNeeded(size + 20);
+      page.drawText(text, { x: margin, y, size, font: fontBold, color: rgb(0.1, 0.1, 0.1) });
+      y -= size + 16;
+    }
+    function drawHeading(text) {
+      newPageIfNeeded(30);
+      page.drawText(text, { x: margin, y, size: 12, font: fontBold, color: rgb(0.15, 0.15, 0.15) });
+      y -= 20;
+    }
+    function drawParagraph(text, size = 10.5) {
+      const lines = ctWrapText(text, font, size, maxWidth);
+      lines.forEach(line => {
+        newPageIfNeeded(size + 6);
+        page.drawText(line, { x: margin, y, size, font, color: rgb(0.2, 0.2, 0.2) });
+        y -= size + 6;
+      });
+      y -= 8;
+    }
+
+    drawTitle('CONTRAT DE REPRÉSENTATION');
+    drawParagraph(`Entre les soussignés : l'agence « ${agencyName} », ci-après désignée « l'Agence », d'une part, et « ${modelName} », ci-après désignée « la Créatrice/le Créateur », d'autre part, il a été convenu ce qui suit.`);
+
+    drawHeading('Article 1 — Objet');
+    drawParagraph(`L'Agence assure la gestion, la promotion, la stratégie de contenu et le développement du ou des comptes de plateformes de contenu pour adultes (OnlyFans, MYM ou équivalent) de la Créatrice/du Créateur, en contrepartie de la commission définie à l'Article 2.`);
+
+    drawHeading('Article 2 — Commission');
+    drawParagraph(`En contrepartie des services rendus, l'Agence perçoit une commission de ${commission}% sur les revenus nets générés par la Créatrice/le Créateur sur les plateformes gérées par l'Agence, après déduction des frais de plateforme. Le solde revient intégralement à la Créatrice/au Créateur.`);
+
+    drawHeading('Article 3 — Durée');
+    drawParagraph(`Le présent contrat prend effet à compter du ${dateFmt} pour une durée indéterminée. Chaque partie peut y mettre fin à tout moment moyennant un préavis écrit de 30 jours.`);
+
+    drawHeading('Article 4 — Confidentialité');
+    drawParagraph(`Les deux parties s'engagent à conserver confidentielles toutes les informations échangées dans le cadre de cette collaboration, y compris les données financières et personnelles.`);
+
+    drawHeading('Article 5 — Résiliation');
+    drawParagraph(`En cas de manquement grave de l'une des parties à ses obligations, l'autre partie pourra résilier le présent contrat de plein droit après mise en demeure restée sans effet pendant 15 jours.`);
+
+    newPageIfNeeded(140);
+    y -= 20;
+    page.drawLine({ start: { x: margin, y }, end: { x: pageWidth - margin, y }, thickness: 0.5, color: rgb(0.8, 0.8, 0.8) });
+    y -= 40;
+
+    const colWidth = maxWidth / 2;
+    page.drawText("Pour l'Agence", { x: margin, y, size: 10, font: fontBold, color: rgb(0.15, 0.15, 0.15) });
+    page.drawText('Pour la Créatrice/le Créateur', { x: margin + colWidth, y, size: 10, font: fontBold, color: rgb(0.15, 0.15, 0.15) });
+    y -= 50;
+    page.drawLine({ start: { x: margin, y }, end: { x: margin + 160, y }, thickness: 0.8, color: rgb(0.5, 0.5, 0.5) });
+    page.drawLine({ start: { x: margin + colWidth, y }, end: { x: margin + colWidth + 160, y }, thickness: 0.8, color: rgb(0.5, 0.5, 0.5) });
+    y -= 14;
+    page.drawText(agencyName, { x: margin, y, size: 9, font, color: rgb(0.4, 0.4, 0.4) });
+    page.drawText(modelName, { x: margin + colWidth, y, size: 9, font, color: rgb(0.4, 0.4, 0.4) });
+
+    y -= 40;
+    const now = new Date();
+    page.drawText(`Document généré le ${now.toLocaleDateString('fr-FR')} à ${now.toLocaleTimeString('fr-FR')} — NARIX AGENCY`, {
+      x: margin, y, size: 8, font, color: rgb(0.6, 0.6, 0.6)
+    });
+
+    const bytes = await pdfDoc.save();
+    const blob  = new Blob([bytes], { type: 'application/pdf' });
+    const url   = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = `contrat_${modelName.replace(/\s+/g, '_')}_${Date.now()}.pdf`; a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+    showToast('✓ Contrat PDF généré !', 'success');
+  } catch (e) {
+    console.error(e);
+    showToast('Erreur lors de la génération du PDF', 'error');
+  } finally {
+    btn.classList.remove('loading'); btn.disabled = false;
+  }
+}
+
+// ══════════════════════════════════════════════════════════
+//  COMMISSION CALCULATOR
+// ══════════════════════════════════════════════════════════
+const OF_FEE_RATE = 0.20;
+
+function ccFormatUSD(n) {
+  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(n);
+}
+
+function ccRender() {
+  const gross      = parseFloat(document.getElementById('ccGross').value) || 0;
+  const commission = Math.min(100, Math.max(0, parseFloat(document.getElementById('ccCommission').value) || 0));
+
+  const ofFees = gross * OF_FEE_RATE;
+  const net    = gross - ofFees;
+  const agency = net * (commission / 100);
+  const model  = net - agency;
+
+  document.getElementById('ccOutGross').textContent           = ccFormatUSD(gross);
+  document.getElementById('ccOutFees').textContent            = '− ' + ccFormatUSD(ofFees);
+  document.getElementById('ccOutNet').textContent             = ccFormatUSD(net);
+  document.getElementById('ccOutCommissionLabel').textContent = `Part agence (${commission}%)`;
+  document.getElementById('ccOutCommission').textContent      = '− ' + ccFormatUSD(agency);
+  document.getElementById('ccOutModel').textContent           = ccFormatUSD(model);
+}
+ccRender();
+
+// ══════════════════════════════════════════════════════════
+//  ELECTRONIC SIGNATURE
+// ══════════════════════════════════════════════════════════
+let sigFile      = null;
+let sigTab       = 'draw';
+let sigPosition  = 'br';
+let sigPageMode  = 'last';
+let sigHasDrawn  = false;
+let sigDrawing   = false;
+let sigCtx       = null;
+let sigLastPoint = null;
+
+(function () {
+  const dz = document.getElementById('sigDropzone');
+  dz.addEventListener('dragover',  e => { e.preventDefault(); dz.classList.add('dragover'); });
+  dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
+  dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('dragover'); sigLoad(e.dataTransfer.files[0]); });
+  document.getElementById('sigFileInput').addEventListener('change', e => { sigLoad(e.target.files[0]); e.target.value = ''; });
+})();
+
+function sigInitCanvas() {
+  const canvas = document.getElementById('sigDrawCanvas');
+  const ratio  = window.devicePixelRatio || 1;
+  const rect   = canvas.getBoundingClientRect();
+  canvas.width  = rect.width  * ratio;
+  canvas.height = rect.height * ratio;
+  sigCtx = canvas.getContext('2d');
+  sigCtx.scale(ratio, ratio);
+  sigCtx.lineCap     = 'round';
+  sigCtx.lineJoin    = 'round';
+  sigCtx.strokeStyle = '#111';
+  sigCtx.lineWidth   = 2.4;
+
+  function pos(e) {
+    const r  = canvas.getBoundingClientRect();
+    const cx = e.touches ? e.touches[0].clientX : e.clientX;
+    const cy = e.touches ? e.touches[0].clientY : e.clientY;
+    return { x: cx - r.left, y: cy - r.top };
+  }
+  function start(e) { e.preventDefault(); sigDrawing = true; sigLastPoint = pos(e); }
+  function move(e) {
+    if (!sigDrawing) return;
+    e.preventDefault();
+    const p = pos(e);
+    sigCtx.beginPath();
+    sigCtx.moveTo(sigLastPoint.x, sigLastPoint.y);
+    sigCtx.lineTo(p.x, p.y);
+    sigCtx.stroke();
+    sigLastPoint = p;
+    sigHasDrawn = true;
+  }
+  function end() { sigDrawing = false; }
+
+  canvas.addEventListener('mousedown', start);
+  canvas.addEventListener('mousemove', move);
+  window.addEventListener('mouseup', end);
+  canvas.addEventListener('touchstart', start, { passive: false });
+  canvas.addEventListener('touchmove', move, { passive: false });
+  canvas.addEventListener('touchend', end);
+}
+
+function sigLoad(file) {
+  if (!file || file.type !== 'application/pdf') { showToast('Fichier PDF requis', 'error'); return; }
+  sigFile = file;
+  document.getElementById('sigDropzone').style.display = 'none';
+  document.getElementById('sigEditor').style.display    = 'block';
+  document.getElementById('sigFileName').textContent = file.name;
+  document.getElementById('sigFileMeta').textContent  = (file.size / 1024 / 1024).toFixed(2) + ' MB';
+  if (!sigCtx) sigInitCanvas();
+  sigClearDraw();
+}
+
+function sigReset() {
+  sigFile = null;
+  document.getElementById('sigDropzone').style.display = 'block';
+  document.getElementById('sigEditor').style.display    = 'none';
+  document.getElementById('sigFileInput').value = '';
+}
+
+function sigSwitchTab(tab) {
+  sigTab = tab;
+  document.getElementById('sigTabDraw').classList.toggle('active', tab === 'draw');
+  document.getElementById('sigTabType').classList.toggle('active', tab === 'type');
+  document.getElementById('sigPaneDraw').style.display = tab === 'draw' ? 'block' : 'none';
+  document.getElementById('sigPaneType').style.display = tab === 'type' ? 'block' : 'none';
+}
+
+function sigClearDraw() {
+  if (!sigCtx) return;
+  const canvas = document.getElementById('sigDrawCanvas');
+  sigCtx.clearRect(0, 0, canvas.width, canvas.height);
+  sigHasDrawn = false;
+}
+
+function sigRenderTyped() {
+  const val = document.getElementById('sigTypedInput').value.trim();
+  document.getElementById('sigTypedPreview').textContent = val || 'Aperçu de la signature';
+}
+
+function sigSetPosition(pos) {
+  sigPosition = pos;
+  ['br', 'bl', 'tr'].forEach(p => document.getElementById('sig-pos-' + p).classList.toggle('active', p === pos));
+}
+function sigSetPage(mode) {
+  sigPageMode = mode;
+  ['last', 'first', 'all'].forEach(p => document.getElementById('sig-page-' + p).classList.toggle('active', p === mode));
+}
+
+function sigBuildSignatureCanvas() {
+  if (sigTab === 'draw') {
+    if (!sigHasDrawn) return null;
+    return document.getElementById('sigDrawCanvas');
+  }
+  const text = document.getElementById('sigTypedInput').value.trim();
+  if (!text) return null;
+  const c = document.createElement('canvas');
+  c.width = 600; c.height = 200;
+  const ctx = c.getContext('2d');
+  ctx.font = '700 90px "Dancing Script", cursive';
+  ctx.fillStyle = '#111';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(text, c.width / 2, c.height / 2);
+  return c;
+}
+
+async function sigSign() {
+  if (!sigFile) { showToast("Importe un PDF d'abord", 'error'); return; }
+  const sigCanvas = sigBuildSignatureCanvas();
+  if (!sigCanvas) { showToast('Dessine ou tape ta signature', 'error'); return; }
+
+  const btn = document.getElementById('sigBtnSign');
+  btn.classList.add('loading'); btn.disabled = true;
+
+  try {
+    const sigDataUrl   = sigCanvas.toDataURL('image/png');
+    const sigPngBytes  = await (await fetch(sigDataUrl)).arrayBuffer();
+
+    const { PDFDocument, rgb, StandardFonts } = PDFLib;
+    const pdfBytes  = await sigFile.arrayBuffer();
+    const pdfDoc    = await PDFDocument.load(pdfBytes);
+    const font      = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const pngImage  = await pdfDoc.embedPng(sigPngBytes);
+
+    const pages = pdfDoc.getPages();
+    let targetPages;
+    if (sigPageMode === 'all')        targetPages = pages;
+    else if (sigPageMode === 'first') targetPages = [pages[0]];
+    else                               targetPages = [pages[pages.length - 1]];
+
+    const now = new Date();
+    const timestamp = `Signé électroniquement le ${now.toLocaleDateString('fr-FR')} à ${now.toLocaleTimeString('fr-FR')}`;
+
+    const sigWidth  = 150;
+    const sigHeight = sigWidth * (pngImage.height / pngImage.width);
+    const marginPt  = 40;
+
+    targetPages.forEach(page => {
+      const { width, height } = page.getSize();
+      let x, y;
+      if (sigPosition === 'br')      { x = width - marginPt - sigWidth; y = marginPt + 20; }
+      else if (sigPosition === 'bl') { x = marginPt;                    y = marginPt + 20; }
+      else                            { x = width - marginPt - sigWidth; y = height - marginPt - sigHeight; }
+
+      page.drawImage(pngImage, { x, y, width: sigWidth, height: sigHeight });
+      page.drawText(timestamp, { x, y: y - 12, size: 7, font, color: rgb(0.45, 0.45, 0.45) });
+    });
+
+    const outBytes = await pdfDoc.save();
+    const blob = new Blob([outBytes], { type: 'application/pdf' });
+    const url  = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = sigFile.name.replace(/\.pdf$/i, '') + '_signed.pdf'; a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+    showToast('✓ PDF signé et téléchargé !', 'success');
+  } catch (e) {
+    console.error(e);
+    showToast('Erreur lors de la signature du PDF', 'error');
+  } finally {
+    btn.classList.remove('loading'); btn.disabled = false;
+  }
+}
+
+// ══════════════════════════════════════════════════════════
+//  CURRENCY CONVERTER
+// ══════════════════════════════════════════════════════════
+let curRates      = null; // units of each currency per 1 USD
+let curLastUpdate = null;
+
+function currencyInit() {
+  if (curRates) { currencyRender(); return; }
+  currencyFetchRates(false);
+}
+
+async function currencyFetchRates(manual) {
+  const statusEl = document.getElementById('curStatus');
+  statusEl.textContent = 'Chargement des taux...';
+  try {
+    const [fxRes, cgRes] = await Promise.all([
+      fetch('https://open.er-api.com/v6/latest/USD'),
+      fetch('https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=usd'),
+    ]);
+    const fx = await fxRes.json();
+    const cg = await cgRes.json();
+    if (fx.result !== 'success' || !cg.tether || !cg.tether.usd) throw new Error('bad response');
+
+    curRates = {
+      USD:  1,
+      EUR:  fx.rates.EUR,
+      COP:  fx.rates.COP,
+      USDT: 1 / cg.tether.usd,
+    };
+    curLastUpdate = new Date();
+    statusEl.textContent = 'Taux à jour';
+    currencyRender();
+    if (manual) showToast('✓ Taux de change mis à jour', 'success');
+  } catch (e) {
+    console.error(e);
+    statusEl.textContent = 'Erreur de chargement';
+    document.getElementById('curRateLine').textContent = 'Impossible de charger les taux — réessaie dans un instant.';
+    showToast('Erreur : impossible de charger les taux de change', 'error');
+  }
+}
+
+function curFormat(value, code) {
+  if (code === 'COP')  return new Intl.NumberFormat('es-CO', { maximumFractionDigits: 0 }).format(value) + ' COP';
+  if (code === 'USDT') return new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 }).format(value) + ' USDT';
+  return new Intl.NumberFormat('en-US', { style: 'currency', currency: code }).format(value);
+}
+
+function currencyRender() {
+  if (!curRates) return;
+  const amount = parseFloat(document.getElementById('curAmount').value) || 0;
+  const from   = document.getElementById('curFrom').value;
+  const to     = document.getElementById('curTo').value;
+
+  const usdAmount = amount / curRates[from];
+  const result    = usdAmount * curRates[to];
+  const unitRate  = curRates[to] / curRates[from];
+
+  document.getElementById('curResult').textContent = curFormat(result, to);
+  document.getElementById('curRateLine').textContent =
+    `1 ${from} = ${curFormat(unitRate, to)} · Mis à jour à ${curLastUpdate.toLocaleTimeString('fr-FR')}`;
+}
+
+function currencySwap() {
+  const fromEl = document.getElementById('curFrom');
+  const toEl   = document.getElementById('curTo');
+  const tmp = fromEl.value;
+  fromEl.value = toEl.value;
+  toEl.value = tmp;
+  currencyRender();
 }
 </script>
 </body>
