@@ -6,7 +6,7 @@
 <link rel="icon" type="image/png" href="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/wAARCAH0AfQDASIAAhEBAxEB/8QAHQABAAMAAwEBAQAAAAAAAAAAAAcICQQFBgEDAv/EAFEQAQABAwICBAUODAIKAQUAAAABAgMEBQYHEQgSITETIkFRYQkUFRYXGDdCZ3F0dZSzMjY4UldigZGlstHkI4IkMzVWcnODoaLTQyVTVWPB/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/ALlgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/9k=">
 <title>NARIX AGENCY — Tools</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
   /* ─── VARIABLES (dark default) ─── */
   :root {
@@ -227,7 +227,9 @@
   .tool-card:nth-child(6) { animation-delay: 0.24s; }
   .tool-card:nth-child(7) { animation-delay: 0.28s; }
   .tool-card:nth-child(8) { animation-delay: 0.32s; }
-  .tool-card:nth-child(9) { animation-delay: 0.36s; }
+  .tool-card:nth-child(9)  { animation-delay: 0.36s; }
+  .tool-card:nth-child(10) { animation-delay: 0.40s; }
+  .tool-card:nth-child(11) { animation-delay: 0.44s; }
 
   .tool-card-top { display: flex; align-items: flex-start; justify-content: space-between; }
   .tool-icon {
@@ -552,8 +554,6 @@
   }
   .thumb-seek  { width: 100%; accent-color: var(--accent); height: 4px; cursor: pointer; }
   .thumb-time  { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 2px; color: var(--accent); }
-  .thumb-capture-preview { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 12px; line-height: 0; }
-  .thumb-capture-preview img { display: block; width: 100%; }
 
   /* ─── CROP PRESETS ─── */
   .crop-presets { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
@@ -623,6 +623,65 @@
   .coming-soon h2 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 3px; color: var(--dim); margin-bottom: 8px; }
   .coming-soon p  { font-size: 12px; }
 
+  /* ─── FORM FIELDS (contract / commission) ─── */
+  .field-group { margin-bottom: 16px; }
+  .field-group:last-child { margin-bottom: 0; }
+  .field-label {
+    display: block; font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--subtext); margin-bottom: 8px;
+  }
+  .field-input, .field-select {
+    width: 100%; padding: 13px 14px; font-size: 14px;
+    border: 1.5px solid var(--border); border-radius: 10px;
+    font-family: 'Inter', sans-serif; background: var(--surface-2);
+    transition: border-color 0.15s; outline: none; color: var(--text);
+  }
+  .field-input:focus, .field-select:focus { border-color: var(--accent); }
+  .field-input::placeholder { color: var(--dim); }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  /* ─── RESULT BREAKDOWN ─── */
+  .result-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 12px; }
+  .result-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 0; border-bottom: 1px solid var(--border);
+  }
+  .result-row:last-child { border-bottom: none; }
+  .result-row-label { font-size: 12px; color: var(--subtext); display: flex; align-items: center; gap: 8px; }
+  .result-row-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .result-row-value { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; color: var(--text); }
+  .result-row.total .result-row-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  .result-row.total .result-row-value { color: var(--accent); font-size: 26px; }
+
+  /* ─── SIGNATURE PAD ─── */
+  .sig-canvas-wrap {
+    position: relative; background: #fff; border-radius: 0 0 10px 10px;
+    overflow: hidden; line-height: 0; touch-action: none;
+  }
+  .sig-canvas-wrap canvas { display: block; width: 100%; height: 200px; cursor: crosshair; }
+  .sig-type-input {
+    width: 100%; padding: 24px 16px; font-size: 32px; text-align: center;
+    border: none; background: #fff; color: #111; outline: none;
+    font-family: 'Dancing Script', cursive; border-radius: 0 0 10px 10px;
+  }
+  .sig-preview-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 12px; text-align: center; }
+  .sig-preview-card img { max-width: 100%; max-height: 100px; }
+  .sig-file-name { display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-bottom: 12px; }
+  .sig-file-name .file-thumb { width: 36px; height: 36px; font-size: 16px; }
+
+  /* ─── CURRENCY CONVERTER ─── */
+  .currency-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: end; }
+  .currency-swap {
+    width: 44px; height: 44px; background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 10px; cursor: pointer; font-size: 16px; color: var(--subtext);
+    display: flex; align-items: center; justify-content: center; transition: all 0.15s;
+  }
+  .currency-swap:hover { background: var(--surface-3); color: var(--accent); border-color: var(--border-2); transform: rotate(180deg); }
+  .currency-result { text-align: center; padding: 28px 20px; }
+  .currency-result-value { font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 2px; color: var(--text); word-break: break-all; }
+  .currency-result-sub { font-size: 12px; color: var(--subtext); margin-top: 8px; }
+  .currency-rate-note { font-size: 11px; color: var(--dim); text-align: center; margin-top: 4px; }
+
   /* ─── RESPONSIVE ─── */
   @media (max-width: 800px) {
     .tools-grid     { grid-template-columns: repeat(2, 1fr); }
@@ -634,6 +693,10 @@
     .tool-card     { padding: 20px; }
     .speed-options { grid-template-columns: 1fr; }
     .crop-presets  { grid-template-columns: repeat(3, 1fr); }
+    .field-row     { grid-template-columns: 1fr; }
+    .currency-row  { grid-template-columns: 1fr; }
+    .currency-swap { justify-self: center; transform: rotate(90deg); }
+    .currency-swap:hover { transform: rotate(270deg); }
   }
 </style>
 <script>
@@ -691,18 +754,6 @@
           <span class="tool-tag">Vidéo · Photo</span>
         </div>
 
-        <div class="tool-card" onclick="goTo('upscale')">
-          <div class="tool-card-top">
-            <div class="tool-icon">🔍</div>
-            <span class="tool-arrow">→</span>
-          </div>
-          <div class="tool-card-body">
-            <div class="tool-name">Upscale</div>
-            <div class="tool-desc">Agrandis tes photos en ×2, ×3 ou ×4 sans perte de netteté.</div>
-          </div>
-          <span class="tool-tag">Photo</span>
-        </div>
-
         <div class="tool-card" onclick="goTo('compress')">
           <div class="tool-card-top">
             <div class="tool-icon">📦</div>
@@ -739,18 +790,6 @@
           <span class="tool-tag">OF · MYM</span>
         </div>
 
-        <div class="tool-card" onclick="goTo('thumbnail')">
-          <div class="tool-card-top">
-            <div class="tool-icon">🎞</div>
-            <span class="tool-arrow">→</span>
-          </div>
-          <div class="tool-card-body">
-            <div class="tool-name">Thumbnail</div>
-            <div class="tool-desc">Extrait une frame précise de ta vidéo en image HD.</div>
-          </div>
-          <span class="tool-tag">Vidéo</span>
-        </div>
-
         <div class="tool-card" onclick="goTo('metadata')">
           <div class="tool-card-top">
             <div class="tool-icon">🧹</div>
@@ -785,6 +824,54 @@
             <div class="tool-desc">Télécharge posts, reels et stories depuis Instagram et TikTok via Cobalt.</div>
           </div>
           <span class="tool-tag">Instagram · TikTok</span>
+        </div>
+
+        <div class="tool-card" onclick="goTo('contract')">
+          <div class="tool-card-top">
+            <div class="tool-icon">📄</div>
+            <span class="tool-arrow">→</span>
+          </div>
+          <div class="tool-card-body">
+            <div class="tool-name">Contract Generator</div>
+            <div class="tool-desc">Génère un contrat PDF prêt à signer : modèle, agence, commission, date de début.</div>
+          </div>
+          <span class="tool-tag">Agence</span>
+        </div>
+
+        <div class="tool-card" onclick="goTo('commission')">
+          <div class="tool-card-top">
+            <div class="tool-icon">🧮</div>
+            <span class="tool-arrow">→</span>
+          </div>
+          <div class="tool-card-body">
+            <div class="tool-name">Commission Calculator</div>
+            <div class="tool-desc">Calcule automatiquement la part agence, la part modèle et les frais OF (20%).</div>
+          </div>
+          <span class="tool-tag">OF</span>
+        </div>
+
+        <div class="tool-card" onclick="goTo('signature')">
+          <div class="tool-card-top">
+            <div class="tool-icon">✍️</div>
+            <span class="tool-arrow">→</span>
+          </div>
+          <div class="tool-card-body">
+            <div class="tool-name">Electronic Signature</div>
+            <div class="tool-desc">Importe un PDF, dessine ou tape ta signature et télécharge le document signé et horodaté.</div>
+          </div>
+          <span class="tool-tag">PDF</span>
+        </div>
+
+        <div class="tool-card" onclick="goTo('currency')">
+          <div class="tool-card-top">
+            <div class="tool-icon">💱</div>
+            <span class="tool-arrow">→</span>
+          </div>
+          <div class="tool-card-body">
+            <div class="tool-name">Currency Converter</div>
+            <div class="tool-desc">Convertis en temps réel entre USD, EUR, COP et USDT.</div>
+          </div>
+          <span class="tool-tag">USD · EUR · COP · USDT</span>
         </div>
 
       </div>
@@ -915,86 +1002,6 @@
         </button>
       </div>
 
-      <div class="footer-note">Traitement 100% local · Aucun fichier envoyé sur un serveur · NARIX AGENCY</div>
-    </div>
-  </div>
-
-  <div class="page" id="page-upscale">
-    <div class="tool-layout">
-      <div class="page-title">
-        <h1>UPSCALE — AGRANDISSEMENT</h1>
-        <p>Agrandis tes photos ×2, ×3 ou ×4 — traitement 100% local via canvas haute qualité.</p>
-      </div>
-
-      <div class="dropzone" id="upscaleDropzone" onclick="document.getElementById('upscaleFileInput').click()">
-        <div class="dropzone-icon">🔍</div>
-        <div class="dropzone-title">Glisse tes photos ici</div>
-        <div class="dropzone-sub">JPG, PNG, WEBP</div>
-      </div>
-      <input type="file" id="upscaleFileInput" multiple accept="image/*" style="display:none">
-
-      <div class="card">
-        <div class="card-header"><span class="card-title">Facteur d'agrandissement</span></div>
-        <div class="card-body">
-          <div class="speed-options">
-            <div class="speed-option active" id="upscale-x2" onclick="upscaleSetFactor(2)">
-              <div class="speed-radio"></div>
-              <div><div class="speed-name">×2</div><div class="speed-desc">Double la résolution</div></div>
-            </div>
-            <div class="speed-option" id="upscale-x3" onclick="upscaleSetFactor(3)">
-              <div class="speed-radio"></div>
-              <div><div class="speed-name">×3</div><div class="speed-desc">Triple la résolution</div></div>
-            </div>
-            <div class="speed-option" id="upscale-x4" onclick="upscaleSetFactor(4)">
-              <div class="speed-radio"></div>
-              <div><div class="speed-name">×4</div><div class="speed-desc">Résolution ×4</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header"><span class="card-title">Format de sortie</span></div>
-        <div class="card-body">
-          <div class="speed-options">
-            <div class="speed-option active" id="upscale-fmt-jpeg" onclick="upscaleSetFmt('image/jpeg','jpg')">
-              <div class="speed-radio"></div>
-              <div><div class="speed-name">JPEG</div><div class="speed-desc">Petit poids, photos</div></div>
-            </div>
-            <div class="speed-option" id="upscale-fmt-png" onclick="upscaleSetFmt('image/png','png')">
-              <div class="speed-radio"></div>
-              <div><div class="speed-name">PNG</div><div class="speed-desc">Sans perte</div></div>
-            </div>
-            <div class="speed-option" id="upscale-fmt-webp" onclick="upscaleSetFmt('image/webp','webp')">
-              <div class="speed-radio"></div>
-              <div><div class="speed-name">WEBP</div><div class="speed-desc">Moderne, web</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="file-list" id="upscaleFileList"></div>
-      <div class="add-more" id="upscaleAddMore" style="display:none" onclick="document.getElementById('upscaleFileInput').click()">
-        <span>+</span> Ajouter des photos
-      </div>
-
-      <div class="progress-container" id="upscaleProgress">
-        <div class="progress-top">
-          <span class="progress-label" id="upscaleProgressLabel">Traitement...</span>
-          <span class="progress-pct" id="upscaleProgressPct">0%</span>
-        </div>
-        <div class="progress-bar-wrap"><div class="progress-bar" id="upscaleProgressBar"></div></div>
-      </div>
-
-      <div class="action-buttons">
-        <button class="btn-process" id="upscaleBtnProcess" onclick="upscaleProcess()" disabled>
-          <span class="btn-text">Agrandir les photos</span>
-          <div class="spinner"></div>
-        </button>
-        <button class="btn-secondary" id="upscaleBtnDownload" onclick="upscaleDownloadAll()" disabled>
-          ↓ Télécharger tous
-        </button>
-      </div>
       <div class="footer-note">Traitement 100% local · Aucun fichier envoyé sur un serveur · NARIX AGENCY</div>
     </div>
   </div>
@@ -1268,69 +1275,6 @@
     </div>
   </div>
 
-  <div class="page" id="page-thumbnail">
-    <div class="tool-layout">
-      <div class="page-title">
-        <h1>THUMBNAIL — EXTRACTION</h1>
-        <p>Navigue dans ta vidéo, capture la frame parfaite et télécharge-la en HD.</p>
-      </div>
-
-      <div class="dropzone" id="thumbDropzone" onclick="document.getElementById('thumbFileInput').click()">
-        <div class="dropzone-icon">🎞</div>
-        <div class="dropzone-title">Glisse ta vidéo ici</div>
-        <div class="dropzone-sub">MP4, MOV, WEBM</div>
-      </div>
-      <input type="file" id="thumbFileInput" accept="video/*" style="display:none">
-
-      <div id="thumbEditor" style="display:none">
-        <div class="card" style="margin-bottom:12px;">
-          <div class="card-header">
-            <span class="card-title">Lecture</span>
-            <span class="thumb-time" id="thumbTime">0:00.00</span>
-          </div>
-          <div class="card-body" style="padding:0;">
-            <div class="thumb-video-wrap">
-              <video id="thumbVideo" preload="metadata" playsinline></video>
-            </div>
-            <div class="thumb-controls">
-              <input type="range" class="thumb-seek" id="thumbSeek" min="0" max="100" step="0.01" value="0">
-              <div style="display:flex;gap:8px;">
-                <button onclick="thumbTogglePlay()" id="thumbPlayBtn"
-                  style="padding:8px 18px;background:var(--text);color:var(--inv);border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;">
-                  ▶ Lecture
-                </button>
-                <button onclick="thumbStep(-1/30)"
-                  style="padding:8px 14px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;color:var(--text);">
-                  ←1f
-                </button>
-                <button onclick="thumbStep(1/30)"
-                  style="padding:8px 14px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;color:var(--text);">
-                  1f→
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div id="thumbCapturePreview" class="thumb-capture-preview" style="display:none">
-          <img id="thumbPreviewImg" alt="Frame capturée">
-        </div>
-
-        <div class="action-buttons">
-          <button class="btn-process" id="thumbBtnCapture" onclick="thumbCapture()">
-            <span class="btn-text">📸 Capturer cette frame</span>
-            <div class="spinner"></div>
-          </button>
-          <button class="btn-secondary" id="thumbBtnDownload" onclick="thumbDownload()" style="display:none">
-            ↓ Télécharger la frame
-          </button>
-        </div>
-      </div>
-
-      <div class="footer-note">Traitement 100% local · Aucun fichier envoyé sur un serveur · NARIX AGENCY</div>
-    </div>
-  </div>
-
   <div class="page" id="page-metadata">
     <div class="tool-layout">
       <div class="page-title">
@@ -1572,6 +1516,208 @@
     </div>
   </div>
 
+  <div class="page" id="page-contract">
+    <div class="tool-layout">
+      <div class="page-title">
+        <h1>CONTRACT GENERATOR</h1>
+        <p>Remplis les informations et génère un contrat de collaboration au format PDF, prêt à télécharger et signer.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><span class="card-title">Informations du contrat</span></div>
+        <div class="card-body">
+          <div class="field-row">
+            <div class="field-group">
+              <label class="field-label">Nom du modèle</label>
+              <input type="text" id="ctModelName" class="field-input" placeholder="Ex : Jane Doe">
+            </div>
+            <div class="field-group">
+              <label class="field-label">Nom de l'agence</label>
+              <input type="text" id="ctAgencyName" class="field-input" placeholder="Ex : NARIX AGENCY">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-group">
+              <label class="field-label">Commission agence (%)</label>
+              <input type="number" id="ctCommission" class="field-input" placeholder="20" min="0" max="100" step="0.1">
+            </div>
+            <div class="field-group">
+              <label class="field-label">Date de début</label>
+              <input type="date" id="ctStartDate" class="field-input">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn-process" id="ctBtnGenerate" onclick="contractGenerate()">
+          <span class="btn-text">📄 Générer le contrat PDF</span>
+          <div class="spinner"></div>
+        </button>
+      </div>
+
+      <div class="footer-note">Génération 100% locale · Aucune donnée envoyée sur un serveur · NARIX AGENCY</div>
+    </div>
+  </div>
+
+  <div class="page" id="page-commission">
+    <div class="tool-layout">
+      <div class="page-title">
+        <h1>COMMISSION CALCULATOR</h1>
+        <p>Entre le revenu brut OnlyFans et obtiens instantanément la répartition frais OF, agence et modèle.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><span class="card-title">Revenu</span></div>
+        <div class="card-body">
+          <div class="field-row">
+            <div class="field-group">
+              <label class="field-label">Revenu brut OF ($)</label>
+              <input type="number" id="ccGross" class="field-input" placeholder="1000" min="0" step="0.01" oninput="commissionCalc()">
+            </div>
+            <div class="field-group">
+              <label class="field-label">Commission agence (%)</label>
+              <input type="number" id="ccCommission" class="field-input" placeholder="20" min="0" max="100" step="0.1" value="20" oninput="commissionCalc()">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-row">
+          <div class="result-row-label"><span class="result-row-dot" style="background:var(--dim);"></span>Revenu brut OF</div>
+          <div class="result-row-value" id="ccOutGross">$0.00</div>
+        </div>
+        <div class="result-row">
+          <div class="result-row-label"><span class="result-row-dot" style="background:var(--red);"></span>Frais OnlyFans (20%)</div>
+          <div class="result-row-value" id="ccOutFee">$0.00</div>
+        </div>
+        <div class="result-row">
+          <div class="result-row-label"><span class="result-row-dot" style="background:var(--dim);"></span>Net après frais OF</div>
+          <div class="result-row-value" id="ccOutNet">$0.00</div>
+        </div>
+        <div class="result-row">
+          <div class="result-row-label"><span class="result-row-dot" style="background:var(--accent);"></span>Part agence</div>
+          <div class="result-row-value" id="ccOutAgency">$0.00</div>
+        </div>
+        <div class="result-row total">
+          <div class="result-row-label"><span class="result-row-dot" style="background:var(--green);"></span>Part modèle</div>
+          <div class="result-row-value" id="ccOutModel">$0.00</div>
+        </div>
+      </div>
+
+      <div class="footer-note">Calcul 100% local · Aucune donnée envoyée sur un serveur · NARIX AGENCY</div>
+    </div>
+  </div>
+
+  <div class="page" id="page-signature">
+    <div class="tool-layout">
+      <div class="page-title">
+        <h1>ELECTRONIC SIGNATURE</h1>
+        <p>Importe un PDF, dessine ou tape ta signature, puis télécharge le document signé et horodaté.</p>
+      </div>
+
+      <div class="dropzone" id="sigDropzone" onclick="document.getElementById('sigFileInput').click()">
+        <div class="dropzone-icon">📄</div>
+        <div class="dropzone-title">Glisse ton PDF ici</div>
+        <div class="dropzone-sub">PDF uniquement</div>
+      </div>
+      <input type="file" id="sigFileInput" accept="application/pdf" style="display:none">
+
+      <div id="sigEditor" style="display:none">
+        <div class="sig-file-name">
+          <div class="file-thumb">📄</div>
+          <div class="file-info"><div class="file-name" id="sigFileName"></div></div>
+          <button class="rm-btn" onclick="sigReset()" title="Retirer">×</button>
+        </div>
+
+        <div class="tabs">
+          <button class="tab active" id="sigTabDraw" onclick="sigSwitchTab('draw')">Dessiner</button>
+          <button class="tab" id="sigTabType" onclick="sigSwitchTab('type')">Taper</button>
+        </div>
+
+        <div class="card" style="margin-bottom:12px;">
+          <div class="card-header">
+            <span class="card-title">Signature</span>
+            <button class="rm-btn" onclick="sigClear()" title="Effacer">×</button>
+          </div>
+          <div id="sigDrawPane">
+            <div class="sig-canvas-wrap">
+              <canvas id="sigCanvas"></canvas>
+            </div>
+          </div>
+          <div id="sigTypePane" style="display:none">
+            <input type="text" id="sigTypeInput" class="sig-type-input" placeholder="Ta signature" oninput="sigRenderTyped()">
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button class="btn-process" id="sigBtnApply" onclick="sigApplyAndDownload()">
+            <span class="btn-text">✍️ Signer & télécharger le PDF</span>
+            <div class="spinner"></div>
+          </button>
+        </div>
+      </div>
+
+      <div class="footer-note">Traitement 100% local · Aucun fichier envoyé sur un serveur · NARIX AGENCY</div>
+    </div>
+  </div>
+
+  <div class="page" id="page-currency">
+    <div class="tool-layout">
+      <div class="page-title">
+        <h1>CURRENCY CONVERTER</h1>
+        <p>Convertis en temps réel entre USD, EUR, COP et USDT à partir de taux de change live.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Conversion</span>
+          <span style="font-size:11px;color:var(--subtext);" id="currencyUpdated">Chargement des taux...</span>
+        </div>
+        <div class="card-body">
+          <div class="field-group">
+            <label class="field-label">Montant</label>
+            <input type="number" id="curAmount" class="field-input" placeholder="100" min="0" step="0.01" value="100" oninput="currencyConvert()">
+          </div>
+          <div class="currency-row">
+            <div class="field-group" style="margin-bottom:0;">
+              <label class="field-label">De</label>
+              <select id="curFrom" class="field-select" onchange="currencyConvert()">
+                <option value="USD">USD — Dollar US</option>
+                <option value="EUR">EUR — Euro</option>
+                <option value="COP">COP — Peso colombien</option>
+                <option value="USDT">USDT — Tether</option>
+              </select>
+            </div>
+            <button class="currency-swap" onclick="currencySwap()" title="Inverser">⇄</button>
+            <div class="field-group" style="margin-bottom:0;">
+              <label class="field-label">Vers</label>
+              <select id="curTo" class="field-select" onchange="currencyConvert()">
+                <option value="USD">USD — Dollar US</option>
+                <option value="EUR" selected>EUR — Euro</option>
+                <option value="COP">COP — Peso colombien</option>
+                <option value="USDT">USDT — Tether</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-card">
+        <div class="currency-result">
+          <div class="currency-result-value" id="curResultValue">—</div>
+          <div class="currency-result-sub" id="curResultSub">Chargement des taux...</div>
+        </div>
+      </div>
+
+      <button class="btn-secondary" onclick="currencyInit(true)">↻ Rafraîchir les taux</button>
+      <div class="currency-rate-note">Taux fournis par open.er-api.com (fiat) et CoinGecko (USDT) · Peuvent légèrement différer du taux réel du marché.</div>
+
+      <div class="footer-note" style="margin-top:24px;">Conversion en temps réel · NARIX AGENCY</div>
+    </div>
+  </div>
+
 </div><!-- #appRoot -->
 
 <div class="toast" id="toast"></div>
@@ -1591,16 +1737,18 @@ function toggleTheme() {
 
 // ─── ROUTER ───────────────────────────────────────────────
 const TOOL_LABELS = {
-  home:      'Tools',
-  spoof:     'Spoof',
-  upscale:   'Upscale',
-  compress:  'Compress',
-  convert:   'Convert',
-  ppv:       'PPV Thumbnail',
-  thumbnail: 'Thumbnail',
-  metadata:  'Metadata',
-  crop:      'Crop',
-  download:  'Download',
+  home:       'Tools',
+  spoof:      'Spoof',
+  compress:   'Compress',
+  convert:    'Convert',
+  ppv:        'PPV Thumbnail',
+  metadata:   'Metadata',
+  crop:       'Crop',
+  download:   'Download',
+  contract:   'Contract Generator',
+  commission: 'Commission Calculator',
+  signature:  'Electronic Signature',
+  currency:   'Currency Converter',
 };
 
 let currentPage = 'home';
@@ -1676,8 +1824,10 @@ function showToast(msg, type) {
 
 // ─── PAGE-ENTER HOOKS ─────────────────────────────────────
 const pageEnterHooks = {
-  spoof: () => spoofInit(),
-  ppv:   () => ppvReset(),
+  spoof:      () => spoofInit(),
+  ppv:        () => ppvReset(),
+  currency:   () => currencyInit(),
+  commission: () => commissionCalc(),
 };
 
 // ══════════════════════════════════════════════════════════
@@ -2039,150 +2189,6 @@ async function ensureFFmpeg(bannerEl) {
     _ffWaiters.forEach(w => w.rej(e)); _ffWaiters.length = 0;
     throw e;
   }
-}
-
-// ══════════════════════════════════════════════════════════
-//  UPSCALE
-// ══════════════════════════════════════════════════════════
-let upscaleFiles  = [];
-let upscaleBlobs  = [];
-let upscaleFactor = 2;
-let upscaleFmt    = 'image/jpeg';
-let upscaleExt    = 'jpg';
-
-(function () {
-  const dz = document.getElementById('upscaleDropzone');
-  dz.addEventListener('dragover',  e => { e.preventDefault(); dz.classList.add('dragover'); });
-  dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
-  dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('dragover'); upscaleHandle([...e.dataTransfer.files]); });
-  document.getElementById('upscaleFileInput').addEventListener('change', e => { upscaleHandle([...e.target.files]); e.target.value = ''; });
-})();
-
-function upscaleSetFactor(f) {
-  upscaleFactor = f;
-  [2,3,4].forEach(n => document.getElementById('upscale-x'+n).classList.toggle('active', n === f));
-}
-function upscaleSetFmt(mime, ext) {
-  upscaleFmt = mime; upscaleExt = ext;
-  ['jpeg','png','webp'].forEach(k => document.getElementById('upscale-fmt-'+k).classList.remove('active'));
-  const key = mime === 'image/jpeg' ? 'jpeg' : mime === 'image/png' ? 'png' : 'webp';
-  document.getElementById('upscale-fmt-'+key).classList.add('active');
-}
-
-function upscaleHandle(files) {
-  files.filter(f => f.type.startsWith('image/')).forEach(f =>
-    upscaleFiles.push({ file: f, name: f.name, size: (f.size/1024/1024).toFixed(2), status: 'pending', blob: null })
-  );
-  if (upscaleFiles.length) {
-    document.getElementById('upscaleDropzone').style.display = 'none';
-    document.getElementById('upscaleAddMore').style.display  = 'flex';
-    document.getElementById('upscaleBtnProcess').disabled    = false;
-  }
-  upscaleRender();
-}
-
-function upscaleRender() {
-  const list = document.getElementById('upscaleFileList');
-  list.innerHTML = '';
-  upscaleFiles.forEach((f, i) => {
-    const div = document.createElement('div');
-    div.className = 'file-item' + (f.status === 'done' ? ' done' : f.status === 'processing' ? ' processing' : '');
-    let meta = f.status === 'done'
-      ? `<div class="file-meta done">✓ ${f.outW}×${f.outH}px · <span class="size-badge saved">${f.outSize} MB</span></div>`
-      : f.status === 'processing'
-      ? `<div class="file-meta processing">Traitement...</div>`
-      : `<div class="file-meta">${f.size} MB → ×${upscaleFactor}</div>`;
-    const dlBtn = f.status === 'done'
-      ? `<button class="dl-btn" onclick="upscaleDL(${i})">↓</button>`
-      : `<button class="dl-btn" disabled>↓</button>`;
-    div.innerHTML = `<div class="file-thumb">🖼</div><div class="file-info"><div class="file-name">${f.name}</div>${meta}</div>
-      <div class="file-actions">${dlBtn}<button class="rm-btn" onclick="upscaleRM(${i})">×</button></div>`;
-    list.appendChild(div);
-  });
-}
-
-function upscaleRM(i) {
-  upscaleFiles.splice(i, 1);
-  if (!upscaleFiles.length) {
-    document.getElementById('upscaleDropzone').style.display = 'block';
-    document.getElementById('upscaleAddMore').style.display  = 'none';
-    document.getElementById('upscaleBtnProcess').disabled    = true;
-    document.getElementById('upscaleBtnDownload').disabled   = true;
-  }
-  upscaleRender();
-}
-
-async function upscaleProcess() {
-  if (!upscaleFiles.length) return;
-  const btn = document.getElementById('upscaleBtnProcess');
-  btn.classList.add('loading'); btn.disabled = true;
-  document.getElementById('upscaleProgress').classList.add('visible');
-  upscaleBlobs = [];
-
-  for (let i = 0; i < upscaleFiles.length; i++) {
-    upscaleFiles[i].status = 'processing'; upscaleRender();
-    document.getElementById('upscaleProgressLabel').textContent = `Photo ${i+1}/${upscaleFiles.length}`;
-    try {
-      const blob = await upscaleOne(upscaleFiles[i].file);
-      upscaleFiles[i].blob    = blob;
-      upscaleFiles[i].outSize = (blob.size/1024/1024).toFixed(2);
-      upscaleFiles[i].status  = 'done';
-      upscaleBlobs.push({ blob, name: upscaleFiles[i].name.replace(/\.[^.]+$/, `_x${upscaleFactor}.${upscaleExt}`) });
-    } catch(e) { upscaleFiles[i].status = 'pending'; showToast('Erreur : ' + upscaleFiles[i].name, 'error'); }
-    const pct = Math.round((i+1)/upscaleFiles.length*100);
-    document.getElementById('upscaleProgressBar').style.width = pct + '%';
-    document.getElementById('upscaleProgressPct').textContent = pct + '%';
-    upscaleRender();
-  }
-
-  btn.classList.remove('loading'); btn.disabled = false;
-  document.getElementById('upscaleProgress').classList.remove('visible');
-  document.getElementById('upscaleBtnDownload').disabled = false;
-  showToast(`✓ ${upscaleBlobs.length} photo(s) agrandie(s) !`, 'success');
-}
-
-function upscaleOne(file) {
-  return new Promise((resolve, reject) => {
-    const img = new Image(), url = URL.createObjectURL(file);
-    img.onload = () => {
-      URL.revokeObjectURL(url);
-      const c = document.createElement('canvas');
-      c.width  = img.naturalWidth  * upscaleFactor;
-      c.height = img.naturalHeight * upscaleFactor;
-      const ctx = c.getContext('2d');
-      ctx.imageSmoothingEnabled  = true;
-      ctx.imageSmoothingQuality  = 'high';
-      ctx.drawImage(img, 0, 0, c.width, c.height);
-      // store dimensions for display
-      img._w = c.width; img._h = c.height;
-      c.toBlob(b => {
-        if (!b) { reject(new Error('toBlob failed')); return; }
-        resolve(b);
-      }, upscaleFmt, upscaleFmt === 'image/png' ? undefined : 0.95);
-    };
-    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('load failed')); };
-    img.src = url;
-  }).then(blob => { return blob; });
-}
-
-function upscaleDL(i) {
-  const { blob, name } = upscaleBlobs[i];
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a'); a.href = url; a.download = name; a.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-}
-
-async function upscaleDownloadAll() {
-  if (!upscaleBlobs.length) return;
-  if (upscaleBlobs.length === 1) { upscaleDL(0); return; }
-  showToast('↓ Création du ZIP...');
-  const zip = new JSZip();
-  upscaleBlobs.forEach(({ blob, name }) => zip.file(name, blob));
-  const zBlob = await zip.generateAsync({ type: 'blob' });
-  const url = URL.createObjectURL(zBlob);
-  const a = document.createElement('a'); a.href = url; a.download = `narix_upscale_${Date.now()}.zip`; a.click();
-  setTimeout(() => URL.revokeObjectURL(url), 2000);
-  showToast(`✓ ZIP téléchargé (${upscaleBlobs.length} fichiers)`, 'success');
 }
 
 // ══════════════════════════════════════════════════════════
@@ -2810,99 +2816,6 @@ function ppvExport() {
 }
 
 // ══════════════════════════════════════════════════════════
-//  THUMBNAIL EXTRACTOR
-// ══════════════════════════════════════════════════════════
-let thumbBlob = null;
-
-(function () {
-  const dz = document.getElementById('thumbDropzone');
-  dz.addEventListener('dragover',  e => { e.preventDefault(); dz.classList.add('dragover'); });
-  dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
-  dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('dragover'); thumbLoad(e.dataTransfer.files[0]); });
-  document.getElementById('thumbFileInput').addEventListener('change', e => { thumbLoad(e.target.files[0]); e.target.value = ''; });
-})();
-
-function thumbLoad(file) {
-  if (!file || !file.type.startsWith('video/')) { showToast('Fichier vidéo requis', 'error'); return; }
-  document.getElementById('thumbDropzone').style.display = 'none';
-  document.getElementById('thumbEditor').style.display   = 'block';
-  document.getElementById('thumbBtnDownload').style.display = 'none';
-  document.getElementById('thumbCapturePreview').style.display = 'none';
-  thumbBlob = null;
-
-  const video = document.getElementById('thumbVideo');
-  const seek  = document.getElementById('thumbSeek');
-
-  video.src = URL.createObjectURL(file);
-  video.onloadedmetadata = () => {
-    seek.max   = video.duration;
-    seek.value = 0;
-    thumbUpdateTime(video.currentTime);
-  };
-  video.ontimeupdate = () => {
-    seek.value = video.currentTime;
-    thumbUpdateTime(video.currentTime);
-  };
-  seek.oninput = () => { video.currentTime = parseFloat(seek.value); };
-}
-
-function thumbUpdateTime(t) {
-  const m  = Math.floor(t / 60);
-  const s  = Math.floor(t % 60);
-  const cs = Math.floor((t % 1) * 100);
-  document.getElementById('thumbTime').textContent =
-    `${m}:${String(s).padStart(2,'0')}.${String(cs).padStart(2,'0')}`;
-}
-
-function thumbTogglePlay() {
-  const video = document.getElementById('thumbVideo');
-  const btn   = document.getElementById('thumbPlayBtn');
-  if (video.paused) { video.play(); btn.textContent = '⏸ Pause'; }
-  else              { video.pause(); btn.textContent = '▶ Lecture'; }
-}
-
-function thumbStep(delta) {
-  const video = document.getElementById('thumbVideo');
-  video.pause();
-  document.getElementById('thumbPlayBtn').textContent = '▶ Lecture';
-  video.currentTime = Math.max(0, Math.min(video.duration, video.currentTime + delta));
-}
-
-function thumbCapture() {
-  const video = document.getElementById('thumbVideo');
-  const btn   = document.getElementById('thumbBtnCapture');
-  btn.classList.add('loading');
-  video.pause();
-  document.getElementById('thumbPlayBtn').textContent = '▶ Lecture';
-
-  const c = document.createElement('canvas');
-  c.width  = video.videoWidth;
-  c.height = video.videoHeight;
-  c.getContext('2d').drawImage(video, 0, 0);
-  c.toBlob(blob => {
-    btn.classList.remove('loading');
-    thumbBlob = blob;
-    const url = URL.createObjectURL(blob);
-    const prev = document.getElementById('thumbPreviewImg');
-    prev.onload = () => URL.revokeObjectURL(url);
-    prev.src = url;
-    document.getElementById('thumbCapturePreview').style.display = 'block';
-    document.getElementById('thumbBtnDownload').style.display    = 'flex';
-    showToast('✓ Frame capturée !', 'success');
-  }, 'image/jpeg', 0.95);
-}
-
-function thumbDownload() {
-  if (!thumbBlob) return;
-  const url = URL.createObjectURL(thumbBlob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `narix_thumb_${Date.now()}.jpg`;
-  a.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-}
-
-// ══════════════════════════════════════════════════════════
 //  METADATA REMOVER
 // ══════════════════════════════════════════════════════════
 let metaFiles = [];
@@ -3437,6 +3350,336 @@ async function spoofDownloadAll() {
   a.href = url; a.download = `narix_spoof_${Date.now()}.zip`; a.click();
   setTimeout(() => URL.revokeObjectURL(url), 2000);
   showToast(`✓ ZIP téléchargé (${spoofBlobs.length} fichiers)`, 'success');
+}
+
+// ══════════════════════════════════════════════════════════
+//  CONTRACT GENERATOR
+// ══════════════════════════════════════════════════════════
+async function contractGenerate() {
+  const model      = document.getElementById('ctModelName').value.trim();
+  const agency     = document.getElementById('ctAgencyName').value.trim();
+  const commission = document.getElementById('ctCommission').value.trim();
+  const startDate  = document.getElementById('ctStartDate').value;
+
+  if (!model || !agency || !commission || !startDate) {
+    showToast('Remplis tous les champs', 'error');
+    return;
+  }
+
+  const btn = document.getElementById('ctBtnGenerate');
+  btn.classList.add('loading'); btn.disabled = true;
+  try {
+    if (typeof window.jspdf === 'undefined') {
+      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
+    }
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+    const dateFr = new Date(startDate + 'T00:00:00').toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+    const today  = new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(18);
+    doc.text('CONTRAT DE COLLABORATION', 105, 25, { align: 'center' });
+
+    doc.setDrawColor(230, 57, 70);
+    doc.setLineWidth(0.6);
+    doc.line(20, 32, 190, 32);
+
+    let y = 46;
+    const lh = 8;
+    const commissionNum = Math.min(100, Math.max(0, parseFloat(commission) || 0));
+    const field = (label, value) => {
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(11);
+      doc.text(label, 20, y);
+      doc.setFont('helvetica', 'normal');
+      doc.text(String(value), 80, y);
+      y += lh;
+    };
+    field('Modèle :', model);
+    field('Agence :', agency);
+    field('Commission agence :', `${commissionNum}%`);
+    field('Date de début :', dateFr);
+
+    y += 6;
+    doc.setFont('helvetica', 'bold'); doc.text('Article 1 — Objet', 20, y); y += lh;
+    doc.setFont('helvetica', 'normal');
+    let block = doc.splitTextToSize(
+      `Le présent contrat lie ${model} (« le Modèle ») et ${agency} (« l'Agence ») dans le cadre d'une collaboration de gestion de compte(s) et de contenu en ligne, à compter du ${dateFr}.`, 170);
+    doc.text(block, 20, y); y += block.length * 6 + 8;
+
+    doc.setFont('helvetica', 'bold'); doc.text('Article 2 — Répartition des revenus', 20, y); y += lh;
+    doc.setFont('helvetica', 'normal');
+    block = doc.splitTextToSize(
+      `L'Agence perçoit une commission de ${commissionNum}% sur les revenus nets générés par le Modèle grâce aux services fournis par l'Agence (gestion, promotion, contenu, support). Le solde restant, soit ${100 - commissionNum}%, revient intégralement au Modèle.`, 170);
+    doc.text(block, 20, y); y += block.length * 6 + 8;
+
+    doc.setFont('helvetica', 'bold'); doc.text('Article 3 — Durée', 20, y); y += lh;
+    doc.setFont('helvetica', 'normal');
+    block = doc.splitTextToSize(
+      `Le présent contrat prend effet au ${dateFr} et se poursuit jusqu'à résiliation par l'une des parties, moyennant un préavis écrit raisonnable.`, 170);
+    doc.text(block, 20, y); y += block.length * 6 + 22;
+
+    doc.setFont('helvetica', 'bold'); doc.text('Signatures', 20, y); y += 16;
+    doc.setFont('helvetica', 'normal');
+    doc.line(20, y, 85, y);
+    doc.line(120, y, 185, y);
+    y += 6;
+    doc.text(`Le Modèle — ${model}`, 20, y);
+    doc.text(`L'Agence — ${agency}`, 120, y);
+
+    doc.setFontSize(8); doc.setTextColor(150);
+    doc.text(`Document généré le ${today} — NARIX AGENCY`, 105, 287, { align: 'center' });
+
+    doc.save(`contrat_${model.replace(/\s+/g, '_') || 'modele'}.pdf`);
+    showToast('✓ Contrat PDF généré !', 'success');
+  } catch (e) {
+    showToast('Erreur lors de la génération du PDF', 'error');
+  } finally {
+    btn.classList.remove('loading'); btn.disabled = false;
+  }
+}
+
+// ══════════════════════════════════════════════════════════
+//  COMMISSION CALCULATOR
+// ══════════════════════════════════════════════════════════
+const OF_FEE_RATE = 0.20;
+
+function commissionCalc() {
+  const gross      = parseFloat(document.getElementById('ccGross').value) || 0;
+  const commission = Math.min(100, Math.max(0, parseFloat(document.getElementById('ccCommission').value) || 0));
+
+  const fee    = gross * OF_FEE_RATE;
+  const net    = gross - fee;
+  const agency = net * (commission / 100);
+  const model  = net - agency;
+
+  const fmt = n => '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  document.getElementById('ccOutGross').textContent  = fmt(gross);
+  document.getElementById('ccOutFee').textContent    = fmt(fee);
+  document.getElementById('ccOutNet').textContent    = fmt(net);
+  document.getElementById('ccOutAgency').textContent = fmt(agency);
+  document.getElementById('ccOutModel').textContent  = fmt(model);
+}
+
+// ══════════════════════════════════════════════════════════
+//  ELECTRONIC SIGNATURE
+// ══════════════════════════════════════════════════════════
+let sigFile       = null;
+let sigTab        = 'draw';
+let sigDrawing    = false;
+let sigHasDrawing = false;
+let sigTypedText  = '';
+
+(function () {
+  const dz = document.getElementById('sigDropzone');
+  dz.addEventListener('dragover',  e => { e.preventDefault(); dz.classList.add('dragover'); });
+  dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
+  dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('dragover'); sigLoad(e.dataTransfer.files[0]); });
+  document.getElementById('sigFileInput').addEventListener('change', e => { sigLoad(e.target.files[0]); e.target.value = ''; });
+
+  const canvas = document.getElementById('sigCanvas');
+  const ctx = canvas.getContext('2d');
+  const pos = e => {
+    const r = canvas.getBoundingClientRect();
+    const p = e.touches ? e.touches[0] : e;
+    return { x: p.clientX - r.left, y: p.clientY - r.top };
+  };
+  const start = e => { e.preventDefault(); sigDrawing = true; const p = pos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); };
+  const move  = e => {
+    if (!sigDrawing) return;
+    e.preventDefault();
+    const p = pos(e);
+    ctx.lineTo(p.x, p.y); ctx.stroke();
+    sigHasDrawing = true;
+  };
+  const end = () => { sigDrawing = false; };
+
+  canvas.addEventListener('mousedown', start);
+  canvas.addEventListener('mousemove', move);
+  window.addEventListener('mouseup', end);
+  canvas.addEventListener('touchstart', start, { passive: false });
+  canvas.addEventListener('touchmove', move, { passive: false });
+  canvas.addEventListener('touchend', end);
+})();
+
+function sigLoad(file) {
+  if (!file || file.type !== 'application/pdf') { showToast('Fichier PDF requis', 'error'); return; }
+  sigFile = file;
+  document.getElementById('sigDropzone').style.display = 'none';
+  document.getElementById('sigEditor').style.display    = 'block';
+  document.getElementById('sigFileName').textContent    = file.name;
+  sigSwitchTab('draw');
+  sigClear();
+  sigResizeCanvas();
+}
+
+function sigReset() {
+  sigFile = null;
+  document.getElementById('sigDropzone').style.display = 'block';
+  document.getElementById('sigEditor').style.display    = 'none';
+  document.getElementById('sigFileInput').value = '';
+  sigClear();
+}
+
+function sigSwitchTab(tab) {
+  sigTab = tab;
+  const isDraw = tab === 'draw';
+  document.getElementById('sigTabDraw').classList.toggle('active', isDraw);
+  document.getElementById('sigTabType').classList.toggle('active', !isDraw);
+  document.getElementById('sigDrawPane').style.display = isDraw ? 'block' : 'none';
+  document.getElementById('sigTypePane').style.display = isDraw ? 'none' : 'block';
+}
+
+function sigResizeCanvas() {
+  const canvas   = document.getElementById('sigCanvas');
+  const ratio    = window.devicePixelRatio || 1;
+  const cssWidth = canvas.parentElement.clientWidth || canvas.clientWidth || 500;
+  canvas.width   = cssWidth * ratio;
+  canvas.height  = 200 * ratio;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(ratio, ratio);
+  ctx.lineWidth   = 2.5;
+  ctx.lineCap     = 'round';
+  ctx.lineJoin    = 'round';
+  ctx.strokeStyle = '#111';
+}
+
+function sigClear() {
+  sigHasDrawing = false;
+  sigTypedText  = '';
+  document.getElementById('sigTypeInput').value = '';
+  const canvas = document.getElementById('sigCanvas');
+  canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function sigRenderTyped() {
+  sigTypedText = document.getElementById('sigTypeInput').value;
+}
+
+function sigGetSignatureDataUrl() {
+  if (sigTab === 'draw') {
+    if (!sigHasDrawing) return null;
+    return document.getElementById('sigCanvas').toDataURL('image/png');
+  }
+  if (!sigTypedText.trim()) return null;
+  const c = document.createElement('canvas');
+  c.width = 700; c.height = 200;
+  const ctx = c.getContext('2d');
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, c.width, c.height);
+  ctx.fillStyle = '#111';
+  ctx.font = "72px 'Dancing Script', cursive";
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(sigTypedText, c.width / 2, c.height / 2);
+  return c.toDataURL('image/png');
+}
+
+async function sigApplyAndDownload() {
+  if (!sigFile) { showToast('Importe un PDF d\'abord', 'error'); return; }
+  const dataUrl = sigGetSignatureDataUrl();
+  if (!dataUrl) { showToast('Dessine ou tape ta signature', 'error'); return; }
+
+  const btn = document.getElementById('sigBtnApply');
+  btn.classList.add('loading'); btn.disabled = true;
+  try {
+    if (typeof window.PDFLib === 'undefined') {
+      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js');
+    }
+    const { PDFDocument, rgb } = window.PDFLib;
+    const bytes    = await sigFile.arrayBuffer();
+    const pdfDoc   = await PDFDocument.load(bytes);
+    const pngImage = await pdfDoc.embedPng(dataUrl);
+
+    const pages    = pdfDoc.getPages();
+    const lastPage = pages[pages.length - 1];
+    const { width } = lastPage.getSize();
+
+    const sigW = 160;
+    const sigH = (pngImage.height / pngImage.width) * sigW;
+    const x = width - sigW - 40;
+    const y = 50;
+
+    lastPage.drawImage(pngImage, { x, y, width: sigW, height: sigH });
+
+    const timestamp = new Date().toLocaleString('fr-FR');
+    lastPage.drawText(`Signé électroniquement le ${timestamp}`, {
+      x, y: y - 12, size: 7, color: rgb(0.45, 0.45, 0.45),
+    });
+
+    const outBytes = await pdfDoc.save();
+    const blob = new Blob([outBytes], { type: 'application/pdf' });
+    const url  = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = sigFile.name.replace(/\.pdf$/i, '') + '_signe.pdf'; a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+    showToast('✓ PDF signé et téléchargé !', 'success');
+  } catch (e) {
+    showToast('Erreur lors de la signature du PDF', 'error');
+  } finally {
+    btn.classList.remove('loading'); btn.disabled = false;
+  }
+}
+
+// ══════════════════════════════════════════════════════════
+//  CURRENCY CONVERTER
+// ══════════════════════════════════════════════════════════
+let currencyRates     = null; // units of CUR per 1 USD
+let currencyUpdatedAt = null;
+
+async function currencyInit(force) {
+  if (currencyRates && !force) { currencyConvert(); return; }
+  const statusEl = document.getElementById('currencyUpdated');
+  const subEl    = document.getElementById('curResultSub');
+  statusEl.textContent = 'Chargement des taux...';
+  try {
+    const [fiatRes, usdtRes] = await Promise.all([
+      fetch('https://open.er-api.com/v6/latest/USD').then(r => r.json()),
+      fetch('https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=usd').then(r => r.json()),
+    ]);
+    if (fiatRes.result !== 'success' || !fiatRes.rates) throw new Error('fiat rates unavailable');
+    const usdtPriceInUsd = (usdtRes && usdtRes.tether && usdtRes.tether.usd) || 1;
+
+    currencyRates = {
+      USD:  1,
+      EUR:  fiatRes.rates.EUR,
+      COP:  fiatRes.rates.COP,
+      USDT: 1 / usdtPriceInUsd,
+    };
+    currencyUpdatedAt = new Date();
+    statusEl.textContent = `Mis à jour à ${currencyUpdatedAt.toLocaleTimeString('fr-FR')}`;
+    currencyConvert();
+  } catch (e) {
+    statusEl.textContent = 'Erreur de chargement des taux';
+    if (!currencyRates) subEl.textContent = 'Impossible de charger les taux — réessaie plus tard.';
+    showToast('Erreur lors du chargement des taux', 'error');
+  }
+}
+
+function currencySwap() {
+  const from = document.getElementById('curFrom');
+  const to   = document.getElementById('curTo');
+  const tmp  = from.value;
+  from.value = to.value;
+  to.value   = tmp;
+  currencyConvert();
+}
+
+function currencyConvert() {
+  if (!currencyRates) return;
+  const subEl = document.getElementById('curResultSub');
+  const valEl = document.getElementById('curResultValue');
+
+  const amount = parseFloat(document.getElementById('curAmount').value) || 0;
+  const from   = document.getElementById('curFrom').value;
+  const to     = document.getElementById('curTo').value;
+
+  const usd    = amount / currencyRates[from];
+  const result = usd * currencyRates[to];
+  const decimals = to === 'COP' ? 0 : 2;
+
+  valEl.textContent = result.toLocaleString('fr-FR', { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) + ' ' + to;
+  subEl.textContent = `${amount.toLocaleString('fr-FR')} ${from} = ${result.toLocaleString('fr-FR', { maximumFractionDigits: decimals })} ${to}`;
 }
 </script>
 </body>
